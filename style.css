@@ -204,6 +204,7 @@ src: local('GeosansLight-Oblique'), url('GeosansLight-Oblique.woff') format('wof
 .intro h1, .layer h1{
 	margin-top: 0.5em;
 	text-shadow: -2px 2px #040415;
+    text-transform: uppercase;
 }
 
 .intro h2, .layer h2, .intro h3, .layer h3{

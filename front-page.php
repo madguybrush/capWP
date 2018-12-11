@@ -22,7 +22,39 @@ get_header();
 <div id="fullpage">
 	
     
-             <?php $ProjetsQuery = new WP_Query(array( 'post_type'    => 'product', 'post__in' => get_option('is_featured') )); // is_featured( ) sticky_posts?>
+             <?php 
+    
+    //if ( is_woocommerce_activated() ) {
+    
+    /*		 $ProjetsQuery = new WP_Query([
+      		'post_type'   =>  'product',
+      		'stock'       =>  1,
+      		'showposts'   =>  3,
+      		'orderby'     =>  'date',
+      		'order'       =>  'DESC',
+     		 'meta_query'  =>  [ 
+        		['key' => '_featured', 'value' => 'yes' ]
+        		]
+    		]);*/
+    
+    //$args = array( 'post_type' => 'product', 'posts_per_page' => 3, 'meta_query' => array( array('key' => '_visibility','value' => array('catalog', 'visible'),'compare' => 'IN'),array('key' => '_featured','value' => 'yes')) );
+    //$args = array( 'post_type' => 'product',  'meta_query' => array('key' => '_featured','value' => 'yes') );
+    
+    $args = array(
+            'post_type' => 'product',
+            'posts_per_page' => 8,
+            'tax_query' => array(
+                    array(
+                        'taxonomy' => 'product_visibility',
+                        'field'    => 'name',
+                        'terms'    => 'featured',
+                    ),
+                ),
+            );
+    
+    
+    $ProjetsQuery = new WP_Query($args ); 
+    // , 'meta_key' => '_featured', 'meta_value' => 'yes'         is_featured( ) sticky_posts?>
             <?php if ( $ProjetsQuery->have_posts() ) : ?>
                 <?php while ( $ProjetsQuery->have_posts() ) : ?>
                     <?php $ProjetsQuery->the_post(); ?>
@@ -39,6 +71,9 @@ get_header();
 	
 
 	  <?php endwhile; ?>
+    
+    <?php else : ?>
+    lol
    <?php endif; ?>
 	
 	
