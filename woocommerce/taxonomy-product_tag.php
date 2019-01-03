@@ -138,20 +138,90 @@ $tax = $taxonomie->name;
 		</div>
 		
 	</header>
+        
+                          
     
+    <?php
+    
+    $i = getdate()['year'];
+                  
+    
+      while ( $i > 1980 ) { 
+          //echo $i; 
+      
+    
+                    /*     $argsglobal = array(
+                                'post_type' => 'product',
+                                'posts_per_page' => 8,
+                                'product_cat' => 'films, dvd',
+                                'product_tag' => $tax      
+                                );*/
+                    
+                      
+                     /*   $AnneesQuery = new WP_Query($argsglobal ); 
+                            if ( $AnneesQuery->have_posts() ) : 
+                                while ( $AnneesQuery->have_posts() ) : 
+                                    $AnneesQuery->the_post(); */
  
+                
+                  
+                  //count post where annee = $i
+                  // if >0 display
+                  $args = array(
+            'post_type' => 'product',
+            'posts_per_page' => 8,
+             'product_cat' => 'films, dvd',
+            'product_tag' => $tax      
+
+            );
     
-    <div class="container-fluid padding10 content">
+          $j = 0;
+    
+       $ProjetsQuery = new WP_Query($args ); 
+                if ( $ProjetsQuery->have_posts() ) : 
+                 while ( $ProjetsQuery->have_posts() ) : 
+                   $ProjetsQuery->the_post(); 
+
+                 // afficher seulement si annee = $i;
+            
+            $date = get_field('date_de_sortie'); 
+            $timestamp = strtotime($date);
+            $dateformatannee = "Y";
+            $annee = date_i18n($dateformatannee, $timestamp);
+        
+           if ($annee == $i) { $j++; }
+          endwhile; 
+
+                            else : echo "";
+            
+                            endif;
+          
+            if ($j > 0){
+           // wp_reset_query();
+                    
+
+          
+          
+                    ?>
+    
+                        <div class="container-fluid padding10 content">
+        
+        
         
 		<div class="row films">
             
 			<div class="col-md-12">
-				<h2>2019</h2>
+				<h2>
+                    <?php  
+                        echo $i; 
+                        //$i = getdate();
+                        //print_r($i['year']);
+                    ?>
+                </h2>
 			</div>
 
 		</div>
         
-
         
         
 		<div class=" grid gridcatalogue <?php echo $tax; ?>">
@@ -169,31 +239,7 @@ $tax = $taxonomie->name;
             'posts_per_page' => 8,
              'product_cat' => 'films, dvd',
             'product_tag' => $tax      
-          /* 'tax_query' => array(
-       array(
-         'taxonomy' => 'product_tag',
-         'field' => 'name',
-         'terms' => $tax
-       ),
-    ),*/
-                      
-            //'category_name' => 'films, dvd'
-            //'tag' => 'distribution'   
-  /*          'tax_query' => array(
-		array(
-			'taxonomy' => 'category',
-			'field'    => 'slug',
-			'terms'    => 'films',
-		),
-	),*/
-            /*'tax_query' => array(
-                    array(
-                        'taxonomy' => 'product_visibility',
-                        
-                        'field'    => 'name',
-                        'terms'    => 'featured',
-                    ),
-                ),*/
+
             );
     
     
@@ -201,14 +247,17 @@ $tax = $taxonomie->name;
                 if ( $ProjetsQuery->have_posts() ) : 
                  while ( $ProjetsQuery->have_posts() ) : 
                    $ProjetsQuery->the_post(); 
-            
-          //  while ( have_posts() ) :
-	      // the_post();
-      
-            //do_action( 'woocommerce_shop_loop' );
-            //wc_get_template_part( 'content', 'product' );
 
-                 
+                 // afficher seulement si annee = $i;
+            
+            $date = get_field('date_de_sortie'); 
+            $timestamp = strtotime($date);
+            $dateformatannee = "Y";
+            $annee = date_i18n($dateformatannee, $timestamp);
+           // echo "annee : " . $annee;
+             //echo "i : " . $i;
+            if ($annee == $i){
+            
                 ?>       
 
 			<div class="grid-item text-center">
@@ -251,7 +300,10 @@ $tax = $taxonomie->name;
                 
 			</div>
 
-	  <?php endwhile; ?>
+	  <?php 
+            }
+            
+                endwhile; ?>
     
     <?php else : ?>
             
@@ -261,8 +313,29 @@ $tax = $taxonomie->name;
  <?php wp_reset_query(); ?>
 	
 		</div>
+        
+        
+        
 	</div>
     
+    
+    
+    <?php 
+  
+            }                 
+          /* endwhile; 
+
+                            else : echo "";
+            
+                            endif; */
+    
+    
+        $i--;
+      }
+ 
+    wp_reset_query();
+    
+    ?>
     
 
 </div>
