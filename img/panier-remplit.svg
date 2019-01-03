@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.34 30.721">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #fff;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        fill: #fd0000;
+      }
+    </style>
+  </defs>
+  <g id="Groupe_326" data-name="Groupe 326" transform="translate(-580.798 -19.5)">
+    <g id="buy-cartBLANC" transform="translate(581.303 20)">
+      <path id="Tracé_74" data-name="Tracé 74" class="cls-1" d="M27.327,37.779H7.574A2.855,2.855,0,0,1,4.621,35.57L2.283,19.984A2.722,2.722,0,0,1,5.236,17.1H29.6a2.722,2.722,0,0,1,2.954,2.884L30.219,35.57A2.785,2.785,0,0,1,27.327,37.779Z" transform="translate(-2.255 -8.059)"/>
+      <path id="Tracé_75" data-name="Tracé 75" class="cls-1" d="M29.965,11.541,29.413,7.95A6.462,6.462,0,0,0,23.1,2.5H19.061a6.406,6.406,0,0,0-6.31,5.45L12.2,11.541" transform="translate(-6.041 -2.5)"/>
+    </g>
+    <circle id="Ellipse_10" data-name="Ellipse 10" class="cls-2" cx="5.5" cy="5.5" r="5.5" transform="translate(601 20)"/>
+  </g>
+</svg>

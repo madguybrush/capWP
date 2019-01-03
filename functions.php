@@ -33,3 +33,38 @@ foreach ( $understrap_includes as $file ) {
 	}
 	require_once $filepath;
 }
+
+add_action('get_header', 'remove_admin_login_header');
+function remove_admin_login_header() {
+    remove_action('wp_head', '_admin_bar_bump_cb');
+}
+/*
+function remove_admin_login_header() {
+    remove_action('wp_head', '_admin_bar_bump_cb');
+}
+
+add_action('get_header', 'remove_admin_login_header');
+*/
+
+
+add_filter( 'woocommerce_enqueue_styles', '__return_false' );
+
+
+/*
+function mytheme_add_woocommerce_support() {
+    add_theme_support( 'woocommerce' );
+}
+
+add_action( 'after_setup_theme', 'mytheme_add_woocommerce_support' );
+*/
+
+
+
+add_filter( 'wp_default_scripts', 'remove_jquery_migrate' );
+
+function remove_jquery_migrate( &$scripts){
+    if(!is_admin()){
+        $scripts->remove( 'jquery');
+        $scripts->add( 'jquery', false, array( 'jquery-core' ), '1.2.1' );
+    }
+}

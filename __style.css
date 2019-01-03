@@ -1,114 +1,7 @@
-/*
-Theme Name: Capricci UnderStrap
-Theme URI: http://understrap.com
-Author: Holger Koenemann
-Author URI: http://www.holgerkoenemann.de
-GitHub Theme URI: https://github.com/understrap/understrap
-Description: Combination of Automattic´s _s theme and Bootstrap 4. Made as a solid starting point for your next theme project and WordPress website. Use it as starter theme or as a parent theme. It is up to you. Including Font Awesome support, built-in widget slider and much more you need for basic websites. IMPORTANT: All developer dependencies are not bundled with this install file. Just download the .zip, extract it and run "npm install" and "gulp copy-assets" inside the extracted /understrap folder.
-That downloads everything and moves it in place so that you can recompile your CSS and JS files;
-A developer version (with Gulp/node and Sass sources) is available on gitHub: https://github.com/understrap/understrap
-A child theme is available on Github, too: https://github.com/understrap/understrap-child;
-Version: 0.8.8
-License: UnderStrap WordPress Theme, Copyright 2013-2017 Holger Koenemann
-UnderStrap is distributed under the terms of the GNU GPL version 2
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: understrap
-Tags: one-column, custom-menu, featured-images, theme-options, translation-ready
-
-This theme, like WordPress, is licensed under the GPL.
-UnderStrap is based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc.
-
-Resource Licenses:
-Font Awesome: http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
-Bootstrap: http://getbootstrap.com | https://github.com/twbs/bootstrap/blob/master/LICENSE (Code licensed under MIT, documentation under CC BY 3.0.)
-Owl Carousel 2: http://www.owlcarousel.owlgraphic.com/ | https://github.com/smashingboxes/OwlCarousel2/blob/develop/LICENSE (Code licensed under MIT)
-and of course
-jQuery: https://jquery.org | (Code licensed under MIT)
-WP Bootstrap Navwalker by Edward McIntyre: https://github.com/twittem/wp-bootstrap-navwalker | GNU GPL
-*/
-
-/*
-This file is just used to identify the theme in WordPress.
-The compiled CSS output can be found in /css/theme.css
-The SASS sources for it can be found in /sass/
-The dependencies can be found in /src/ after running "gulp copy-assets" terminal command
-
-...and now go out and play!
-*/
-
-
-
-	    #wpadminbar{
-        display:none;
-    }
-
-html{
-    margin-top: 0!important;
-}
-
-@keyframes tourne {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.container-loader {
-	padding: 0;
-	margin: 0;
-/*position: fixed;*/
-width: 100%;
-height: 100%;
-   background-color: #000; 
-/*z-index: 50000;*/
-	}
-
-	.aucentre{
-	/*	position: absolute;*/
-		width: 100%;
-		height:100%;
-	  transform: translate(-60px, -60px);
-		-webkit-transform: translate(-60px, -60px);
-	}
-	
-.loader {
-border: 10px solid transparent;
-  border-bottom: 10px solid #fff;
-    border-top: 10px solid #fff; 
-    border-radius: 50%;
-   width: 120px;
-    height: 120px;
-position: absolute;
-top: 50%;
- 	left: 50%;
-   animation: spin 2s linear infinite;
-	 -webkit-animation: spin 2s linear infinite;
-	/* transform: translate(0, -50%);*/
- /* z-index: 50001;*/
-}
 
 
 *{
 	font-family: Montserrat, Verdana, sans-serif;
-}
-
-* {
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-html{
-
-	overflow: auto;
-	/*background-color: rgba(239, 149, 5, 0.2);*/
-}
-
-.overflow{
-	overflow: auto;
 }
 
 html, body{
@@ -118,11 +11,8 @@ html, body{
 	font-size: 100%; 
 	font-weight: 400;
 	color: white;
-	/*overflow: auto;*/
 	/*background-color: rgba(239, 149, 5, 0.2);*/
 }
-
-
 
 
 @font-face {
@@ -132,91 +22,6 @@ font-style: normal;
 font-weight: normal;
 }
 
-
-.lora{
-	font-family: 'Lora', serif;
-	letter-spacing: .025rem;
-	
-}
-
-.trait{
-		width : 35px;
-height : 3px;
-}
-
-	.padding10{
-				padding-left: 10%;
-		padding-right: 10%;
-	}
-	
-	
-	.button {
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 15px 25px;
-  text-align: center;
-  font-size: 16px;
-  cursor: pointer;
-}
-	
-	.cta{
-	background-color: #A78A3C;
-	/*margin-top: 15px;*/
-	color: white;
-	border: 2px solid #A78A3C ;
-	font-size: 0.7rem;
-	padding: .4rem;
-	letter-spacing: 0.07rem;
-	width: 100%;
-	cursor: pointer;
-	transition: all .3s ease-out;
-    -webkit-transition:all .3s ease-out;
-    -o-transition:all .3s ease-out;
-    -moz-transition:all .3s ease-out;
-    -ms-transition:all .3s ease-out;
-}
-
-.cta:hover{
-	background-color: white;
-	color: #A78A3C ;
-	border: 2px solid #A78A3C;
-	transition: all .3s ease-out;
-    -webkit-transition:all .3s ease-out;
-    -o-transition:all .3s ease-out;
-    -moz-transition:all .3s ease-out;
-    -ms-transition:all .3s ease-out;
-}
-
-
-.cta-inverse{
-	background-color: white;
-	margin-top: 5px;
-	border: 2px solid #A78A3C;
-	color: #A78A3C ;
-	font-size: 0.7rem;
-	letter-spacing: 0.07rem;
-	padding: .4rem;
-	width: 100%;
-	cursor: pointer;
-	transition: all .3s ease-out;
-    -webkit-transition:all .3s ease-out;
-    -o-transition:all .3s ease-out;
-    -moz-transition:all .3s ease-out;
-    -ms-transition:all .3s ease-out;
-	
-}
-
-		.cta-inverse:hover{
-	background-color: #A78A3C;
-		border: 2px solid #A78A3C;
-	color: white;
-	transition: all .3s ease-out;
-    -webkit-transition:all .3s ease-out;
-    -o-transition:all .3s ease-out;
-    -moz-transition:all .3s ease-out;
-    -ms-transition:all .3s ease-out;
-}
 
 
 .navbar{
@@ -243,11 +48,6 @@ height : 3px;
 
 }
 
-.fondnoir{
-	background-color: rgba(0, 0, 0, 1)!important;
-}
-	
-
 #menuHaut{
 
 width: 100%
@@ -263,7 +63,15 @@ width: 100%
 	border: none;
 	top: 0;
 padding: 0;
-
+	/*display: block;
+	opacity: 0;
+	padding: 0;
+	height: 0px;
+		transition: all .3s ease-out;
+    -webkit-transition:all .3s ease-out;
+    -o-transition:all .3s ease-out;
+    -moz-transition:all .3s ease-out;
+    -ms-transition:all .3s ease-out;*/
 	   -webkit-transition: max-height 0.5s, opacity 0.2s 0.1s, visibility 0s 0.3s;
     -moz-transition: max-height 0.5s, opacity 0.2s 0.1s, visibility 0s 0.3s;
     -ms-transition: max-height 0.5s, opacity 0.2s 0.1s, visibility 0s 0.3s;
@@ -290,12 +98,31 @@ padding: 0;
 
 	/*height: 100%;*/
 }
+/*
+.dropdown .dropdown-menu {
+    -webkit-transition: max-height 0.3s, opacity 0.2s 0.1s, visibility 0s 0.3s;
+    -moz-transition: max-height 0.3s, opacity 0.2s 0.1s, visibility 0s 0.3s;
+    -ms-transition: max-height 0.3s, opacity 0.2s 0.1s, visibility 0s 0.3s;
+    -o-transition: max-height 0.3s, opacity 0.2s 0.1s, visibility 0s 0.3s;
+    transition: max-height 0.3s, opacity 0.2s 0.1s, visibility 0s 0.3s;
+
+    max-height: 0;
+    display: block;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+}*/
+
 
 
 
 .dropdown-toggle::after{
 	display: none;
 }
+/*
+.navbar-expand-md .navbar-nav .dropdown-menu{
+	transition: transform 1.5s cubic-bezier(.23,1,.32,1),opacity .75s linear;
+}*/
 
 .container{
 	flex-direction: column;
@@ -308,14 +135,20 @@ padding: 0;
  margin-top: 15%;/* 80px; */
  margin-right: 0;
    animation-duration: 1s;
+  /*animation-delay: 0.5s;*/
+ /*8%;*/
 }
 
 .navbar-brand img{
  max-width: 100%;
- 
 }
 
-
+/*
+.navbar-collapse{
+	margin-right: 10px;
+	align-items: flex-start;
+	 margin-top: 20%; 
+}*/
 
 #navbarNavDropdown{
 	 margin-top: 20%; /* 10%; */   
@@ -327,7 +160,7 @@ padding: 0;
 
 .navbar-dark .navbar-nav .nav-link{
 	color: white;
-	font-size: 1rem;
+	font-size: 1.1rem;
 	letter-spacing: 0.2em;
 	padding: 0;
 	margin: .5rem 1rem;
@@ -350,13 +183,18 @@ padding: 0;
 	/*text-decoration: underline;*/
 	    background-size: 100px 9px;/*100%*/
 }
+/*
+.navbar-dark .navbar-nav .nav-link:hover{
+	color: white;
+	font-weight: bold;
+	text-decoration: underline;
+}*/
 
 .dropdown-item{
 	text-align: center;
 		color: #fff;
 	opacity: 0.8;
 	font-weight: 100;
-	font-size: .6rem;
 		padding: 0;
 		margin: 0;
 	margin-top: .5rem;
@@ -386,8 +224,7 @@ padding: 0;
 
 .sousmenu {
 	margin-bottom: 15%;
-	animation-duration: 2s;
-	margin-top: .3rem; 
+	 animation-duration: 2s;
 }
 
 .sousmenu a{
@@ -453,7 +290,7 @@ padding: 0;
 	margin-top: 0.5em;
 	text-shadow: -2px 2px #040415;
 	text-transform: uppercase;
-	/*font-size: 3rem;*/
+	font-size: 3rem;
 	letter-spacing: 0.07em;
 	margin-bottom: 0.25rem;
 }
@@ -523,35 +360,16 @@ padding: 0;
 
 .section .flex-container{
 	align-items : flex-end;
-	padding-bottom: 55px; /*margin*/
-	background-image: linear-gradient(rgba(239, 245, 242, 0), rgba(4, 4, 15, .1), rgba(4, 4, 15, .5));
-	 z-index: 4;
-	 -webkit-transform: translate3d(0,0,0);
-		-ms-transform: translate3d(0,0,0);
-		transform: translate3d(0,0,0);
+	margin-bottom: 55px;
 }
 
 
 .fleximg{
-	/*margin-right: 10%;*/
+	margin-right: 10%;
 	/*margin-bottom: 10%;*/
-	 max-width: 70%;
-	/*  max-width: 250px;*/
+	 max-width: 80%;
 	 z-index: 4;
 }
-
-.flextexte{
-	 max-width: 45%;
-	 z-index: 4;
-}
-
-.fleximage{
-	 max-width: 30%;
-	 margin-right: 5%;
-	 z-index: 4;
-	 text-align: right
-}
-
 
 .menus{
 		text-align: center;
@@ -593,7 +411,6 @@ padding: 0;
 
 .form-control{
 	width: 90%;
-	font-family: Lora;
 	/*margin-right: 3%;*/
 	background-color: transparent;
 	border: none;
@@ -602,7 +419,6 @@ padding: 0;
 	color: white;
 	font-size: 13px;
 	padding: 0;
-	padding-bottom: .5rem;
 }
 
 .form-control:focus{
@@ -623,29 +439,33 @@ padding: 0;
 }
 
 
+
 .loupe {
   fill: #fff; 
 }
+/*
+.socialbutton {
+  fill: #111; 
+  opacity: 0.5;
+}*/
 
-
+/*
+.socialbuttons{
+	width: 20px;
+	height: 20px;
+	border: 2px solid white;
+	border-radius: 10px;
+	
+}*/
 
 .social{
 	font-size: 28px;
 }
 
-.iconepanier{
-	position: absolute;
-	top: 18px;
-	right: 27px;
-	width: 50px;
-	height: 50px;
-	z-index: 10;
-	background-image: url('img/panier-viderond.svg');
-}
 
 /***************VIDEO*******************/
 
-	.myVideo{
+	#myVideo{
 		position: absolute;
 		right: 0;
 		bottom: 0;
@@ -659,7 +479,7 @@ padding: 0;
   		background-position: center center;
   		background-size: contain;
    		object-fit: cover; /*cover video background */
-   		z-index: 0; /*-1 ??   3  ??;*/
+   		z-index: 3; /*-1 ????;*/
 	}
 	
 	
@@ -702,13 +522,10 @@ padding: 0;
 	
 	}
 	
-		/*solves problem with overflowing video in Mac with Chrome */
-	/*#section0{
-		overflow: hidden;
-	}*/
+	
 
 	/*solves problem with overflowing video in Mac with Chrome */
-	.section{
+	section{
 		overflow: hidden;
 	}
 
@@ -748,7 +565,6 @@ padding: 0;
 	width: 100%;
 	height: 100%;
 	position: fixed;
-	overflow: auto;
 	top: 0;
 	left: 0;
 	padding-top: 10%;/*20%;*/
@@ -801,7 +617,7 @@ transition: transform 1.5s cubic-bezier(.23,1,.32,1),opacity .75s linear;
 
 
 
-	.bar1,.bar3  {   
+	.bar1 {   
 	width: 25px;
     height: 2px;
     background-color: #fff; /*82D173*/
@@ -810,14 +626,13 @@ transition: transform 1.5s cubic-bezier(.23,1,.32,1),opacity .75s linear;
 }
 	
 	
-	.bar2 {
+	.bar2, .bar3 {
     width: 25px;
     height: 2px;
     background-color: #fff; /*82D173*/
     margin: 6px 0;
     transition: 0.4s;
 }
-
 
 .change .bar1 {
     -webkit-transform: translate(0px, 8px) rotate(-45deg); /*translate(-9px, 6px);*/
@@ -839,56 +654,35 @@ transition: transform 1.5s cubic-bezier(.23,1,.32,1),opacity .75s linear;
 	fill: #fff; 
 }
 	
-	
-	.logomobile{
-		display:none;
-	}
-	
-			.logotablette{
-		display: block;
-		height: 62px;
-	}
-	
-	
-	
-	.alphabetical{
-	text-align: center;
-	margin-top: .8rem;
-	letter-spacing: .12rem;
-	opacity: .5;
-}
-	
-.alphabetical a{
-/*padding: .2rem;*/
-color: #030310;
-
-	}
-	
 
 	/**************************responsive***********************/
 	
 	
 	
-
-
-
-	@media (max-width:992px){
+@media (max-width:767.98px){
 	
-
+	    #wpadminbar{
+        display:none;
+    }
 	/*html{margin-top:0!important;}*/
 	
 	html, body{
-	font-size: 90%; 
+	font-size: 70%; 
 	}
 	
-	.intro h2, .layer h2{
-		font-size: 1.5rem;
-		line-height: 2rem;
-	}
-	
+/*	h1 {
+	font-size: 1.5rem;
+	margin-bottom: 0;
+}
 
-	
+h2 {
+	font-size: 1rem;
+	margin-bottom: 1rem;
+}
 
+h3 {
+	font-size: 0.75rem;
+}*/
 
 
 .dropdown-menu{
@@ -924,11 +718,6 @@ padding: 0;
 	.menudesktop{
 		display: none;
 	}
-	
-	.iconepanier{
-	display: none;
-}
-
 
 		.menumobile{
 		display: flex;
@@ -939,8 +728,7 @@ padding: 0;
 	height: auto;
 	z-index: 50010;
 }
-
-
+	
 .navbar-brand{
 	margin-top: 5px;
 }	
@@ -954,21 +742,14 @@ padding: 0;
 	height: auto;
 	max-width: 100%;
 }
-
+/*
+#modalmobile {
+	font-size: 100%;
+}*/
 
 .navbar-dark .navbar-nav .nav-link{
 	font-size: 2rem;
 }
-
-.dropdown-item{
-	font-size: 1rem;
-}
-
-.sousmenu .navbar-nav .nav-link{
-	font-size: 1.7rem;
-}
-
-
 .socialbutton{
 	width : 30px;
 height : 30px;
@@ -976,13 +757,16 @@ margin: 5px;
 	}
 	
 
+
 #modalmobile .container{
 	display:flex;
-    /*overflow: auto;*/
+
 	justify-content: space-between; /*center*/
 	align-items: center;
 	height: 100%;
 	flex-direction: column;
+	/*margin-top: 10%;
+	margin-bottom: 5%;*/
 }
 
 #modalsearch .container{
@@ -1028,17 +812,9 @@ margin: 5px;
 }	
 
 .btnsearch{
+/*margin-right: 1.5rem;*/
 width: auto;
-height: 25px;
-padding-left: 1rem;
-padding-right: 1rem;
 }
-
-.btnpaniermobile{
-	width: 25px;
-height: 25px;
-}
-
 
 #brandmobile{
 	max-width: 70%;
@@ -1050,44 +826,21 @@ height: 25px;
 	text-align: right;
 }
 
+/*
+.navbar-dark .navbar-toggler-icon{
+background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.5)");
+}*/
 
-
-	.intro, .layer{ 
+	.intro{ 
 	margin-left: 5%;
 	margin-bottom: 2%;
 }
 
-
-.section .flex-container{
-	align-items: flex-end; /*flex-start*/
-	padding-bottom: 15px;
+	.layer{ 
+	left: 5%;
+	bottom: 2%;
 }
 
-
-
-.flextexte{
-	 max-width: 60%;
-	 z-index: 4;
-}
-
-.fleximage{
-	 max-width: 30%;
-	 margin-right: 5%;
-	 z-index: 4;
-	 text-align: right
-}
-
-.fleximg{
-	 max-width: 90%;
-	 z-index: 4;
-}
-/*
-.plusbutton{
-	width: 50px;
-	height: 50px;
-}*/
-
-	
 .tag {
 	font-size: 0.5rem;
 }
@@ -1100,146 +853,4 @@ height: 25px;
 }
 
 
-
-
 	}
-	
-	
-	
-	@media (max-width:767.98px){
-
-
-	.myVideo{
-		display: none;
-	}
-
-	.intro h1, .layer h1{
-	font-size: 1.7rem;
-	text-shadow: -1px 1px #040415;
-	}
-	
-	.intro h2, .layer h2{
-		font-size: 1rem;
-		line-height: 1.5rem;
-		text-shadow: -1px 1px #040415;
-	}
-	
-		.intro h3, .layer h3{
-		font-size: .75rem;
-		line-height: 1rem;
-		text-shadow: -1px 1px #040415;
-	}
-	
-	
-		.logomobile{
-		display: block;
-	}
-
-			.logotablette{
-		display: none;
-	}
-
-	
-		.intro, .layer{ 
-	margin-left: 5%;
-	margin-bottom: 2%;
-}
-
-.flextexte{
-	 max-width: 55%;
-	 z-index: 4;
-}
-
-.fleximage{
-	 max-width: 35%;
-	 margin-right: 5%;
-	
-}
-
-#brandmobile{
-	max-width: 60%;
-}
-
-.fleximg{
-	 z-index: 4;
-}
-
-.navbar-brand img{
-	max-height: 50px;
-}
-	
-	
-	.btnsearch{
-
-padding-left: .4rem;
-padding-right: .4rem;
-
-}
-/*
-	.padding10{
-				padding-left: 3%;
-		padding-right: 3%;
-	}*/
-
-
-}
-	
-	
-	/**************** footer ***************/
-	
-	
-
-footer{
-		margin-left: 17%;
-		padding-left: 10%;
-		padding-right: 10%;
-		background-color: #F5F5F5;
-		width: 83%;
-		/*position: absolute;
-		bottom: 0;*/
-		/*min-height: 100%;*/
-		/*height: 10%;*/
-		font-size: 0.6rem;
-		letter-spacing: .12rem;
-		font-family: Montserrat;
-		text-align: left;
-		font-weight: 200;
-		padding-top: 1.5rem;
-		padding-bottom: 1.5rem;
-
-		
-	}
-	
- footer a{
-		color : #919191;
-		font-size: 0.6rem;
-		letter-spacing: .12rem;
-		font-family: Montserrat;
-				text-align: left;
-		font-weight: 200;
-		
-	}
-	
-		footer a:hover{
-		text-decoration: none;
-		color : #000;
-	}
-	
-	/*@media only screen and (max-width:767.98px){*/
-/*@media (max-width:767.98px){*/
-	@media only screen and (max-width:992px){
-	footer{
-		margin-left: 0;
-		/*margin-top: 1rem;*/
-		width: 100%;
-		text-align: center;
-	}
-	
-footer a{
-	font-size: 0.7rem;
-}
-	
-}
-	
-
-	

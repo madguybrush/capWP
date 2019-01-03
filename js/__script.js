@@ -1,6 +1,5 @@
 	
-( function( $ )
-{
+(function ($) {
     var myFullpage = new fullpage('#fullpage', {
         //anchors: ['firstPage', 'secondPage', '3rdPage'],
        // sectionsColor: ['#C63D0F', '#1BBC9B', '#7E8F7C'],
@@ -238,7 +237,7 @@ function displaysearchmobile(){
 	nouveaute = $('.contentnouveautes');
 	marginleftnouveaute = nouveaute.css('margin-left');
 	marginleftnouveautenb = parseInt(marginleftnouveaute, 10);
-		//	console.log(" marginleft resized: ");
+	//		console.log(" marginleft resized: ");
 	//	console.log(marginleftnouveautenb);
 	
 	//console.log(marginleftnouveaute);
@@ -346,7 +345,7 @@ $( document ).ready( function() {
 		}
 
 // init Isotope boutique
-$gridboutique = $('.gridboutique').isotope({
+var $gridboutique = $('.gridboutique').isotope({
    itemSelector: '.grid-item',
 	//layoutMode: 'fitRows',
     percentPosition: true,
@@ -361,7 +360,7 @@ $gridboutique = $('.gridboutique').isotope({
 });
 
 // init Isotope 
-$grid = $('.grid').isotope({
+var $grid = $('.grid').isotope({
    itemSelector: '.grid-item',
 	layoutMode: 'fitRows',
     percentPosition: true,
@@ -377,16 +376,10 @@ $grid = $('.grid').isotope({
 
 
 // layout Isotope after each image loads
-/*$grid.imagesLoaded().progress( function() {
+$grid.imagesLoaded().progress( function() {
   $grid.isotope('layout');
   console.log(' image loaded');
-});*/
-    
-    // layout Isotope after each image loads
-/*$gridboutique.imagesLoaded().progress( function() {
-  $gridboutique.isotope('layout');
-  console.log(' image loaded');
-});*/
+});
 
 
 
@@ -607,8 +600,8 @@ if(( isTouchDevice ) || (($(window).width() < 768))) {
 });
 
 
-	   
-   	   $(window).load(function(){
+	
+       	   $(window).load(function(){
    // PAGE IS FULLY LOADED  
    // FADE OUT YOUR OVERLAYING DIV
    //$('.container-loader').fadeOut();
@@ -626,30 +619,13 @@ if(( isTouchDevice ) || (($(window).width() < 768))) {
 		$('#fp-nav.fp-right').removeClass('d-none');
 		
 		$('#capricci').removeClass('d-none');
-		
-		$('.iconepanier').removeClass('d-none');
-           $('.site').removeClass('d-none');
-           
-           	//resized();
-           
-           // layout Isotope after each image loads
-$grid.imagesLoaded().progress( function() {
-  $grid.isotope('layout');
-  console.log(' image loaded');
 });
     
-    // layout Isotope after each image loads
-$gridboutique.imagesLoaded().progress( function() {
-  $gridboutique.isotope('layout');
-  console.log(' image loaded');
-});
-           
-           
-           
-});
+    
 	
 	
 
    } )( jQuery );
+   
    
    
