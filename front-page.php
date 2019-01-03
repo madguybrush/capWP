@@ -96,25 +96,53 @@ get_header();
 					<div class="layer flex-item animated fadeIn flextexte" >
 						<!--<span class="tag">PROCHAINEMENT    </span>-->
 						<h1><?php the_title(); ?></h1>
-						<h2><?php echo get_field('auteur'); //get_post_meta( $post->ID, "wccaf_auteur", true ); ?></h2>
-						<h3><!-- EN SALLE/DVD/LIBRAIRIE LE -->
+						<h2>
+                            
+                            <?php if( get_field('sous_titre') ): ?>
+                               <?php echo get_field('sous_titre');   ?>
+                            <br />
+                             <?php endif; ?>
                             <?php 
-                                //echo get_field('date_de_sortie'); 
-                                $date = get_field('date_de_sortie'); 
-                                $dateformatstring = "d F"; // "d F, Y";
-                                $dateformatannee = "Y";
-                                $dateformatmois = "F";
-                                $dateformatjour = "d";
-                                $unixtimestamp = strtotime(get_field('date_picker'));
-                                $annee = date_i18n($dateformatannee, $unixtimestamp);
-                                $jourmois = date_i18n($dateformatstring, $unixtimestamp);
-                                $jour =  date_i18n($dateformatjour, $unixtimestamp);
-                                $mois =  date_i18n($dateformatmois, $unixtimestamp);
-                                echo (float)$jour. ' ' . $mois; echo ' ' . $annee;
-                                //$date = new DateTime($date);
-                               // echo $date->format('d M Y');
-                                //get_post_meta( $post->ID, "wccaf_date_de_sortie", true ); 
-                            ?>
+                                $product_categories = get_the_terms($post->ID, 'product_cat');
+                                if ( ! empty( $product_categories ) && ! is_wp_error( $product_categories ) ) {
+                                        $categories = wp_list_pluck( $product_categories, 'name' );
+                                    }
+                                //print_r($categories); 
+                                //$cat = $categories->name;
+                               //echo $categories[0];
+                                //echo $categories['name'];  
+                                //$categories = get_the_terms($post->ID, 'category'); 
+                                //print_r(get_the_category($post->ID)) ; 
+                                //print_r($categories);
+                                
+                               // $term_obj_list = get_the_terms( $post->ID, 'taxonomy' );
+                               // $terms_string = join(', ', wp_list_pluck($term_obj_list, 'name'));
+                               // echo $terms_string ;
+                                if (($categories[0] === "DVD" ) || ($categories[0] === "Films" )) { echo "un film de ";}
+                                else { echo "un livre de "; }
+                                echo get_field('auteur'); 
+                                //get_post_meta( $post->ID, "wccaf_auteur", true ); ?>
+                        </h2>
+						<h3><!-- EN SALLE/DVD/LIBRAIRIE LE -->
+
+                            <?php 
+                            $date = get_field('date_de_sortie'); 
+                            $timestamp = strtotime($date);
+                            
+                            $dateformatannee = "Y";
+                            $dateformatmois = "F";
+                            $dateformatjour = "d";
+                            $annee = date_i18n($dateformatannee, $timestamp);
+                            $jour =  date_i18n($dateformatjour, $timestamp);
+                            $mois =  date_i18n($dateformatmois, $timestamp);
+
+                            if ($categories[0] === "DVD" ) { echo "en dvd le ";}
+                             else if ($categories[0] === "Films" ) { echo "en salle le ";}
+                                else { echo "en livrairie le "; }
+                            
+                            echo (float)$jour. ' ' . $mois; echo ' ' . $annee;
+
+                        ?>
                         </h3>
 						<a href="<?php echo get_permalink(); ?>" alt=""><img alt="en savoir plus" src="<?php bloginfo('stylesheet_directory');?>/img/plus-sign-button.svg" class="plusbutton"></a>
 						
@@ -135,20 +163,38 @@ get_header();
         <div class="flex-container animated fadeInUp ">
 			<div class="intro flex-item flextexte">
                 <h1><?php the_title(); ?></h1>
-                <h2><?php echo get_field('auteur'); ?></h2>
+                <h2>
+                                 <?php if( get_field('sous_titre') ): ?>
+                               <?php echo get_field('sous_titre');   ?>
+                            <br />
+                             <?php endif; ?>
+                    
+                                <?php 
+                                $product_categories = get_the_terms($post->ID, 'product_cat');
+                                if ( ! empty( $product_categories ) && ! is_wp_error( $product_categories ) ) {
+                                        $categories = wp_list_pluck( $product_categories, 'name' );
+                                    }
+
+                                if (($categories[0] === "DVD" ) || ($categories[0] === "Films" )) { echo "un film de ";}
+                                else { echo "un livre de "; }
+                                echo get_field('auteur'); 
+                    ?>
+                
+                </h2>
 			     <h3><!--EN SALLE/DVD/LIBRAIRIE LE  -->
                         <?php 
-                            //echo get_field('date_de_sortie'); 
                             $date = get_field('date_de_sortie'); 
-                            $dateformatstring = "d F"; // "d F, Y";
+                            $timestamp = strtotime($date);
+                            
                             $dateformatannee = "Y";
                             $dateformatmois = "F";
                             $dateformatjour = "d";
-                            $unixtimestamp = strtotime(get_field('date_picker'));
-                            $annee = date_i18n($dateformatannee, $unixtimestamp);
-                            $jourmois = date_i18n($dateformatstring, $unixtimestamp);
-                            $jour =  date_i18n($dateformatjour, $unixtimestamp);
-                            $mois =  date_i18n($dateformatmois, $unixtimestamp);
+                            $annee = date_i18n($dateformatannee, $timestamp);
+                            $jour =  date_i18n($dateformatjour, $timestamp);
+                            $mois =  date_i18n($dateformatmois, $timestamp);
+                            if ($categories[0] === "DVD" ) { echo "en dvd le ";}
+                             else if ($categories[0] === "Films" ) { echo "en salle le ";}
+                                else { echo "en librairie le "; }
                             echo (float)$jour. ' ' . $mois; echo ' ' . $annee;
                             //$date = new DateTime($date);
                             // echo $date->format('d M Y');

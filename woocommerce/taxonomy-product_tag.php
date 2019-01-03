@@ -24,6 +24,13 @@ get_header(); // 'shop'
 //wc_get_template( 'archive-product.php' );
 
 //woocommerce_content();
+
+
+$taxonomie = get_queried_object(); 
+$tax = $taxonomie->name; 
+//print_r($taxonomie);
+//  echo $tax;
+//  $myposts = new WP_Query( array( 'category_name' => $cat ) );
 ?>
 
 <div id="category">
@@ -35,28 +42,65 @@ get_header(); // 'shop'
 			<div class="col-sm-4">
 				<select class="selecttitre" data-filter="titre">
 					<option selected disabled>TITRE</option>
-					<option value="sameTitle">After my Death</option>
-					<option value="sameTitle">De Sas en sas</option>
-					<option value="sameTitle">L'intrusa</option>
-					<option value="sameTitle">Grandeur et décadence d’un petit commerce de cinéma</option>
+                    
+                    
+                    <?php
+                            $args = array(
+                                'post_type' => 'product',
+                                'posts_per_page' => 8,
+                                'product_cat' => 'films, dvd',
+                                'product_tag' => $tax      
+                                );
+                    
+                        $ProjetsQuery = new WP_Query($args ); 
+                            if ( $ProjetsQuery->have_posts() ) : 
+                                while ( $ProjetsQuery->have_posts() ) : 
+                                    $ProjetsQuery->the_post(); 
+                    ?>
+                    
+					<option value="sameTitle"><?php the_title(); ?></option>
+                    
+                                <?php endwhile; ?>
+                            <?php endif; ?>
+                    <?php wp_reset_query(); ?>
+                    
 				</select>
 			</div>
 			<div class="col-sm-4">
 				<select class="selectauteur">
 					<option selected disabled>AUTEUR</option>
-					<option value="sameAuteur">Rachida Brackni</option>
-					<option value="sameAuteur">Leonardo Di Constanzo</option>
-					<option value="sameAuteur">Jean-Luc Godard</option>
-					<option value="sameAuteur">Kim Ui-Seok</option>
+                    <?php
+                            $args = array(
+                                'post_type' => 'product',
+                                'posts_per_page' => 8,
+                                'product_cat' => 'films, dvd',
+                                'product_tag' => $tax      
+                                );
+                    
+                        $ProjetsQuery = new WP_Query($args ); 
+                            if ( $ProjetsQuery->have_posts() ) : 
+                                while ( $ProjetsQuery->have_posts() ) : 
+                                    $ProjetsQuery->the_post(); 
+                    ?>
+                    
+					
+                                <option value="sameAuteur"><?php echo get_field('auteur'); ?></option>
+					
+                    
+                               <?php endwhile; ?>
+                            <?php endif; ?>
+                    <?php wp_reset_query(); ?>
+                    
 				</select>
 			</div>
 			<div class="col-sm-4">
 				<select class="selectcategory">
 					<option selected disabled>CATEGORIE</option>
-					<option value="sameCategory">Distribution</option>
+					<!--<option value="sameCategory">Distribution</option>
 					<option value="sameCategory">Production</option>
-					<option value="sameCategory">Court-Métrage</option>
-					<option value="sameCategory">Film de Patrimoine</option>
+					<option value="sameCategory">Court-Métrage</option>-->
+					<option value="sameCategory">film d'actualité</option>
+                    <option value="sameCategory">film de patrimoine</option>
 				</select>
 			</div>
 
@@ -107,18 +151,33 @@ get_header(); // 'shop'
 
 		</div>
         
+
         
-		<div class=" grid gridcatalogue">
+        
+		<div class=" grid gridcatalogue <?php echo $tax; ?>">
 			 <div class="gutter-sizer"></div> 
                 <div class="grid-sizer"></div>
 
-                     
-                <?php
+            
+            
+
+            
+            <?php
                 
                   $args = array(
             'post_type' => 'product',
             'posts_per_page' => 8,
-            'category_name' => 'films, dvd'
+             'product_cat' => 'films, dvd',
+            'product_tag' => $tax      
+          /* 'tax_query' => array(
+       array(
+         'taxonomy' => 'product_tag',
+         'field' => 'name',
+         'terms' => $tax
+       ),
+    ),*/
+                      
+            //'category_name' => 'films, dvd'
             //'tag' => 'distribution'   
   /*          'tax_query' => array(
 		array(
@@ -149,7 +208,7 @@ get_header(); // 'shop'
             //do_action( 'woocommerce_shop_loop' );
             //wc_get_template_part( 'content', 'product' );
 
-                
+                 
                 ?>       
 
 			<div class="grid-item text-center">
@@ -171,22 +230,19 @@ get_header(); // 'shop'
 							<h3 class="titre"><?php the_title(); ?></h3>
 							<h4>de <span class="auteur"><?php echo get_field('auteur'); ?></span></h4>
                             <?php 
-                                //echo get_field('date_de_sortie'); 
-                                $date = get_field('date_de_sortie'); 
-                                $dateformatstring = "d F"; // "d F, Y";
-                                $dateformatannee = "Y";
-                                $dateformatmois = "F";
-                                $dateformatjour = "d";
-                                $unixtimestamp = strtotime(get_field('date_picker'));
-                                $annee = date_i18n($dateformatannee, $unixtimestamp);
-                                $jourmois = date_i18n($dateformatstring, $unixtimestamp);
-                                $jour =  date_i18n($dateformatjour, $unixtimestamp);
-                                $mois =  date_i18n($dateformatmois, $unixtimestamp);
-                                //echo (float)$jour. ' ' . $mois; echo ' ' . $annee;
+                            $date = get_field('date_de_sortie'); 
+                            $timestamp = strtotime($date);
+                            
+                            $dateformatannee = "Y";
+                            $dateformatmois = "F";
+                            $dateformatjour = "d";
+                            $annee = date_i18n($dateformatannee, $timestamp);
+                            $jour =  date_i18n($dateformatjour, $timestamp);
+                            $mois =  date_i18n($dateformatmois, $timestamp);
                                 
                             ?>
 							<h5>sortie le <?php echo (float)$jour. ' ' . $mois; ?></h5>
-							<h5><span class="categorie"><?php echo get_field('categorie'); ?></span></h5>
+							<h5><span class="categorie <?php if (get_field('categorie') === "film d'actualité" ){ echo "d-none"; } ?>"><?php echo get_field('categorie'); ?></span></h5>
 						</div>	
 							
 					</div>
@@ -202,7 +258,7 @@ get_header(); // 'shop'
             pas de produit
     
    <?php endif; ?>
-
+ <?php wp_reset_query(); ?>
 	
 		</div>
 	</div>
