@@ -18,35 +18,22 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 if (!is_front_page()){
 
-get_template_part( 'sidebar-templates/sidebar', 'footerfull' ); ?>
+//get_template_part( 'sidebar-templates/sidebar', 'footerfull' ); ?>
 
-
-
-<div class="wrapper" id="wrapper-footer">
-
-	<div class="<?php echo esc_attr( $container ); ?>">
-
-		<div class="row">
-
-			<div class="col-md-12">
-
-				<footer class="site-footer" id="colophon">
-
-					<div class="site-info">
-
-						<?php understrap_site_info(); ?>
-
-					</div><!-- .site-info -->
-
-				</footer><!-- #colophon -->
-
-			</div><!--col end -->
-
-		</div><!-- row end -->
-
-	</div><!-- container end -->
-
-</div><!-- wrapper end -->
+<footer>
+    
+<a href="/mentions-legales/" alt="mentions légales">mentions légales / conditions de ventes</a>
+    
+  <!--  
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-8 offset-md-4 col-lg-9 offset-lg-3 ">
+		<a href="/mentions-legales/" alt="mentions légales">mentions légales / conditions de ventes</a>
+		</div>
+	</div>
+</div>-->
+    
+</footer>
 
 <?php }?>
 

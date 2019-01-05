@@ -23,10 +23,13 @@ if ( ! function_exists( 'understrap_scripts' ) ) {
         
             wp_enqueue_style( 'capricci-normalizeCss', get_template_directory_uri() . '/css/normalize.css',false,null,'all');
             wp_enqueue_style( 'capricci-fontawesome', get_template_directory_uri() . '/css/fontawesome-all.css',false,null,'all');
+         wp_enqueue_style( 'capricci-lora', 'https://fonts.googleapis.com/css?family=Lora',false,null,'all');
+  
     wp_enqueue_style( 'capricci-animateCss', get_template_directory_uri() . '/css/animate.css',false,null,'all');
     wp_enqueue_style( 'capricci-bootstrapCss', get_template_directory_uri() . '/css/bootstrap.min.css',false,null,'all');
     wp_enqueue_style( 'capricci-fullpageCss', get_template_directory_uri() . '/css/fullpage.css',false,null,'all');
             wp_enqueue_style( 'capricci-categorieCss', get_template_directory_uri() . '/css/categorie.css',false,null,'all');
+           wp_enqueue_style( 'capricci-produitCss', get_template_directory_uri() . '/css/produit.css',false,null,'all');
 	wp_enqueue_style( 'capricci-style', get_stylesheet_uri() );
         
 

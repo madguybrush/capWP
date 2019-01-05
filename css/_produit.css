@@ -1,0 +1,569 @@
+	
+	/*****************fiche produit****************/
+	
+	
+	html{
+		overflow-y: auto;
+	}
+	
+	* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+	
+	#produit{
+		margin-left: 17%;
+		background-color: #F5F5F5;
+		width: 83%;
+		color: #030310;
+		/*height: 100%;*/
+	}
+	
+		#produit header{
+			/*margin-bottom: 1.5rem;*/
+			color: #030310;
+			padding: 0;
+		height: 66vh;
+		display: flex;
+		width: 100%;
+	}
+	
+	#produit .cta {
+		margin-top: 15px;
+	}
+	
+			.padding0{
+			padding-left: 0;
+			padding-right: 0;
+		}
+			
+	
+.imgaffiche{
+	border: .3rem solid #f5f5f5; 
+	max-width: 100%;
+	margin-bottom: -70px;
+	width: 100%;
+}
+
+		.padding2{
+			padding-left: 2rem;
+			padding-right: 2rem;
+		}
+				.padding25{
+			padding-left: 2.5rem;
+			padding-right: 2.5rem;
+		}
+	
+	#produit .infosheader{
+		width: 100%;
+		/*padding-left: .5rem;*/
+		/*margin-bottom: 50px;*/
+		align-items : flex-end;
+	/*	margin-top: 33%;*/
+		
+	}
+	
+	
+	
+	.infosheader h1{
+	font-family: Piek, Montserrat, Arial;
+	margin-top: 0.5em;
+	text-shadow: -1px 1px #000;
+color : white;
+	font-size: 3rem;
+	/*letter-spacing: 0.07em;*/
+	margin-bottom: 0.25rem;
+}
+
+.infosheader h2{
+	text-shadow: -1px 1px #000;
+		font-size: 1.3rem;
+	letter-spacing: 0.07em;
+	color: white;
+	font-weight: 300;
+	margin-bottom: 1.5rem;
+	line-height: 1.5rem;
+}
+
+#produit .content{
+			display: flex;
+			overflow: hidden;
+			padding: 0;
+		/*	padding: 0;
+			margin: 0;*/
+	}
+	
+#produit .infoscontent{
+		/*padding-left: .5rem;*/
+		align-items : flex-start;
+			width: 100%;
+			/*padding-bottom: 4rem;*/
+	}
+
+.colgauche{
+	
+	/*margin-left: .5rem;*/
+
+	margin-top: 90px;
+	margin-bottom: 50px;
+	/*padding-left: .5rem;
+	padding-right: .5rem; */
+	text-align: center;
+	/*height: 1000px;*/
+}
+.coldroite{
+
+	/*padding-top: 20px;*/
+	/*margin-bottom: 50px;*/
+	padding-left: 0rem; /*25px;*/
+	padding-right: 0rem; /*25px;*/
+	/*background-color: white;*/
+	/*height: 1000px;*/
+}
+
+
+.colgauche h3{
+	font-size: .9rem;
+	letter-spacing: 0.05rem;
+	color: #A78A3C;
+	font-weight: bold;
+	
+	}
+
+
+
+.prix{
+	font-size: 0.7rem;
+	padding-top: 3rem; /*2rem;*/
+	background-color: white;
+	padding-right: 0;
+	padding-left: 3rem;
+	letter-spacing: .08rem;
+	
+}
+
+		.prix2{
+		text-align: right;
+			font-size: 0.7rem;
+	padding-top: 3rem; /*2rem;*/
+	background-color: white;
+	padding-right: 3rem;
+	padding-left: 0;
+	letter-spacing: .08rem;
+	}
+	
+
+.cadreblanc{
+	background-color: white;
+		padding-left: 2rem;
+	padding-right: 2rem;
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+}
+
+.cadregris{
+	background-color: #F5F5F5;
+	padding: 2rem;	
+}
+		
+		
+
+.download{
+	background-color:#000946;
+	margin-top: 15px;
+	/*border: none;*/
+	color: white;
+	font-size: 0.6rem;
+	letter-spacing: 0.07rem;
+	border: 2px solid #000946;
+	padding: 1rem;
+
+	width: 100%;
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+	outline: none;
+	transition: all .3s ease-out;
+    -webkit-transition:all .3s ease-out;
+    -o-transition:all .3s ease-out;
+    -moz-transition:all .3s ease-out;
+    -ms-transition:all .3s ease-out;
+}
+
+.download:hover{
+	background-color: white;
+	margin-top: 15px;
+	color: #000946;
+	padding: 1rem;
+	border: 2px solid #000946;
+	transition: all .3s ease-out;
+    -webkit-transition:all .3s ease-out;
+    -o-transition:all .3s ease-out;
+    -moz-transition:all .3s ease-out;
+    -ms-transition:all .3s ease-out;
+}
+
+.downloadall{
+	background-color: #fff;
+	border: 2px solid #000946;
+	margin-top: 15px;
+	color: #000946;
+	font-size: 0.7rem;
+	padding: 1rem;
+	width: 100%;
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+	outline: none;
+	transition: all .3s ease-out;
+    -webkit-transition:all .3s ease-out;
+    -o-transition:all .3s ease-out;
+    -moz-transition:all .3s ease-out;
+    -ms-transition:all .3s ease-out;
+}
+.downloadall:hover{
+	background-color:#000946;
+	margin-top: 15px;
+	color: white;
+	transition: all .3s ease-out;
+    -webkit-transition:all .3s ease-out;
+    -o-transition:all .3s ease-out;
+    -moz-transition:all .3s ease-out;
+    -ms-transition:all .3s ease-out;
+}
+
+
+.colgauche h4{
+	font-size: 0.9rem;
+	color: #030310;
+	font-weight: bold;
+	text-align: left;
+	margin-top: 2rem;
+	
+	line-height: 1.4rem;
+	}
+
+.colgauche h4.visa{
+	margin-top: .5rem;
+	margin-bottom: 1rem;
+}
+	
+.centerTab{
+width: 100%;
+margin: 0 auto;	
+/*	padding-left: 3rem;
+	padding-right: 3rem;*/
+}
+
+.tableFilm {
+	font-family: 'Lora', serif;
+	margin-bottom: 1.5rem;
+	text-align: left;
+	width: 100%; 
+	/*font-family: Lora, verdana;*/
+	color: #030310;
+	font-size: 0.6rem;
+	/*margin: 0px auto;*/
+
+	
+}
+
+.tableFilm .titre{
+	font-family: 'Lora', serif;
+	font-size: 0.8rem;
+	
+}
+
+.tableFilm .acteurs{
+	font-family: 'Lora', serif;
+	font-size: 0.7rem;
+}
+
+
+.tableFilm .colLeft {
+	width: 50%; /*200px*/
+	text-align: left;
+	padding: .3rem;
+	
+}
+.tableFilm .colRight {
+	width: 50%; 
+text-align: left;
+	padding: .3rem;
+	font-family: Lora, sans-serif;
+}
+
+
+
+.resume{
+	font-family: 'Lora', serif;
+	font-size: .8rem;
+	font-weight: 300;
+	/*margin-top: 1rem;*/
+	letter-spacing: .08rem;
+	line-height: 1.5rem;
+	padding-left: 6rem;
+	padding-right: 6rem;
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+	background-color: white;
+}
+.lauteur{
+	font-family: 'Lora', serif;
+	font-size: .8rem;
+	font-weight: 300;
+	font-style: italic;
+	/*margin-top: 1rem;*/
+	padding-left: 6rem;
+	padding-right: 6rem;
+		padding-top: 3rem;
+	padding-bottom: 3rem;
+		letter-spacing: .08rem;
+	line-height: 1.7rem;
+
+}
+
+.coldroite h3{
+	font-family: 'Montserrat', serif;
+	font-size: 1rem;
+	font-style: normal;
+	color: #A78A3C;
+	font-weight: bold;
+	letter-spacing: .08rem
+
+	}
+	
+
+			
+		.video-responsive{
+		/*	padding-top: 1.5rem;
+			padding-bottom: 4rem;*/
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+		background-color: white;
+}
+.video-responsive iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+}
+
+.gallery {
+	padding: 0;
+	padding-top: 3rem;
+}
+
+.gallery img{
+	max-width: 100%;
+}
+
+		.colbuttons{
+		padding-top:2rem;
+		padding-left: 1.5rem;
+		padding-right: 1.5rem;
+	}
+	
+	
+
+	
+		.showwhenmobile{
+		display: none;
+	}
+
+	.carousel-control-next-icon{
+		background-image: url(img/diaporamaflechedroite.svg);
+		height: 40px;
+		width: 40px;
+	}
+	
+	.carousel-control-prev-icon{
+		background-image: url(img/diaporamaflechegauche.svg);
+		height: 40px;
+		width: 40px;
+	}
+	
+	.carousel-control-next, .carousel-control-prev{
+		width: 5%;
+	}
+	
+	#produit footer{
+		padding-left: 0;
+		padding-right: 0;
+		margin-left: 0;
+	}
+
+/**************responsive*******************/
+
+	/*@media only screen and (max-width:767.98px){*/
+		@media only screen and (max-width:992px){
+	#produit{
+		margin-left: 0;
+		margin-top:64px;
+		width: 100%;
+	}
+
+	
+
+	
+.download, .downloadall{
+	/*width: 25%;*/
+	margin-right: .8rem;
+}
+	
+	
+	.colbuttons{
+		
+		width: 100%;
+		/*margin-top: 2rem;*/
+		margin-bottom: 2rem;
+	}
+	
+.cta{
+	max-width: 200px;
+	
+	}
+	
+
+	
+	
+		}
+	
+	
+	
+	
+	
+		@media only screen and (max-width:767.98px){
+	
+	.hidewhenmobile{
+		display: none;
+	}
+	.showwhenmobile{
+		display: flex;
+		text-align: center;
+		margin-top: -5rem;
+	}
+
+.prix{
+	text-align: center;
+	
+}
+
+.tableFilm{
+	font-size : 1rem;
+}
+
+.tableFilm .titre{
+	font-size : 1rem;
+}
+
+.tableFilm .acteurs{
+	font-size : 1rem;
+}
+	
+
+	#produit header{
+	background-image: none!important;
+	height: auto;
+	}
+	
+	.infosheader h1{
+	
+	text-shadow: none;
+color : #A78A3C;
+	}	
+		.infosheader h2{
+	
+margin-bottom: .5rem;
+
+	text-shadow: none;
+	margin-top: .7rem;
+	font-weight: 400;
+	color: #030310;
+
+}
+/*
+.coldroite{
+	padding-left: 2.5rem;
+	padding-right: 2.5rem;
+}*/
+
+.coldroite{
+	margin-top: 25px;
+	margin-bottom: 50px;
+}
+
+
+
+.colgauche{
+	margin-bottom: 0;
+}
+
+	.colgauche h4{
+		text-align: center;
+		
+	}
+	
+		.colbuttons{
+		text-align: center;
+		padding: 2rem;
+	}
+	
+	.tableFilm .colLeft{
+		text-align: right;
+	}
+	
+	
+		#produit .content{
+		margin: 0; /*1*/
+		padding: 0;
+		
+	}
+	.prix2{
+		text-align: center;
+	}
+	
+	#produit .infoscontent{
+		margin: 0rem; /*1*/
+		
+	}
+	
+	
+	
+		#produit .infosheader{
+		margin-right: 10%;
+		margin-left: 10%;
+		text-align: center;
+	}
+	
+		.imgaffiche{
+		margin-bottom: 0;
+		margin-top: 3rem;
+		}
+		
+
+		
+		
+		.colgauche{
+
+	margin-top: 0;
+	
+		}
+		
+		
+		
+.cta{
+
+	width: 50%;
+
+	/*	margin-top: 7px!important;
+		margin-bottom: 15px;*/
+	}
+	
+		
+	
+		}
