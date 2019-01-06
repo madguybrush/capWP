@@ -128,7 +128,7 @@ color : white;
 	letter-spacing: 0.05rem;
 	color: #A78A3C;
 	font-weight: bold;
-	
+	text-transform: uppercase;
 	}
 
 
@@ -376,13 +376,13 @@ text-align: left;
 	}
 
 	.carousel-control-next-icon{
-		background-image: url(img/diaporamaflechedroite.svg);
+		background-image: url(diaporamaflechedroite.svg);
 		height: 40px;
 		width: 40px;
 	}
 	
 	.carousel-control-prev-icon{
-		background-image: url(img/diaporamaflechegauche.svg);
+		background-image: url(diaporamaflechegauche.svg);
 		height: 40px;
 		width: 40px;
 	}

@@ -58,7 +58,24 @@ get_header( );
 				<div class="row">
 				
 					<div class="col-12">
-						<h3>DATE DE SORTIE <br />28 SEPTEMBRE 2018</h3>
+						<h3>DATE DE SORTIE <br />
+                            <?php
+                            $date = get_field('date_de_sortie'); 
+                            $timestamp = strtotime($date);
+                            
+                            $dateformatannee = "Y";
+                            $dateformatmois = "F";
+                            $dateformatjour = "d";
+                            $annee = date_i18n($dateformatannee, $timestamp);
+                            $jour =  date_i18n($dateformatjour, $timestamp);
+                            $mois =  date_i18n($dateformatmois, $timestamp);
+                            
+                            echo (float)$jour. ' ' . $mois; echo ' ' . $annee;
+                            //28 SEPTEMBRE 2018
+                            ?>
+                            
+                        
+                        </h3>
 					</div>
 					<div class="col-12">
 					<button class="cta">ACHETER EN DVD/BLU-RAY</button>
@@ -168,46 +185,72 @@ get_header( );
 							</div>
 						
 							<div class="col-lg-12 resume ">
-								<img src="img/trait-debut-paragraphe.svg" alt="" class="trait">
+								<img src="<?php bloginfo('stylesheet_directory');?>/img/trait-debut-paragraphe.svg" alt="" class="trait">
 								La disparition soudaine d’une élève d’un lycée pour jeunes filles précipite la communauté scolaire dans le chaos. Famille de la victime, enseignants et élèves cherchent à fuir toute responsabilité, l’image de l’école étant en jeu. Pourtant, sans indice ni corps, on suspecte un suicide. Young-hee, l’une de ses camarades d’école, dernière à l’avoir vue vivante, est suspectée par tout le monde, à commencer par la mère de la victime. Bouc-émissaire idéal, Young-hee va chercher à n’importe quel prix à échapper à la spirale de persécutions qui l’accablent. Mais quel secret, quel pacte peut-elle bien cacher… ?
 							</div>
 						
 							<div class="col-lg-12 lauteur">
 								<h3>L’AUTEUR </h3>
-								<img src="img/trait-debut-paragraphe.svg" alt="" class="trait">
+								<img src="<?php bloginfo('stylesheet_directory');?>/img/trait-debut-paragraphe.svg" alt="" class="trait">
 								Né à Madrid d’une famille bourgeoise et fortunée, Ado Arrietta découvre le cinéma à sept ans lorsqu’on lui offre un « Cinematik » avec lequel il projette des dessins animés. A treize ans, alors qu’il peint de plus en plus sérieusement, encouragé par sa mère, elle-même ancienne pianiste prodige, il découvre Orphée et Le Cuirasse Potemkine. A vingt-deux ans, en 1964, il réalise un premier court-métrage, Le Crime de la toupie, avec pour acteur son ami Xavier Grandes, qui sera dès lors de tous ses films. L’Imitation de l’ange, tourné deux ans après, un brulot qui doit autant à Rimbaud qu’à Vigo, prépare à un exil : ce sera Paris, où Adolpho et Xavier viennent habiter, à l’Hôtel des Pyrénées, dans le quartier de Saint-Germain-des-Prés.
 							</div>
-
+                                 
 							<div class="col-lg-12 cadreblanc">
+                                 <?php 
+                                    $video = get_field('video_page_produit');
+                                    if( $video ) { ?>
 								<div class="video-responsive">
 									<!-- <iframe width="420" height="315" src="https://www.youtube.com/embed/xc446vOqXm8" frameborder="0" allowfullscreen ></iframe>		-->
-									<iframe width="640" height="564" src="https://player.vimeo.com/video/305916401" frameborder="0" controls allowFullScreen mozallowfullscreen webkitAllowFullScreen></iframe>									
+									<iframe width="640" height="564" src="<?php echo $video; ?>" frameborder="0" controls allowFullScreen mozallowfullscreen webkitAllowFullScreen></iframe>									
 								</div>
-							<!--</div>
-							
-							<div class="col-lg-12 cadreblanc">-->
+                                
+                                <?php } ?>
+						
 								<div class="gallery">
 									<div id="demo" class="carousel slide" data-ride="carousel">
 
 									  <!-- Indicators -->
-									  <ul class="carousel-indicators">
+									 <!-- <ul class="carousel-indicators">
 										<li data-target="#demo" data-slide-to="0" class="active"></li>
 										<li data-target="#demo" data-slide-to="1"></li>
 										<li data-target="#demo" data-slide-to="2"></li>
-									  </ul>
+									  </ul>-->
 
 									  <!-- The slideshow -->
 									  <div class="carousel-inner">
-										<div class="carousel-item active">
+                                          
+                                        <?php  
+                                           //global $post;
+           	 	                           $i =1;
+            	                          // $galleries = get_post_gallery_images_with_info( ); 
+                                           //print_r($galleries);
+            	                          //$x = count($galleries);
+            	                           //echo $x;
+            	                          // if (!empty($galleries)){
+                                           //    echo "pasvide";
+            	                              // 	foreach ($galleries as $key => $val) {
+                                          $postID = get_the_ID();
+                                          //echo  $postID;
+                                             $gallery = get_post_gallery_images($postID);
+                                          if (!empty($gallery)){
+                                            foreach( $gallery as $image_url ){
+                                          
+                                        ?>
+                                          
+                                          
+										<!--<div class="carousel-item active">
 										  <img src="img/fond-aftermydeath.jpg" alt="image 1"> 
+										</div>-->
+										<div class="carousel-item <?php if ($i ==1) { echo "active"; $i++; } ?>">
+										  <img src="<?php echo $image_url; ?>" alt="<?php the_title(); ?>"> 
 										</div>
-										<div class="carousel-item">
-										  <img src="img/fond-aftermydeath.jpg" alt="image 2"> 
-										</div>
-										<div class="carousel-item">
-										  <img src="img/fond-aftermydeath.jpg" alt="image 3"> 
-										</div>
-									  </div>
+
+                                          
+                                          
+                                            <?php } // end foreach //$i++; ?>
+                                        <?php } else { echo "vide"; }//endif ?> 
+									  
+                                        </div>
 
 									  <!-- Left and right controls -->
 									  <a class="carousel-control-prev" href="#demo" data-slide="prev">
