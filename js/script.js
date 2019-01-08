@@ -219,7 +219,7 @@ function displaysearchmobile(){
 		window_height = $( window ).height();
 		
 		hauteur = $( '.contentnouveautes' ).outerHeight();
-	 hauteur = hauteur + $( '.contentnouveautestitre' ).outerHeight();
+	 hauteur = hauteur + 23 + $( '.contentnouveautestitre' ).outerHeight();
 		fleche = (hauteur / 2) - 20;
 	$( '.navdroiteboutique' ).css( 'height', hauteur );
 	$( '.navgaucheboutique' ).css( 'height', hauteur );
@@ -270,7 +270,7 @@ $( document ).ready( function() {
 	$('#fp-nav.fp-right').addClass('d-none');
 	
 	 hauteur = $( '.contentnouveautes' ).outerHeight();
-	 hauteur = hauteur + $( '.contentnouveautestitre' ).outerHeight();
+	 hauteur = hauteur + 23 + $( '.contentnouveautestitre' ).outerHeight();
 	 fleche = (hauteur / 2) - 20;
 	$( '.navdroiteboutique' ).css( 'height', hauteur );
 	$( '.navgaucheboutique' ).css( 'height', hauteur );

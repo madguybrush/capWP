@@ -78,86 +78,76 @@ get_header( );
                         </h3>
 					</div>
 					<div class="col-12">
-					<button class="cta">ACHETER EN DVD/BLU-RAY</button>
+                        <?php 
+                        //$woocommerce->cart->add_to_cart( $group_product_id, 1); 
+                        //[add_to_cart_url id="99"]
+                      
+                        ?>
+					<button class="cta" >ACHETER EN DVD/BLU-RAY</button>
 					<br />
 					<button class="cta">VOIR EN VOD</button>
 					</div>
 					<div class="col-12 hidewhenmobile">
-					<h4>2017 / COREE DU SUD / 1H53 </h4> 
-					<h4 class="visa">VISA</h4>
+					<h4><?php echo $annee . ' / ' . get_field('pays_dorigine') .  ' / ' . get_field('duree'); ?> </h4> 
+					<h4 class="visa">VISA <?php echo get_field('visa'); ?></h4>
 					</div>
 					<div class="col-12 order-sm-12 hidewhenmobile">
 					<!--<div class="centerTab">-->
 						<table class="tableFilm">
 						<tbody>
+                            <?php $titre = get_field('titre_original');	
+                                    if ($titre){?>
 							<tr class="titre">
 								<td class="colLeft"><b>Titre original </b></td>
-								<td class="colRight">After my death </td>
+								<td class="colRight"><?php echo $titre; ?></td>
 							</tr>
+                            <?php } ?>
+                            
+                            <?php if( have_rows('acteurs') ): ?>
+	
+                            <?php while( have_rows('acteurs') ): the_row(); 
+
+		                          // vars
+                                        $role = get_sub_field('role');
+                                        $acteur = get_sub_field('acteur');
+
+                                    ?>
+                            
 							<tr class="acteurs">
-							<td class="colLeft"><b>Young-hee </b></td>
-							<td class="colRight">JEON Yeo-bin</td>
+							<td class="colLeft"><b><?php echo $role; ?></b></td>
+							<td class="colRight"><?php echo $acteur; ?></td>
 							</tr>
-							<tr class="acteurs">
-							<td class="colLeft"><b>La mère </b></td>
-							<td class="colRight">SEO Young-hwa </td>
-							</tr>
-							<tr class="acteurs">
-							<td class="colLeft"><b>Kyung-min</b></td>
-							<td class="colRight">JEON So-nee </td>
-							</tr>
-							<tr class="acteurs">
-							<td class="colLeft"><strong>Han-sol</strong></td>
-							<td class="colRight">KO Won-hee</td>
-							</tr>
-							<tr class="acteurs">
-							<td class="colLeft"><b>L’enquêteur </b></td>
-							<td class="colRight">YOO Jae-myuong</td>
-							</tr>
+	<?php endwhile; ?>
+
+
+<?php endif; ?>
+                            
 						</tbody>
 					</table>
 						<table class="tableFilm">
 						<tbody>
+                            
+                            
+                                                        <?php if( have_rows('acteurs') ): ?>
+	
+                            <?php while( have_rows('technique') ): the_row(); 
+
+		                          // vars
+                                        $poste = get_sub_field('poste');
+                                        $personne = get_sub_field('personne');
+
+                                    ?>
+                            
 							<tr>
-							<td class="colLeft"><b>Réalisation  </b></td>
-							<td class="colRight">KIM Ui-seok</td>
+							<td class="colLeft"><b><?php echo $poste; ?></b></td>
+							<td class="colRight"><?php echo $personne; ?></td>
 							</tr>
-							<tr>
-							<td class="colLeft"><b>Scénario </b></td>
-							<td class="colRight">KIM Ui-seok</td>
-							</tr>
-							<tr>
-								<td class="colLeft"><b>Photographie</b></td>
-								<td class="colRight">KIM Ui-seok</td>
-							</tr>
-							<tr>
-							<td class="colLeft"><b>Prise de Son</b></td>
-							<td class="colRight">Baek Seonbin </td>
-							</tr>
-							<tr>
-							<td class="colLeft"><b>Costumes</b></td>
-							<td class="colRight">Baek Seonbin  </td>
-							</tr>
-							<tr>
-							<td class="colLeft"><b>Maquillage </b></td>
-							<td class="colRight">Baek Seonbin </td>
-							</tr>
-							<tr>
-							<td class="colLeft"><strong>Décors </strong></td>
-							<td class="colRight">Baek Seonbin </td>
-							</tr>
-							<tr>
-							<td class="colLeft"><b>Direction artistique</b></td>
-							<td class="colRight">Baek Seonbin </td>
-							</tr>
-									<tr>
-							<td class="colLeft"><b>Montage image</b></td>
-							<td class="colRight">Kim Minjung </td>
-							</tr>
-							<tr>
-							<td class="colLeft"><b>Montage image</b></td>
-							<td class="colRight">Kim Minjung </td>
-							</tr>
+	<?php endwhile; ?>
+
+
+<?php endif; ?>
+                            
+
 							
 						</tbody>
 					</table>
@@ -174,25 +164,30 @@ get_header( );
 					
 						<div class="row">
 						
+                            <?php 
+                                    $prix = get_field('prix');	
+                                    if ($prix){
+                            ?>
+                            
 							<div class="col-md-6  prix">
-								<strong>GRAND PRIX DU JURY</strong> — CANNES 2018<br />
-								<strong>SELECTION OFFICIEL</strong> — BELFORT 2018<br />
-								<strong>GRAND PRIX DU JURY</strong> — CANNES 2018
+								<?php echo $prix['gauche']; ?>
 							</div>
 							<div class="col-md-6 prix prix2">
-								<strong>GRAND PRIX DU JURY</strong> — CANNES 2018<br />
-								<strong>SELECTION OFFICIEL</strong> — BELFORT 2018
+                                <?php echo $prix['droite']; ?>
 							</div>
+                            
+                            <?php } ?>
 						
 							<div class="col-lg-12 resume ">
 								<img src="<?php bloginfo('stylesheet_directory');?>/img/trait-debut-paragraphe.svg" alt="" class="trait">
-								La disparition soudaine d’une élève d’un lycée pour jeunes filles précipite la communauté scolaire dans le chaos. Famille de la victime, enseignants et élèves cherchent à fuir toute responsabilité, l’image de l’école étant en jeu. Pourtant, sans indice ni corps, on suspecte un suicide. Young-hee, l’une de ses camarades d’école, dernière à l’avoir vue vivante, est suspectée par tout le monde, à commencer par la mère de la victime. Bouc-émissaire idéal, Young-hee va chercher à n’importe quel prix à échapper à la spirale de persécutions qui l’accablent. Mais quel secret, quel pacte peut-elle bien cacher… ?
+								<?php echo get_field('synopsis');  ?>
 							</div>
 						
 							<div class="col-lg-12 lauteur">
 								<h3>L’AUTEUR </h3>
 								<img src="<?php bloginfo('stylesheet_directory');?>/img/trait-debut-paragraphe.svg" alt="" class="trait">
-								Né à Madrid d’une famille bourgeoise et fortunée, Ado Arrietta découvre le cinéma à sept ans lorsqu’on lui offre un « Cinematik » avec lequel il projette des dessins animés. A treize ans, alors qu’il peint de plus en plus sérieusement, encouragé par sa mère, elle-même ancienne pianiste prodige, il découvre Orphée et Le Cuirasse Potemkine. A vingt-deux ans, en 1964, il réalise un premier court-métrage, Le Crime de la toupie, avec pour acteur son ami Xavier Grandes, qui sera dès lors de tous ses films. L’Imitation de l’ange, tourné deux ans après, un brulot qui doit autant à Rimbaud qu’à Vigo, prépare à un exil : ce sera Paris, où Adolpho et Xavier viennent habiter, à l’Hôtel des Pyrénées, dans le quartier de Saint-Germain-des-Prés.
+                                <?php echo get_field('lauteur');  ?>
+
 							</div>
                                  
 							<div class="col-lg-12 cadreblanc">
@@ -220,35 +215,23 @@ get_header( );
 									  <div class="carousel-inner">
                                           
                                         <?php  
-                                           //global $post;
-           	 	                           $i =1;
-            	                          // $galleries = get_post_gallery_images_with_info( ); 
-                                           //print_r($galleries);
-            	                          //$x = count($galleries);
-            	                           //echo $x;
-            	                          // if (!empty($galleries)){
-                                           //    echo "pasvide";
-            	                              // 	foreach ($galleries as $key => $val) {
+           	 	                          /* $i =1;
                                           $postID = get_the_ID();
-                                          //echo  $postID;
                                              $gallery = get_post_gallery_images($postID);
                                           if (!empty($gallery)){
-                                            foreach( $gallery as $image_url ){
-                                          
-                                        ?>
-                                          
-                                          
-										<!--<div class="carousel-item active">
-										  <img src="img/fond-aftermydeath.jpg" alt="image 1"> 
-										</div>-->
-										<div class="carousel-item <?php if ($i ==1) { echo "active"; $i++; } ?>">
-										  <img src="<?php echo $image_url; ?>" alt="<?php the_title(); ?>"> 
-										</div>
+                                            foreach( $gallery as $image_url ){*/
+                                          $i =1;
+                                          $images = get_field('galerie');
 
+                                            if( $images ): 
+                                          foreach( $images as $image ): ?>
+
+										<div class="carousel-item <?php if ($i ==1) { echo "active"; $i++; } ?>">
+										  <img src="<?php echo $image['url']; ?>" alt="<?php the_title(); ?>"> 
+										</div>
                                           
-                                          
-                                            <?php } // end foreach //$i++; ?>
-                                        <?php } else { echo "vide"; }//endif ?> 
+                                        <?php endforeach;  ?>
+                                        <?php endif; ?> 
 									  
                                         </div>
 
@@ -271,24 +254,37 @@ get_header( );
 					<div class="col-lg-3 order-lg-2 order-md-1 order-sm-2 colbuttons "> <!-- col-xl-2 -->
 						
 						<div class="row">
+                            <?php if( get_field('bande-annonce') ){?>
 							<div class="col-6 col-md-4 col-lg-12">
-								<button class="download">BANDE-ANNONCE</button>
+                                <a href="<?php the_field('bande-annonce'); ?>" alt="<?php the_title(); ?>" download><button class="download">BANDE-ANNONCE</button></a>
 							</div>
+                            <?php } ?>
+                             <?php if( get_field('affiche_hd') ){?>
 							<div class="col-6 col-md-4 col-lg-12">
-								<button class="download">AFFICHE HD</button>
+								 <a href="<?php the_field('affiche_hd'); ?>" alt="<?php the_title(); ?>" download><button class="download">AFFICHE HD</button></a>
 							</div>
+                            <?php } ?>
+                             <?php if( get_field('dossier_de_presse') ){?>
 							<div class="col-6 col-md-4 col-lg-12">
-								<button class="download">DOSSIER DE PRESSE</button>
+								 <a href="<?php the_field('dossier_de_presse'); ?>" alt="<?php the_title(); ?>" download><button class="download">DOSSIER DE PRESSE</button></a>
 							</div>
-							<div class="col-6 col-md-4 col-lg-12">	
-								<button class="download">PHOTOS HD</button>
+                            <?php } ?>
+                             <?php if( get_field('photos_hd') ){?>
+							<div class="col-6 col-md-4 col-lg-12">
+								 <a href="<?php the_field('photos_hd'); ?>" alt="<?php the_title(); ?>" download><button class="download">PHOTOS HD</button></a>
 							</div>
-							<div class="col-6 col-md-4 col-lg-12">	
-								<button class="download">EXTRAITS</button>
+                            <?php } ?>
+                             <?php if( get_field('extraits') ){?>
+							<div class="col-6 col-md-4 col-lg-12">
+								 <a href="<?php the_field('extraits'); ?>" alt="<?php the_title(); ?>" download><button class="download">EXTRAITS</button></a>
 							</div>
-							<div class="col-6 col-md-4 col-lg-12">	
-								<button class="downloadall">TOUS LES DOCUMENTS</button>
+                            <?php } ?>
+                            <?php if( get_field('tous_les_documents') ){?>
+							<div class="col-6 col-md-4 col-lg-12">
+								 <a href="<?php the_field('tous_les_documents'); ?>" alt="<?php the_title(); ?>" download><button class="downloadall">TOUS LES DOCUMENTS</button></a>
 							</div>
+                            <?php } ?>
+
 						</div>
 
 					</div>
