@@ -22,10 +22,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $product;
 
-// no need for price here
-// affichage dans le bouton ?
-// cf price-Copie.php for old code // original plugin code
-// ou ci-dessous
-
 ?>
-<!--<p class="price">--><?php //echo $product->get_price_html(); ?><!--</p>-->
+<p class="price"><?php echo $product->get_price_html(); ?></p>

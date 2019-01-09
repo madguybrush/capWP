@@ -20,22 +20,29 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-the_title( '<h1 class="lol product_title entry-title">', '</h1>' );
-
+//the_title( '<h1 class="product_title entry-title">', '</h1>' );
+global $product;
 ?>
 
-<h2>
-    <?php //the_field('auteur'); ?>
-    </h2>
 
-    <h2>
-    <?php 
-    echo  get_post_meta( get_the_ID(), 'wccaf_auteur', true );
-    ?>
-    </h2>
-    <h3>
-    <?php
-    echo  get_post_meta( get_the_ID(), 'wccaf_date_de_sortie', true );
-    ?>
-</h3>
 
+
+    <header class="container-fluid animated fadeInDown slower" style="background-image: url(<?php the_post_thumbnail_url(); ?>); background-size: cover; background-position: top; background-repeat: no-repeat;">
+
+        <div class="row infosheader animated fadeInUp">
+            <div class="col-md-4 col-lg-3 text-center padding2">
+                <?php if( get_field('affiche_du_film') ): ?>
+                                    <img src="<?php the_field('affiche_du_film'); ?>" alt="<?php the_title(); ?>" class="imgaffiche animated fadeInUp">
+                                <?php else : // image par défaut ?>
+                                    <img src="<?php bloginfo('stylesheet_directory');?>/img/film4.png" alt="<?php the_title(); ?>" class="imgaffiche animated fadeInUp">
+                                <?php endif; ?>
+                <!--<img src="img/film1.png" alt="after my death" class="imgaffiche animated fadeInUp">-->
+            </div>
+            <div class="col-md-8 col-lg-9 padding0">
+                <h1 class="animated fadeInUp"><?php the_title(); ?></h1>
+                <h2 class="animated fadeInUp">un film de <?php echo get_field('auteur'); ?></h2>
+            </div>
+            
+        </div>
+
+    </header>

@@ -605,7 +605,20 @@ if(( isTouchDevice ) || (($(window).width() < 768))) {
 }	
 
 });
+    
+    $('body').on('added_to_cart',function(){
+    // Callback -> product added
+    $('.popup').show();
+         //$('.popup').css( 'opacity', '1' );
+        console.log('produit ajouté');
+});
 
+        $('.continuermesachats').on('click',function(){
+    // Callback -> product added
+    $('.popup').hide();
+         //$('.popup').css( 'opacity', '1' );
+       // console.log('produit ajouté');
+});
 
 	   
    	   $(window).load(function(){

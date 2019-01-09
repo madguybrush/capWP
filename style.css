@@ -42,6 +42,20 @@ The dependencies can be found in /src/ after running "gulp copy-assets" terminal
         display:none;
     }
 
+
+.woocommerce-notices-wrapper{
+/*
+background-color: white;
+position: absolute;
+top: 30%;
+right: 30%;
+height: 300px;
+width: 300px;*/
+/*display: none;*/
+
+}
+
+
 html{
     margin-top: 0!important;
 }
@@ -165,6 +179,9 @@ height : 3px;
 	/*margin-top: 15px;*/
 	color: white;
 	border: 2px solid #A78A3C ;
+        text-transform: uppercase;
+        outline: none;
+        border-radius: 0;
 	font-size: 0.7rem;
 	padding: .4rem;
 	letter-spacing: 0.07rem;
@@ -176,17 +193,64 @@ height : 3px;
     -moz-transition:all .3s ease-out;
     -ms-transition:all .3s ease-out;
 }
+.margintop{
+     margin-top: 1rem;
+}
+
+.marginbottom{
+     margin-bottom: 1rem;
+}
+
+
+
 
 .cta:hover{
-	background-color: white;
-	color: #A78A3C ;
+	background-color: #F5F5F5;;
+	color: #A78A3C;
+    padding: .4rem;
 	border: 2px solid #A78A3C;
 	transition: all .3s ease-out;
     -webkit-transition:all .3s ease-out;
     -o-transition:all .3s ease-out;
     -moz-transition:all .3s ease-out;
     -ms-transition:all .3s ease-out;
+    text-decoration: none;
 }
+
+
+.ctapopup{
+    padding : 1rem;
+ /*   padding-top: 1rem;
+    padding-bottom: 1rem;*/
+   
+}
+
+.ctapopup:hover{
+    padding : 1rem;
+ /*  padding-top: 1rem;
+    padding-bottom: 1rem;*/
+   
+}
+
+.continuermesachats{
+    background-color: #F5F5F5;
+    /*margin-top: .5rem;*/
+    color: rgba(145, 145, 145, 1);
+    border: 1px solid rgba(145, 145, 145, 1);
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.continuermesachats:hover{
+      background-color: #F5F5F5;
+     color: rgba(145, 145, 145, 1);
+    text-decoration: none;
+        border: 1px solid rgba(145, 145, 145, 1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+     /*   padding : 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;*/
+}
+
 
 
 .cta-inverse{
