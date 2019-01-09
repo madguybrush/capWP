@@ -262,12 +262,25 @@ $container = get_theme_mod( 'understrap_container_type' );
 			
 		</nav>
 	
-		
+     <?php /*global $woocommerce;*/ $cart_url = wc_get_cart_url(); // added_to_cart wc-forward ?>
+    <?php
+    if(WC()->cart->cart_contents_count == 0) {
+        ?>
+    
 <div class="iconepanier animated fadeInRight slower">
-	<a href="#"><!--<img src="img/panier-viderond.svg">--></a>
-</div>       
+    <a href="<?php echo $cart_url; ?>" class="" title="Voir le panier"><img src="<?php bloginfo('stylesheet_directory');?>/img/panier-viderond.svg"></a>
+	<!--<a href="#"><img src="img/panier-viderond.svg"></a>-->
+</div>   
+    
+        <?php
+    } else {
+        ?>
         
-        
-        
+   <div class="iconepanier animated fadeInRight slower">
+	 <a href="<?php echo $cart_url; ?>" class="" title="Voir le panier"><img src="<?php bloginfo('stylesheet_directory');?>/img/panier-remplit-blanc.svg"></a>
+</div>      
+              <?php
+    }
+        ?>  
         
 	<!-- </div>--> <!-- #wrapper-navbar end -->
