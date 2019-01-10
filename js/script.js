@@ -263,6 +263,37 @@ function displaysearchmobile(){
 
 	
 $( document ).ready( function() {
+    
+    
+    function GetURLParameter(sParam)
+
+{
+
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++)
+    {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam)
+        {
+            return sParameterName[1];
+        }
+    }
+}
+
+    var productadded = GetURLParameter('productadded');
+    
+    console.log(productadded);
+    
+    if (productadded == "yes") {
+         $('.popup').show();
+        //$('.woocommerce-notices-wrapper').show();
+         //$('.popup').css( 'opacity', '1' );
+ 
+    }
+    
+
+    
 	
 	//resized();
 	ajouterclasseAlpha();
@@ -606,9 +637,15 @@ if(( isTouchDevice ) || (($(window).width() < 768))) {
 
 });
     
+
+
+    
+
+    
     $('body').on('added_to_cart',function(){
     // Callback -> product added
     $('.popup').show();
+        //$('.woocommerce-notices-wrapper').show();
          //$('.popup').css( 'opacity', '1' );
         console.log('produit ajouté');
 });
@@ -616,6 +653,7 @@ if(( isTouchDevice ) || (($(window).width() < 768))) {
         $('.continuermesachats').on('click',function(){
     // Callback -> product added
     $('.popup').hide();
+         //   $('.woocommerce-notices-wrapper').hide();
          //$('.popup').css( 'opacity', '1' );
        // console.log('produit ajouté');
 });

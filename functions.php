@@ -110,3 +110,41 @@ function get_post_gallery_images_with_info($postvar = NULL) {
 
 //remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
 //add_action( 'woocommerce_single_product_summary', 'woocommerce_template_loop_add_to_cart', 30 );
+
+
+// Remove "Select options" button from (variable) products on the main WooCommerce shop page.
+
+/*add_filter( 'woocommerce_loop_add_to_cart_link', function( $product ) {
+
+	global $product;
+
+	if ( is_shop() && 'variable' === $product->product_type ) {
+		return '';
+	} else {
+		sprintf( '<a href="%s" data-quantity="%s" class="%s" %s>%s</a>',
+			esc_url( $product->add_to_cart_url() ),
+			esc_attr( isset( $args['quantity'] ) ? $args['quantity'] : 1 ),
+			esc_attr( isset( $args['class'] ) ? $args['class'] : 'button' ),
+			isset( $args['attributes'] ) ? wc_implode_html_attributes( $args['attributes'] ) : '',
+			esc_html( $product->add_to_cart_text() )
+		);
+	}
+
+} );*/
+
+// Remove "Select options" button from (variable) products on a product page.
+
+/*
+add_filter( 'woocommerce_loop_add_to_cart_link', function( $product ) {
+
+	global $product;
+
+	if ( is_product() ) {
+		
+        echo 'produit';
+
+        
+	} 
+    
+
+} );*/

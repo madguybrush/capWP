@@ -88,30 +88,13 @@ $product, $args );
 
 else {
 
-do_action( 'woocommerce_' . $product->get_type() . '_add_to_cart' ); 
-
-//1530 de includes\wc-templates-functions :
-
-	//function woocommerce_variable_add_to_cart() {
-	//	global $product;
-
-		// Enqueue variation scripts.
-	//	wp_enqueue_script( 'wc-add-to-cart-variation' );
-
-		// Get Available variations?
-	//	$get_variations = count( $product->get_children() ) <= apply_filters( 'woocommerce_ajax_variation_threshold', 30, $product );
-
-		// Load the template.
-	//	wc_get_template( 'single-product/add-to-cart/variable.php', array(
-	//		'available_variations' => $get_variations ? $product->get_available_variations() : false,
-	//		'attributes'           => $product->get_variation_attributes(),
-	//		'selected_attributes'  => $product->get_default_attributes(),
-	//	) );
-//	}
+//do_action( 'woocommerce_' . $product->get_type() . '_add_to_cart' );
 
 
 
-/*
+
+
+
 
 $get_variations = count( $product->get_children() ) <= apply_filters( 'woocommerce_ajax_variation_threshold', 30, $product );
 $available_variations = $product->get_available_variations();
@@ -119,35 +102,48 @@ $attributes = $product->get_variation_attributes();
 $selected_attributes = $product->get_default_attributes();
 $attribute_keys = array_keys( $attributes );
 
+/*
+	$action= esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); 
+	$method="post"; 
+	$enctype='multipart/form-data';
+	$dataproductid= absint( $product->get_id() );
+	$dataproductvariations= htmlspecialchars( wp_json_encode( $available_variations ) ); 
+	*/
 
+?>
+
+
+
+
+<?php
 
  if ( empty( $available_variations ) && false !== $available_variations ) : ?>
 		<p class="stock out-of-stock"><?php esc_html_e( 'This product is currently out of stock and unavailable.', 'woocommerce' ); ?></p>
-	<?php else :
+	<?php else : ?>
 
-	 foreach ( $attributes as $attribute_name => $options ) { 
+				<?php foreach ( $attributes as $attribute_name => $options ) { 
 						foreach ( $options as $option ) { 
 
-	echo sprintf( '<div class="add-to-cart-container"><a href="%s" data-quantity="%s" class="%s product_type_%s single_add_to_cart_button cta btn-block %s" %s data-product_variations="%s"  > %s</a></div>',
-		esc_url( $product->add_to_cart_url() ),
+	echo sprintf( '<div class="add-to-cart-container"><a href="%s" data-quantity="%s" class="%s product_type_%s single_add_to_cart_button cta btn-block %s" %s  > %s</a></div>',
+		esc_url( $product->add_to_cart_url() . /*'?add-to-cart=' . $product->get_id() .*/ '?attribute_format-film=' . $option),
 		esc_attr( isset( $args['quantity'] ) ? $args['quantity'] : 1 ),
 		$product->is_purchasable() && $product->is_in_stock() ? 'add_to_cart_button' : '',
 		esc_attr( $product->get_type() ),
+		//$product->get_type() == 'simple' ? 'ajax_add_to_cart' : '',
 		esc_attr('ajax_add_to_cart'),
 		isset( $args['attributes'] ) ? wc_implode_html_attributes( $args['attributes'] ) : '',
-		esc_attr(htmlspecialchars( wp_json_encode( $available_variations ) )),
+		// data-product-variation
+		//esc_attr($attributes),
+		//current-image
+		//esc_attr($attributes),
 		esc_html( $product->add_to_cart_text() . $option)
 	);
 
 } 
 				}  
 
-	 endif; */
+	 endif; 
 
-}
-
-//current-image="%s"
-/*. '?add-to-cart=' . $product->get_id() .'?attribute_format-film=' . $option*/
 
 /*
 
@@ -164,7 +160,7 @@ $attribute_keys = array_keys( $attributes );
 */
 
 
-
+}
 
 /*
 

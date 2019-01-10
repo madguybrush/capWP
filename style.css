@@ -43,9 +43,6 @@ The dependencies can be found in /src/ after running "gulp copy-assets" terminal
     }
 
 
-.woocommerce-notices-wrapper{
-
-}
 
 
 html{
@@ -700,12 +697,12 @@ padding: 0;
 }
 
 .iconepanierrempli{
-	position: absolute;
+	/*position: absolute;
 	top: 18px;
 	right: 27px;
 	width: 50px;
 	height: 50px;
-	z-index: 10;
+	z-index: 10;*/
 	/*background-image: url('img/panier-remplit-blanc.svg');*/
 }
 

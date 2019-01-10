@@ -30,6 +30,7 @@ if ( ! function_exists( 'understrap_scripts' ) ) {
     wp_enqueue_style( 'capricci-fullpageCss', get_template_directory_uri() . '/css/fullpage.css',false,null,'all');
             wp_enqueue_style( 'capricci-categorieCss', get_template_directory_uri() . '/css/categorie.css',false,null,'all');
            wp_enqueue_style( 'capricci-produitCss', get_template_directory_uri() . '/css/produit.css',false,null,'all');
+           wp_enqueue_style( 'capricci-boutiqueCss', get_template_directory_uri() . '/css/boutique.css',false,null,'all');
 	wp_enqueue_style( 'capricci-style', get_stylesheet_uri() );
         
 
