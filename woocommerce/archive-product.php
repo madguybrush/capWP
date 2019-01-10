@@ -19,7 +19,7 @@ defined( 'ABSPATH' ) || exit;
 
 get_header( 'shop' );
 
-
+wp_enqueue_style( 'capricci-boutiqueCss', get_template_directory_uri() . '/css/boutique.css',false,null,'all');
 
 $categorie = get_queried_object(); 
 $cat = $categorie->name; 
