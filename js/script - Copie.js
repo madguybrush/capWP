@@ -300,9 +300,7 @@ $( document ).ready( function() {
 	ajouterclasseAlpha();
 	isreset = 0;
 	$('#fp-nav.fp-right').addClass('d-none');
-	
-	
-	
+
 			if (!jQuery.isEmptyObject(myFullpage) ) { // si homepage
 			
 			}
@@ -628,78 +626,6 @@ $grid.imagesLoaded().progress( function() {
 $gridboutique.imagesLoaded().progress( function() {
   $gridboutique.isotope('layout');
   console.log(' image loaded');
-});
-           
-           
-           
-           
-            hauteur = $( '.contentnouveautes' ).outerHeight();
-	 hauteur = hauteur + 23 + $( '.contentnouveautestitre' ).outerHeight();
-    //hauteur = hauteur + $( '.contentnouveautestitre' ).outerHeight();
-	 fleche = (hauteur / 2) - 20;
-	$( '.navdroiteboutique' ).css( 'height', hauteur );
-	$( '.navgaucheboutique' ).css( 'height', hauteur );
-	$( '.fleche' ).css( 'top', fleche );
-	
-	 largeurnouveauteitem = $( '.nouveauteitem' ).outerWidth();
-	//console.log(largeurnouveauteitem);
-	//var marginleftnouveaute = 0;
-	 nouveaute = $('.contentnouveautes');
-	 marginleftnouveaute = nouveaute.css('margin-left');
-	//console.log(marginleftnouveaute);
-	 marginleftnouveautenb = parseInt(marginleftnouveaute, 10);
-	// marginleftnouveautenbinitial = parseInt(marginleftnouveaute, 10);
-	//console.log(marginleftnouveautenb);
-	 counterRight = 0;
-	 counterLeft = 0;
-	
-	$('.control-next-nouveaute').on( 'click', function() {
-		if (isreset) {
-			largeurnouveauteitem = $( '.nouveauteitem' ).outerWidth();
-			 nouveaute = $('.contentnouveautes');
-			marginleftnouveaute = nouveaute.css('margin-left');
-			//console.log(marginleftnouveaute);
-			marginleftnouveautenb = parseInt(marginleftnouveaute, 10);
-		}
-		marginleftnouveautenb = marginleftnouveautenb - largeurnouveauteitem;
-		//marginleftnouveautenbinitial = marginleftnouveautenb + largeurnouveauteitem;
-		$( '.contentnouveautes' ).css( 'margin-left', marginleftnouveautenb );
-		//$( '.nouveautes' ).css( 'margin-left', marginleftnouveautenbinitial );
-		//console.log(" marginleft: ");
-		//console.log(marginleftnouveautenb);
-		counterRight += 1;
-		counterLeft -= 1;
-		if (counterRight >= 1){
-			$( ".navgaucheboutique" ).removeClass("d-none"); 
-		}
-		if (counterRight >= 3){
-			$( ".navdroiteboutique" ).addClass("d-none"); 
-		}
-		
-});
-
-
-	$('.control-prev-nouveaute').on( 'click', function() {
-				if (isreset) {
-			largeurnouveauteitem = $( '.nouveauteitem' ).outerWidth();
-			 nouveaute = $('.contentnouveautes');
-			marginleftnouveaute = nouveaute.css('margin-left');
-			//console.log(marginleftnouveaute);
-			marginleftnouveautenb = parseInt(marginleftnouveaute, 10);
-		}
-		marginleftnouveautenb = marginleftnouveautenb + largeurnouveauteitem;
-		$( '.contentnouveautes' ).css( 'margin-left', marginleftnouveautenb );
-		//console.log(" marginleft: ");
-		//console.log(marginleftnouveautenb);
-		counterRight -= 1;
-		counterLeft += 1;
-		if (counterLeft >= -2){
-			$( ".navdroiteboutique" ).removeClass("d-none"); 
-		}
-		if (counterLeft >= 0){
-			$( ".navgaucheboutique" ).addClass("d-none"); 
-		}
-		
 });
            
            

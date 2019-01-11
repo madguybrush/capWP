@@ -25,7 +25,7 @@ get_header(); // 'shop'
 
 //woocommerce_content();
 
-wp_enqueue_style( 'capricci-produitCss', get_template_directory_uri() . '/css/produit.css',false,null,'all');
+//wp_enqueue_style( 'capricci-produitCss', get_template_directory_uri() . '/css/produit.css',false,null,'all');
 
 $taxonomie = get_queried_object(); 
 $tax = $taxonomie->name; 

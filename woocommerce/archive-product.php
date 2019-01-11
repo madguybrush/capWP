@@ -19,7 +19,7 @@ defined( 'ABSPATH' ) || exit;
 
 get_header( 'shop' );
 
-wp_enqueue_style( 'capricci-boutiqueCss', get_template_directory_uri() . '/css/boutique.css',false,null,'all');
+//wp_enqueue_style( 'capricci-boutiqueCss', get_template_directory_uri() . '/css/boutique.css',false,null,'all');
 
 $categorie = get_queried_object(); 
 $cat = $categorie->name; 
@@ -36,6 +36,13 @@ $cat = $categorie->name;
 
 
          
+     $nouveautes = array(
+                                'post_type' => 'product',
+                                'posts_per_page' => 5,
+                                //'product_cat' => $cat,
+                                //'product_tag' => $tax      
+                                );
+
                             $args = array(
                                 'post_type' => 'product',
                                 //'posts_per_page' => 8,
@@ -159,227 +166,75 @@ $cat = $categorie->name;
 		<div class="row">
 
 			<div class="col-lg-12 row166">	
-			<div class="row">
+				<div class="row">
+
+     <?php
+                        $NouveautesQuery = new WP_Query($nouveautes ); 
+                            if ( $NouveautesQuery->have_posts() ) : 
+                                while ( $NouveautesQuery->have_posts() ) : 
+                                    $NouveautesQuery->the_post(); 
+                    ?>
+
 				<div class="col-lg-2 nouveauteitem">
-				<div class="row">
-					<div class="col-lg-4">
-								<a href="produit.html" alt=""><img src="img/livre1.png" alt="after my death"></a>
-								<div class="row">
-									<div class="col-4 col-md-12 col-lg-12">
-										<button class="cta">
-											<div class="row">
-												<div class="col-6">LIVRE</div>
-												<div class="col-6 lora">18€</div>
+						<div class="row">
+							<div class="col-lg-4">
+										<a href="<?php echo get_permalink(); ?>" alt="<?php the_title(); ?>">
+											<?php if( get_field('affiche_du_film') ): ?>
+                                  				<img src="<?php the_field('affiche_du_film'); ?>" alt="<?php the_title(); ?>">
+                                			<?php else : // image par défaut ?>
+                                    			<img src="<?php bloginfo('stylesheet_directory');?>/img/film4.png" alt="<?php the_title(); ?>">
+                                			<?php endif; ?>
+										</a>
+										<div class="row">
+											<div class="col-4 col-md-12 col-lg-12">
+												<button class="cta">
+													<div class="row">
+														<div class="col-6">LIVRE</div>
+														<div class="col-6 lora">18€</div>
+													</div>
+												</button>
 											</div>
-										</button>
-									</div>
-									<div class="col-4 col-md-12 col-lg-12">
-										<button class="cta-inverse">
-											<div class="row">
-												<div class="col-6">EPUB</div>
-												<div class="col-6 lora">15€</div>
+											<div class="col-4 col-md-12 col-lg-12">
+												<button class="cta-inverse">
+													<div class="row">
+														<div class="col-6">EPUB</div>
+														<div class="col-6 lora">15€</div>
+													</div>
+												</button>
 											</div>
-										</button>
-									</div>
-									<div class="col-4 col-md-12 col-lg-12">
-										<button class="cta-inverse">
-											<div class="row">
-												<div class="col-6">PDF</div>
-												<div class="col-6 lora">12€</div>
+											<div class="col-4 col-md-12 col-lg-12">
+												<button class="cta-inverse">
+													<div class="row">
+														<div class="col-6">PDF</div>
+														<div class="col-6 lora">12€</div>
+													</div>
+												</button>
 											</div>
-										</button>
-									</div>
-								</div>
-					</div>
-							<div class="col-lg-8">
-								<h5><span class="categorieboutique">Livre</span> -  <span class="collection">Première collection</span></h5>
-								<h3 class="titre">Lettre à Wes Anderson</h3>
-								<h4><span class="auteur">Marc Cerisuelo</span></h4>
-								<p class="quatrieme">Malgré la renommée dont jouissent certains de ses films (comme Elle et lui ou Cette sacrée vérité) et ses collaborations avec Laurel et Hardy et les Marx Brothers, Leo McCarey demeure un cinéaste méconnu. (…)</p>
-							
+										</div>
 							</div>
+									<div class="col-lg-8">
+										<h5><span class="categorieboutique">Livre</span> -  <span class="collection">Première collection</span></h5>
+										<h3 class="titre"> <a href="<?php echo get_permalink(); ?>" alt="<?php the_title(); ?>"><?php the_title(); ?>  </a></h3>
+										<h4><span class="auteur"><?php echo get_field('auteur'); ?></span></h4>
+										<p class="quatrieme">Malgré la renommée dont jouissent certains de ses films (comme Elle et lui ou Cette sacrée vérité) et ses collaborations avec Laurel et Hardy et les Marx Brothers, Leo McCarey demeure un cinéaste méconnu. (…)</p>
+									
+									</div>
+
+						</div>
+				</div>
+
+
+
+                             
+                          
+
+					 <?php endwhile; ?>
+                            <?php endif; ?>
+                    <?php wp_reset_query(); ?>
+
+
 
 				</div>
-			</div>
-			
-			
-						<div class="col-lg-2 nouveauteitem">
-				<div class="row">
-					<div class="col-lg-4">
-								<a href="produit.html" alt=""><img src="img/livre1.png" alt="after my death"></a>
-								<div class="row">
-									<div class="col-4 col-md-12 col-lg-12">
-										<button class="cta">
-											<div class="row">
-												<div class="col-6">LIVRE</div>
-												<div class="col-6 lora">18€</div>
-											</div>
-										</button>
-									</div>
-									<div class="col-4 col-md-12 col-lg-12">
-										<button class="cta-inverse">
-											<div class="row">
-												<div class="col-6">EPUB</div>
-												<div class="col-6 lora">15€</div>
-											</div>
-										</button>
-									</div>
-									<div class="col-4 col-md-12 col-lg-12">
-										<button class="cta-inverse">
-											<div class="row">
-												<div class="col-6">PDF</div>
-												<div class="col-6 lora">12€</div>
-											</div>
-										</button>
-									</div>
-								</div>
-					</div>
-							<div class="col-lg-8">
-								<h5><span class="categorieboutique">Livre</span> -  <span class="collection">Première collection</span></h5>
-								<h3 class="titre">Lettre à Wes Anderson</h3>
-								<h4><span class="auteur">Marc Cerisuelo</span></h4>
-								<p class="quatrieme">Malgré la renommée dont jouissent certains de ses films (comme Elle et lui ou Cette sacrée vérité) et ses collaborations avec Laurel et Hardy et les Marx Brothers, Leo McCarey demeure un cinéaste méconnu. (…)</p>
-							
-							</div>
-
-				</div>
-			</div>
-			
-			
-			
-						<div class="col-lg-2 nouveauteitem">
-				<div class="row">
-					<div class="col-lg-4">
-								<a href="produit.html" alt=""><img src="img/livre1.png" alt="after my death"></a>
-								<div class="row">
-									<div class="col-4 col-md-12 col-lg-12">
-										<button class="cta">
-											<div class="row">
-												<div class="col-6">LIVRE</div>
-												<div class="col-6 lora">18€</div>
-											</div>
-										</button>
-									</div>
-									<div class="col-4 col-md-12 col-lg-12">
-										<button class="cta-inverse">
-											<div class="row">
-												<div class="col-6">EPUB</div>
-												<div class="col-6 lora">15€</div>
-											</div>
-										</button>
-									</div>
-									<div class="col-4 col-md-12 col-lg-12">
-										<button class="cta-inverse">
-											<div class="row">
-												<div class="col-6">PDF</div>
-												<div class="col-6 lora">12€</div>
-											</div>
-										</button>
-									</div>
-								</div>
-					</div>
-							<div class="col-lg-8">
-								<h5><span class="categorieboutique">Livre</span> -  <span class="collection">Première collection</span></h5>
-								<h3 class="titre">Lettre à Wes Anderson</h3>
-								<h4><span class="auteur">Marc Cerisuelo</span></h4>
-								<p class="quatrieme">Malgré la renommée dont jouissent certains de ses films (comme Elle et lui ou Cette sacrée vérité) et ses collaborations avec Laurel et Hardy et les Marx Brothers, Leo McCarey demeure un cinéaste méconnu. (…)</p>
-							
-							</div>
-
-				</div>
-			</div>
-			
-			
-						<div class="col-lg-2 nouveauteitem">
-				<div class="row">
-					<div class="col-lg-4">
-								<a href="produit.html" alt=""><img src="img/livre1.png" alt="after my death"></a>
-								<div class="row">
-									<div class="col-4 col-md-12 col-lg-12">
-										<button class="cta">
-											<div class="row">
-												<div class="col-6">LIVRE</div>
-												<div class="col-6 lora">18€</div>
-											</div>
-										</button>
-									</div>
-									<div class="col-4 col-md-12 col-lg-12">
-										<button class="cta-inverse">
-											<div class="row">
-												<div class="col-6">EPUB</div>
-												<div class="col-6 lora">15€</div>
-											</div>
-										</button>
-									</div>
-									<div class="col-4 col-md-12 col-lg-12">
-										<button class="cta-inverse">
-											<div class="row">
-												<div class="col-6">PDF</div>
-												<div class="col-6 lora">12€</div>
-											</div>
-										</button>
-									</div>
-								</div>
-					</div>
-							<div class="col-lg-8">
-								<h5><span class="categorieboutique">Livre</span> -  <span class="collection">Première collection</span></h5>
-								<h3 class="titre">Lettre à Wes Anderson</h3>
-								<h4><span class="auteur">Marc Cerisuelo</span></h4>
-								<p class="quatrieme">Malgré la renommée dont jouissent certains de ses films (comme Elle et lui ou Cette sacrée vérité) et ses collaborations avec Laurel et Hardy et les Marx Brothers, Leo McCarey demeure un cinéaste méconnu. (…)</p>
-							
-							</div>
-
-				</div>
-			</div>
-			
-			
-						<div class="col-lg-2 nouveauteitem">
-				<div class="row">
-					<div class="col-lg-4">
-								<a href="produit.html" alt=""><img src="img/livre1.png" alt="after my death"></a>
-								<div class="row">
-									<div class="col-4 col-md-12 col-lg-12">
-										<button class="cta">
-											<div class="row">
-												<div class="col-6">LIVRE</div>
-												<div class="col-6 lora">18€</div>
-											</div>
-										</button>
-									</div>
-									<div class="col-4 col-md-12 col-lg-12">
-										<button class="cta-inverse">
-											<div class="row">
-												<div class="col-6">EPUB</div>
-												<div class="col-6 lora">15€</div>
-											</div>
-										</button>
-									</div>
-									<div class="col-4 col-md-12 col-lg-12">
-										<button class="cta-inverse">
-											<div class="row">
-												<div class="col-6">PDF</div>
-												<div class="col-6 lora">12€</div>
-											</div>
-										</button>
-									</div>
-								</div>
-					</div>
-							<div class="col-lg-8">
-								<h5><span class="categorieboutique">Livre</span> -  <span class="collection">Première collection</span></h5>
-								<h3 class="titre">Lettre à Wes Anderson</h3>
-								<h4><span class="auteur">Marc Cerisuelo</span></h4>
-								<p class="quatrieme">Malgré la renommée dont jouissent certains de ses films (comme Elle et lui ou Cette sacrée vérité) et ses collaborations avec Laurel et Hardy et les Marx Brothers, Leo McCarey demeure un cinéaste méconnu. (…)</p>
-							
-							</div>
-
-				</div>
-			</div>
-			
-			
-			
-
-
-			</div>
 			</div>
 		</div>			
 	</div>
@@ -704,7 +559,7 @@ $cat = $categorie->name;
 	<div class="navdroiteboutique">
 		<div class="fleche">
 			<a href="#" alt="" class="control-next-nouveaute">
-				<img src="img/diaporamaflechedroite.svg" alt=""/>
+				<img src="<?php bloginfo('stylesheet_directory');?>/img/diaporamaflechedroite.svg" alt=""/>
 			</a>
 		</div>
 	</div>
@@ -712,7 +567,7 @@ $cat = $categorie->name;
 	<div class="navgaucheboutique d-none">
 		<div class="fleche">
 			<a href="#" alt="" class="control-prev-nouveaute">
-				<img src="img/diaporamaflechegauche.svg" alt=""/>
+				<img src="<?php bloginfo('stylesheet_directory');?>/img/diaporamaflechegauche.svg" alt=""/>
 			</a>
 		</div>
 	</div>
