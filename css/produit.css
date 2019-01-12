@@ -231,7 +231,27 @@ color : white;
 	text-transform: uppercase;
 	}
 
-
+.citation{
+	font-size: 1.5rem;
+	padding-top: 3rem; /*2rem;*/
+	background-color: white;
+	padding-right: 0;
+	padding-left: 3rem;
+	letter-spacing: .15rem;
+		color: #A78A3C;
+   font-family: Piek, Montserrat, Arial;
+     /*font-weight: bold;*/
+}
+.auteurcitation{
+	font-size: 0.7rem;
+	background-color: white;
+	padding-left: 5rem;
+	/*padding-left: 3rem;*/
+	letter-spacing: .08rem;
+		color: #919191;
+    font-family: Montserrat;
+    font-weight: 200;
+}
 
 .prix{
 	font-size: 0.7rem;

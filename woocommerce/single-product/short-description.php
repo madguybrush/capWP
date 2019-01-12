@@ -36,8 +36,30 @@ global $post;
 				<div class="row">
 				
 					<div class="col-12">
-						<h3>DATE DE SORTIE <br />
+						<h3>
+							<?php
+									global $product; 
+									$category = get_the_terms( $product->get_id(), 'product_cat' );
+									$category_array = array();
+									if ( ! empty( $category ) && ! is_wp_error( $category ) ){
+										foreach ($category  as $term  ) {
+										    //$product_cat_id = $term->term_id;
+										    //$product_cat_name = $term->name;
+										    $category_array[] = $term->name;
+										   // if (($product_cat_name == "DVD") || ($product_cat_name == "Livres")){
+										    //   echo $product_cat_name;
+											//}
+										        // break;
+										      	}
+										 }
+
+							/*if (category == 'Livres')*/
+							if (in_array("Livres", $category_array)){ echo "EN LIBRAIRIE LE "; }
+							else {
+							?>
+							DATE DE SORTIE <br />
                             <?php
+                        	}
                             $date = get_field('date_de_sortie'); 
                             $timestamp = strtotime($date);
                             
@@ -169,10 +191,14 @@ endif;
 					</div>-->
 
 
-
+					<?php 
+						
+						if ((in_array("DVD", $category_array)) || (in_array("Films", $category_array))){ 
+					?>
 
 
 					<div class="col-12 hidewhenmobile">
+
 					<h4><?php echo $annee . ' / ' . get_field('pays_dorigine') .  ' / ' . get_field('duree'); ?> </h4> 
 					<h4 class="visa">VISA <?php echo get_field('visa'); ?></h4>
 					</div>
@@ -189,33 +215,33 @@ endif;
                             <?php } ?>
                             
                             <?php if( have_rows('acteurs') ): ?>
-	
-                            <?php while( have_rows('acteurs') ): the_row(); 
+		
+	                            <?php while( have_rows('acteurs') ): the_row(); 
 
-		                          // vars
-                                        $role = get_sub_field('role');
-                                        $acteur = get_sub_field('acteur');
+			                          // vars
+	                                        $role = get_sub_field('role');
+	                                        $acteur = get_sub_field('acteur');
 
-                                    ?>
-                            
-							<tr class="acteurs">
-							<td class="colLeft"><b><?php echo $role; ?></b></td>
-							<td class="colRight"><?php echo $acteur; ?></td>
-							</tr>
-	<?php endwhile; ?>
+	                                    ?>
+	                            
+										<tr class="acteurs">
+											<td class="colLeft"><b><?php echo $role; ?></b></td>
+											<td class="colRight"><?php echo $acteur; ?></td>
+										</tr>
+								<?php endwhile; ?>
 
-
-<?php endif; ?>
+							<?php endif; ?>
                             
 						</tbody>
-					</table>
+						</table>
+
 						<table class="tableFilm">
 						<tbody>
                             
                             
-                                                        <?php if( have_rows('acteurs') ): ?>
+                            <?php if( have_rows('acteurs') ): ?>
 	
-                            <?php while( have_rows('technique') ): the_row(); 
+                           		<?php while( have_rows('technique') ): the_row(); 
 
 		                          // vars
                                         $poste = get_sub_field('poste');
@@ -223,21 +249,93 @@ endif;
 
                                     ?>
                             
-							<tr>
-							<td class="colLeft"><b><?php echo $poste; ?></b></td>
-							<td class="colRight"><?php echo $personne; ?></td>
-							</tr>
-	<?php endwhile; ?>
+									<tr>
+										<td class="colLeft"><b><?php echo $poste; ?></b></td>
+										<td class="colRight"><?php echo $personne; ?></td>
+									</tr>
+								<?php endwhile; ?>
 
+							<?php endif; ?>
 
-<?php endif; ?>
-                            
-
-							
 						</tbody>
-					</table>
+						</table>
 					<!--</div>-->
 					</div>
+
+<?php } else { //Livres ?>
+
+
+
+					<div class="col-12 hidewhenmobile">
+
+					<h4><?php echo $annee . ' / ' . get_field('pays_dorigine') .  ' / ' . get_field('duree'); ?> </h4> 
+					<h4 class="visa">VISA <?php echo get_field('visa'); ?></h4>
+					</div>
+					<div class="col-12 order-sm-12 hidewhenmobile">
+					<!--<div class="centerTab">-->
+						<table class="tableFilm">
+						<tbody>
+                            <?php $titre = get_field('titre_original');	
+                                    if ($titre){?>
+							<tr class="titre">
+								<td class="colLeft"><b>Titre original </b></td>
+								<td class="colRight"><?php echo $titre; ?></td>
+							</tr>
+                            <?php } ?>
+                            
+                            <?php if( have_rows('acteurs') ): ?>
+		
+	                            <?php while( have_rows('acteurs') ): the_row(); 
+
+			                          // vars
+	                                        $role = get_sub_field('role');
+	                                        $acteur = get_sub_field('acteur');
+
+	                                    ?>
+	                            
+										<tr class="acteurs">
+											<td class="colLeft"><b><?php echo $role; ?></b></td>
+											<td class="colRight"><?php echo $acteur; ?></td>
+										</tr>
+								<?php endwhile; ?>
+
+							<?php endif; ?>
+                            
+						</tbody>
+						</table>
+
+						<table class="tableFilm">
+						<tbody>
+                            
+                            
+                            <?php if( have_rows('acteurs') ): ?>
+	
+                           		<?php while( have_rows('technique') ): the_row(); 
+
+		                          // vars
+                                        $poste = get_sub_field('poste');
+                                        $personne = get_sub_field('personne');
+
+                                    ?>
+                            
+									<tr>
+										<td class="colLeft"><b><?php echo $poste; ?></b></td>
+										<td class="colRight"><?php echo $personne; ?></td>
+									</tr>
+								<?php endwhile; ?>
+
+							<?php endif; ?>
+
+						</tbody>
+						</table>
+					<!--</div>-->
+					</div>
+
+
+
+
+<?php } //Livres ?>
+
 				</div>
 			
 				
@@ -249,19 +347,44 @@ endif;
 					
 						<div class="row">
 						
-                            <?php 
-                                    $prix = get_field('prix');	
-                                    if ($prix){
-                            ?>
-                            
-							<div class="col-md-6  prix">
-								<?php echo $prix['gauche']; ?>
-							</div>
-							<div class="col-md-6 prix prix2">
-                                <?php echo $prix['droite']; ?>
-							</div>
-                            
-                            <?php } ?>
+						<?php 
+							if ((in_array("DVD", $category_array)) || (in_array("Films", $category_array))){ 
+						?>
+
+
+		                            <?php 
+		                                    $prix = get_field('prix');	
+		                                    if ($prix){
+		                            ?>
+		                            
+									<div class="col-md-6  prix">
+										<?php echo $prix['gauche']; ?>
+									</div>
+									<div class="col-md-6 prix prix2">
+		                                <?php echo $prix['droite']; ?>
+									</div>
+		                            
+		                            <?php } ?>
+
+						<?php } else { //Livres ?>
+
+								    <?php 
+		                                $citation = get_field('citation');	
+		                                $auteur_citation = get_field('auteur_citation');
+		                                 if ($citation){
+		                            ?>
+		                            
+									<div class="col-md-12 citation">
+										<?php echo $citation; ?>
+									</div>
+									<div class="col-md-12 auteurcitation">
+										<img src="<?php bloginfo('stylesheet_directory');?>/img/trait-debut-paragraphe.svg" alt="" class="petittrait">
+		                                <?php echo $auteur_citation; ?>
+									</div>
+		                            
+		               					 <?php } ?>
+
+		                <?php } //livres ?>
 						
 							<div class="col-lg-12 resume ">
 								<img src="<?php bloginfo('stylesheet_directory');?>/img/trait-debut-paragraphe.svg" alt="" class="trait">

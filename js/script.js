@@ -48,7 +48,7 @@ $(".grid-item").each(function(){
   var titre = $(this).find('.titre').text();
 	//console.log( titre );
 	var firstletter = titre.slice(0,1).toLowerCase();
-	//console.log( firstletter );
+	console.log( firstletter );
 	$(this).addClass(firstletter);
 });
 
@@ -297,7 +297,7 @@ $( document ).ready( function() {
     
 	
 	//resized();
-	ajouterclasseAlpha();
+	//ajouterclasseAlpha();
 	isreset = 0;
 	$('#fp-nav.fp-right').addClass('d-none');
 	
@@ -598,6 +598,8 @@ if(( isTouchDevice ) || (($(window).width() < 768))) {
    // PAGE IS FULLY LOADED  
    // FADE OUT YOUR OVERLAYING DIV
    //$('.container-loader').fadeOut();
+           
+           ajouterclasseAlpha();
 		
 		$('.container-loader').css('opacity', '0'); 
 		$('.container-loader').addClass('d-none ');
@@ -634,8 +636,8 @@ $gridboutique.imagesLoaded().progress( function() {
            
            
             hauteur = $( '.contentnouveautes' ).outerHeight();
-	 hauteur = hauteur + 23 + $( '.contentnouveautestitre' ).outerHeight();
-    //hauteur = hauteur + $( '.contentnouveautestitre' ).outerHeight();
+	 //hauteur = hauteur + 23 + $( '.contentnouveautestitre' ).outerHeight();
+    hauteur = hauteur + $( '.contentnouveautestitre' ).outerHeight();
 	 fleche = (hauteur / 2) - 20;
 	$( '.navdroiteboutique' ).css( 'height', hauteur );
 	$( '.navgaucheboutique' ).css( 'height', hauteur );

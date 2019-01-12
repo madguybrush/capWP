@@ -36,22 +36,20 @@ $cat = $categorie->name;
 
 
          
-     $nouveautes = array(
+    						 $nouveautes = array(
                                 'post_type' => 'product',
                                 'posts_per_page' => 5,
                                 //'product_cat' => $cat,
                                 //'product_tag' => $tax      
                                 );
 
-                            $args = array(
+                                        $args = array(
                                 'post_type' => 'product',
                                 //'posts_per_page' => 8,
                                 'product_cat' => $cat,
                                 //'product_tag' => $tax      
                                 );
                     
-            
-
 ?>
 
 
@@ -213,10 +211,57 @@ $cat = $categorie->name;
 										</div>
 							</div>
 									<div class="col-lg-8">
-										<h5><span class="categorieboutique">Livre</span> -  <span class="collection">Première collection</span></h5>
-										<h3 class="titre"> <a href="<?php echo get_permalink(); ?>" alt="<?php the_title(); ?>"><?php the_title(); ?>  </a></h3>
+										<h5>
+											<span class="categorieboutique">
+												<?php 
+												//echo $cat; 
+												global $product; 
+												$catnouveaute = get_the_terms( $product->get_id(), 'product_cat' );
+										        //$nterms = get_the_terms( $post->ID, 'product_tag'  );
+										        if ( ! empty( $catnouveaute ) && ! is_wp_error( $catnouveaute ) ){
+										        foreach ($catnouveaute  as $term  ) {
+										            //$product_cat_id = $term->term_id;
+										            $product_cat_name = $term->name;
+										            if (($product_cat_name == "DVD") || ($product_cat_name == "Livres")){
+										            echo $product_cat_name;}
+										           // break;
+										       			 }
+										 		   }
+										        
+												?>
+											</span>
+										<?php 
+										//if ($cat=="Livres"){  
+											if ($product_cat_name =="Livres"){ 
+											?>  
+											-  <span class="collection">
+													<?php 
+														//echo $product->get_id(); 
+														//$tags = get_the_tags();
+														//echo $tags[0];
+														$terms = get_the_terms($product->get_id(), 'product_tag' );
+														//$terms = get_terms('product_tag' );
+														//$term_array = array();
+														if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
+   															foreach ( $terms as $term ) {
+      														  $product_tag_name = $term->name;
+      														  echo $product_tag_name;
+   																 }
+															}
+															//echo $term_array[0];
+													?>
+												
+												</span>
+										<?php  } ?> 
+										</h5>
+										<h3 class="titre"> 
+											<a href="<?php echo get_permalink(); ?>" alt="<?php the_title(); ?>"><?php the_title(); ?></a>
+										</h3>
 										<h4><span class="auteur"><?php echo get_field('auteur'); ?></span></h4>
-										<p class="quatrieme">Malgré la renommée dont jouissent certains de ses films (comme Elle et lui ou Cette sacrée vérité) et ses collaborations avec Laurel et Hardy et les Marx Brothers, Leo McCarey demeure un cinéaste méconnu. (…)</p>
+										<p class="quatrieme">
+											<?php //echo get_field('synopsis'); ?>
+												<?php echo substr(get_field('synopsis'), 0 , 300); ?><a href="<?php echo get_permalink(); ?>" alt="lire plus"> ... (lire plus)</a>
+											</p>
 									
 									</div>
 
@@ -242,266 +287,93 @@ $cat = $categorie->name;
 	<div class="container-fluid content">
 		<div class="row">
 			<div class="col-lg-12 livres">
-				<h2>TOUS LES LIVRES</h2>
+				<h2>TOUS LES <?php echo $cat; ?></h2>
 
 				<div class=" gridboutique gridcatalogue">
 					 <div class="gutter-sizer"></div> 
 					 <div class="grid-sizer"></div>
 
 					
-					<div class="grid-item container-fluid">
-					
-						<div class="row">
-							<div class="col-lg-4 col-md-2 col-5">
-								<a href="produit.html" alt=""><img src="img/livre1.png" alt="after my death"></a>
-						
-							</div>
-							<div class="col-lg-8 col-md-5 col-7">
-								<h5><span class="categorieboutique">Livre</span> -  <span class="collection">Première collection</span></h5>
-								<h3 class="titre"><a href="" alt="">Lettre à Wes Anderson</a></h3>
-								<h4><span class="auteur">Marc Cerisuelo</span></h4>
-								<p class="quatrieme">Malgré la renommée dont jouissent certains de ses films (comme Elle et lui ou Cette sacrée vérité) et ses collaborations avec Laurel et Hardy et les Marx Brothers, Leo McCarey demeure un cinéaste méconnu. (…)</p>
-							
-							</div>
-							<div class="col-lg-4 col-md-2 order-lg-3 order-md-4 order-sm-3">
-								
-								<div class="row">
-									<div class="col-4 col-md-12 col-lg-12">
-										<button class="cta">
-											<div class="row">
-												<div class="col-6">LIVRE</div>
-												<div class="col-6 lora">18€</div>
-											</div>
-										</button>
-									</div>
-									<div class="col-4 col-md-12 col-lg-12">
-										<button class="cta-inverse">
-											<div class="row">
-												<div class="col-6">EPUB</div>
-												<div class="col-6 lora">15€</div>
-											</div>
-										</button>
-									</div>
-									<div class="col-4 col-md-12 col-lg-12">
-										<button class="cta-inverse">
-											<div class="row">
-												<div class="col-6">PDF</div>
-												<div class="col-6 lora">12€</div>
-											</div>
-										</button>
-									</div>
-								</div>
-								
-							</div>
-							<div class="col-lg-8 col-md-3 order-lg-4 order-md-3 order-sm-4">
-								<p class="sommaire">
-								BONUS DVD : <br />
-								- Making of (35min) <br />
-								- Reportage par Emmanuel Burdeau <br />
-								- Bétisier
-								</p>
-							</div>
-						</div>
-					</div>
-					
-					
-					
-					<div class="grid-item container-fluid">
-					
-						<div class="row">
-							<div class="col-lg-4 col-md-2 col-5">
-								<a href="produit.html" alt=""><img src="img/livre2.png" alt="after my death"></a>
-						
-							</div>
-							<div class="col-lg-8 col-md-5 col-7">
-								<h5><span class="categorieboutique">Livre</span> -  <span class="collection">Actualité critique</span></h5>
-								<h3 class="titre">Génie de Pixar</h3>
-								<h4><span class="auteur">Marc Cerisuelo</span></h4>
-								<p class="quatrieme">Malgré la renommée dont jouissent certains de ses films (comme Elle et lui ou Cette sacrée vérité) et ses collaborations avec Laurel et Hardy et les Marx Brothers, Leo McCarey demeure un cinéaste méconnu. (…)</p>
-							
-							</div>
-							<div class="col-lg-4 col-md-2 order-lg-3 order-md-4 order-sm-3">
-								
-								<div class="row">
-									<div class="col-4 col-md-12 col-lg-12">
-										<button class="cta">
-											<div class="row">
-												<div class="col-6">LIVRE</div>
-												<div class="col-6 lora">18€</div>
-											</div>
-										</button>
-									</div>
-									<div class="col-4 col-md-12 col-lg-12">
-										<button class="cta-inverse">
-											<div class="row">
-												<div class="col-6">EPUB</div>
-												<div class="col-6 lora">15€</div>
-											</div>
-										</button>
-									</div>
-									<div class="col-4 col-md-12 col-lg-12">
-										<button class="cta-inverse">
-											<div class="row">
-												<div class="col-6">PDF</div>
-												<div class="col-6 lora">12€</div>
-											</div>
-										</button>
-									</div>
-								</div>
-								
-							</div>
-							<div class="col-lg-8 col-md-3 order-lg-4 order-md-3 order-sm-4">
-								<p class="sommaire">
-									SOMMAIRE : <br />
-									PRÉFACE - WHIT STILLMAN <br />
-									TRACES ET MOMENTS D’UNE VIE - JACQUES LOURCELLES <br />
-									LEO McCAREY OU L’ESSENTIEL SUFFIT - MIGUEL MARíAS <br />
-									COMIQUE A RÉACTION - MARCOS UZAL <br />
-									EH BIEN TU M’AS ENCORE MIS DANS UN BEAU BORDEL ! - NICOLAS ZUKERFIELD <br />
-									CETTE SACRÉE VERITÉ : LE DIVORCE A LA McCAREY - MOLLY HASKEL <br />
-									UN CARRE DE CHÂLE BLANC - SANDRINE RINALDI <br />
-									PLACE AUX VIEILLES - CHARLOTTE GARSON <br />
-									INÉLUCTABILITÉ DES ACCIDENTS - FERNANDO GANZO <br />
-									DEMAIN EST UN AUTRE JOUR - PATRICE ROLLET <br />
-									LA PLACE DU MORT - GILLES ESPOSITO<br /> 
-								</p>
-							</div>
-						</div>
-					</div>
-					
-					
-					
-					
-					<div class="grid-item container-fluid">
-					
-						<div class="row">
-							<div class="col-lg-4 col-md-2 col-5">
-								<a href="produit.html" alt=""><img src="img/livre3.png" alt="after my death"></a>
-						
-							</div>
-							<div class="col-lg-8 col-md-5 col-7">
-								<h5><span class="categorieboutique">Livre</span> -  <span class="collection">Hors collection</span></h5>
-								<h3 class="titre">Lettre à Wes Anderson</h3>
-								<h4><span class="auteur">Marc Cerisuelo</span></h4>
-								<p class="quatrieme">Malgré la renommée dont jouissent certains de ses films (comme Elle et lui ou Cette sacrée vérité) et ses collaborations avec Laurel et Hardy et les Marx Brothers, Leo McCarey demeure un cinéaste méconnu. (…)</p>
-							
-							</div>
-							<div class="col-lg-4 col-md-2 order-lg-3 order-md-4 order-sm-3">
-								
-								<div class="row">
-									<div class="col-4 col-md-12 col-lg-12">
-										<button class="cta">
-											<div class="row">
-												<div class="col-6">LIVRE</div>
-												<div class="col-6 lora">18€</div>
-											</div>
-										</button>
-									</div>
-									<div class="col-4 col-md-12 col-lg-12">
-										<button class="cta-inverse">
-											<div class="row">
-												<div class="col-6">EPUB</div>
-												<div class="col-6 lora">15€</div>
-											</div>
-										</button>
-									</div>
-									<div class="col-4 col-md-12 col-lg-12">
-										<button class="cta-inverse">
-											<div class="row">
-												<div class="col-6">PDF</div>
-												<div class="col-6 lora">12€</div>
-											</div>
-										</button>
-									</div>
-								</div>
-								
-							</div>
-							<div class="col-lg-8 col-md-3 order-lg-4 order-md-3 order-sm-4">
-								<p class="sommaire">
-								BONUS DVD : <br />
-								- Making of (35min) <br />
-								- Reportage par Emmanuel Burdeau <br />
-								- Bétisier
-								</p>
-							</div>
-						</div>
-					</div>
-					
-					
-					
-					
-					<div class="grid-item container-fluid">
-					
-						<div class="row">
-							<div class="col-lg-4 col-md-2 col-5">
-								<a href="produit.html" alt=""><img src="img/livre2.png" alt="after my death"></a>
-						
-							</div>
-							<div class="col-lg-8 col-md-5 col-7">
-								<h5><span class="categorieboutique">Livre</span> -  <span class="collection">Actualité critique</span></h5>
-								<h3 class="titre">Génie de Pixar</h3>
-								<h4><span class="auteur">Marc Cerisuelo</span></h4>
-								<p class="quatrieme">Malgré la renommée dont jouissent certains de ses films (comme Elle et lui ou Cette sacrée vérité) et ses collaborations avec Laurel et Hardy et les Marx Brothers, Leo McCarey demeure un cinéaste méconnu. (…)</p>
-							
-							</div>
-							<div class="col-lg-4 col-md-2 order-lg-3 order-md-4 order-sm-3">
-								
-								<div class="row">
-									<div class="col-4 col-md-12 col-lg-12">
-										<button class="cta">
-											<div class="row">
-												<div class="col-6">LIVRE</div>
-												<div class="col-6 lora">18€</div>
-											</div>
-										</button>
-									</div>
-									<div class="col-4 col-md-12 col-lg-12">
-										<button class="cta-inverse">
-											<div class="row">
-												<div class="col-6">EPUB</div>
-												<div class="col-6 lora">15€</div>
-											</div>
-										</button>
-									</div>
-									<div class="col-4 col-md-12 col-lg-12">
-										<button class="cta-inverse">
-											<div class="row">
-												<div class="col-6">PDF</div>
-												<div class="col-6 lora">12€</div>
-											</div>
-										</button>
-									</div>
-								</div>
-								
-							</div>
-							<div class="col-lg-8 col-md-3 order-lg-4 order-md-3 order-sm-4">
-								<p class="sommaire">
-								BONUS DVD : <br />
-								- Making of (35min) <br />
-								- Reportage par Emmanuel Burdeau <br />
-								- Bétisier
-								</p>
-							</div>
-						</div>
-					</div>
-					
+ 						<?php
+                        $ProjetsQuery = new WP_Query($args ); 
+                            if ( $ProjetsQuery->have_posts() ) : 
+                                while ( $ProjetsQuery->have_posts() ) : 
+                                    $ProjetsQuery->the_post(); 
+                    ?>
+                    
+                  
 
-					
-					
 					<div class="grid-item container-fluid">
 					
 						<div class="row">
 							<div class="col-lg-4 col-md-2 col-5">
-								<a href="produit.html" alt=""><img src="img/livre2.png" alt="after my death"></a>
+								<!--<a href="produit.html" alt=""><img src="img/livre1.png" alt="after my death"></a>-->
+										<a href="<?php echo get_permalink(); ?>" alt="<?php the_title(); ?>">
+											<?php if( get_field('affiche_du_film') ): ?>
+                                  				<img src="<?php the_field('affiche_du_film'); ?>" alt="<?php the_title(); ?>">
+                                			<?php else : // image par défaut ?>
+                                    			<img src="<?php bloginfo('stylesheet_directory');?>/img/film4.png" alt="<?php the_title(); ?>">
+                                			<?php endif; ?>
+										</a>
 						
 							</div>
 							<div class="col-lg-8 col-md-5 col-7">
-								<h5><span class="categorieboutique">Film</span> -  <span class="collection">Actualité critique</span></h5>
-								<h3 class="titre">Génie de Pixar</h3>
-								<h4><span class="auteur">Marc Cerisuelo</span></h4>
-								<p class="quatrieme">Malgré la renommée dont jouissent certains de ses films (comme Elle et lui ou Cette sacrée vérité) et ses collaborations avec Laurel et Hardy et les Marx Brothers, Leo McCarey demeure un cinéaste méconnu. (…)</p>
+								<h5>
+									<!--<span class="categorieboutique">Livre</span> -  <span class="collection">Première collection</span>-->
+	<span class="categorieboutique">
+												<?php 
+												//echo $cat; 
+												global $product; 
+												$catnouveaute = get_the_terms( $product->get_id(), 'product_cat' );
+										        //$nterms = get_the_terms( $post->ID, 'product_tag'  );
+										        if ( ! empty( $catnouveaute ) && ! is_wp_error( $catnouveaute ) ){
+										        foreach ($catnouveaute  as $term  ) {
+										            //$product_cat_id = $term->term_id;
+										            $product_cat_name = $term->name;
+										            if (($product_cat_name == "DVD") || ($product_cat_name == "Livres")){
+										            echo $product_cat_name;
+										        }
+										           // break;
+										       			 }
+										 		   }
+										        
+												?>
+											</span>
+										<?php 
+										//if ($cat=="Livres"){  
+											if ($product_cat_name =="Livres"){ 
+											?>  
+											-  <span class="collection">
+													<?php 
+														//echo $product->get_id(); 
+														//$tags = get_the_tags();
+														//echo $tags[0];
+														$terms = get_the_terms($product->get_id(), 'product_tag' );
+														//$terms = get_terms('product_tag' );
+														//$term_array = array();
+														if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
+   															foreach ( $terms as $term ) {
+      														  $product_tag_name = $term->name;
+      														  echo $product_tag_name;
+   																 }
+															}
+															//echo $term_array[0];
+													?>
+												
+												</span>
+										<?php  } ?> 
+								</h5>
+
+								<a href="<?php echo get_permalink(); ?>" alt="<?php the_title(); ?>"><h3 class="titre"><?php the_title(); ?></a>
+								
+								</h3>
+
+								<h4><span class="auteur"><?php echo get_field('auteur'); ?></span></h4>
+
+								<p class="quatrieme"><?php echo substr(get_field('synopsis'), 0 , 300); ?><a href="<?php echo get_permalink(); ?>" alt="lire plus"> ... (lire plus)</a></p>
 							
 							</div>
+
 							<div class="col-lg-4 col-md-2 order-lg-3 order-md-4 order-sm-3">
 								
 								<div class="row">
@@ -534,14 +406,18 @@ $cat = $categorie->name;
 							</div>
 							<div class="col-lg-8 col-md-3 order-lg-4 order-md-3 order-sm-4">
 								<p class="sommaire">
-								BONUS DVD : <br />
-								- Making of (35min) <br />
-								- Reportage par Emmanuel Burdeau <br />
-								- Bétisier
+									<?php echo get_field('bonus'); ?>
+									<?php echo get_field('preface'); ?>
 								</p>
 							</div>
 						</div>
 					</div>
+					
+					              <?php endwhile; ?>
+                            <?php endif; ?>
+                    <?php wp_reset_query(); ?>
+					
+					
 					
 					
 					
@@ -588,23 +464,24 @@ $cat = $categorie->name;
 					
 				</div>
 				<p class="crosssells">VOUS AIMEREZ AUSSI</p>
+				<?php do_action( 'woocommerce_after_single_product_summary' ); ?>
 	</div>
 	
 	
 	
 	
-</div>
 
 
 
 
 
 
+<div class="container-fluid content">
 
 
 <header class="woocommerce-products-header looooo">
 	<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-		<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
+		<h1 class="woocommerce-products-header__title page-title"><?php //woocommerce_page_title(); ?></h1>
 	<?php endif; ?>
 
 	<?php
@@ -614,26 +491,9 @@ $cat = $categorie->name;
 	 * @hooked woocommerce_taxonomy_archive_description - 10
 	 * @hooked woocommerce_product_archive_description - 10
 	 */
-	do_action( 'woocommerce_archive_description' );
+	//do_action( 'woocommerce_archive_description' );
 	?>
 </header>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -702,4 +562,13 @@ if ( woocommerce_product_loop() ) {
 
 do_action( 'woocommerce_sidebar' );
 
+?>
+
+</div>
+
+
+
+</div> <!-- boutique -->
+
+<?php
 get_footer( 'shop' );

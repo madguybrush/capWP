@@ -102,6 +102,7 @@ $tax = $taxonomie->name;
 					<option value="sameCategory">Court-Métrage</option>-->
 					<option value="sameCategory">film d'actualité</option>
                     <option value="sameCategory">film de patrimoine</option>
+                    <?php // echo get_field('categorie'); ?>
 				</select>
 			</div>
 
