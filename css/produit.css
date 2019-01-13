@@ -201,6 +201,28 @@ color : white;
 			/*padding-bottom: 4rem;*/
 	}
 
+
+  .variations_form{
+                text-align: center;
+      margin-top: 1rem;
+      font-family: Montserrat;
+font-size: 11px;
+            }
+
+.variations{
+   width: 100%;
+            }
+
+
+  .variations_form select{
+      
+
+      opacity: .5;
+      
+      
+}
+
+
 .colgauche{
 	
 	/*margin-left: .5rem;*/
@@ -355,6 +377,16 @@ color : white;
 }
 
 
+h4{
+	font-size: 0.9rem;
+	color: #030310;
+	font-weight: bold;
+	text-align: left;
+	margin-top: 2rem;
+	
+	line-height: 1.4rem;
+	}
+
 .colgauche h4{
 	font-size: 0.9rem;
 	color: #030310;
@@ -412,8 +444,51 @@ margin: 0 auto;
 	width: 50%; 
 text-align: left;
 	padding: .3rem;
+    	font-size: 0.6rem;
+    font-weight: 100;
 	font-family: Lora, sans-serif;
 }
+
+
+.tableLivre {
+	font-family: 'Lora', serif;
+	margin-bottom: 1.5rem;
+	text-align: left;
+	width: 100%; 
+	/*font-family: Lora, verdana;*/
+	color: #030310;
+	font-size: 0.6rem;
+    margin-top: 1rem;
+	/*margin: 0px auto;*/
+}
+
+.tableLivre .titre{
+	font-family: 'Lora', serif;
+	font-size: 0.8rem;
+	
+}
+
+.tableLivre .acteurs{
+	font-family: 'Lora', serif;
+	font-size: 0.7rem;
+}
+
+
+.tableLivre .colLeft {
+	width: 50%; /*200px*/
+	text-align: left;
+	padding: .3rem;
+	
+}
+.tableLivre .colRight {
+	width: 50%; 
+text-align: left;
+	padding: .3rem;
+    	font-size: 0.6rem;
+    font-weight: 100;
+	font-family: Lora, sans-serif;
+}
+
 
 
 
@@ -546,7 +621,7 @@ text-align: left;
 	
 .cta{
 	max-width: 200px;
-	
+	margin: 0 auto;
 	}
 	
 
@@ -569,10 +644,34 @@ text-align: left;
 		margin-top: -5rem;
 	}
 
+            
+            h4{
+                text-align: center;
+                margin-top: 0;
+            }
+            
 .prix{
 	text-align: center;
-	
+	padding-left: 0;
+    padding-top: 1rem;
 }
+            
+            .prix p{ 
+	margin-bottom: 0;
+}
+            
+.prix2{
+		text-align: center;
+        padding-right: 0;
+        padding-top: 0;
+	}
+	
+       
+            
+          /*  .add-to-cart-container{
+                text-align: center;
+            }*/
+            
 
 .tableFilm{
 	font-size : 1rem;
@@ -585,6 +684,19 @@ text-align: left;
 .tableFilm .acteurs{
 	font-size : 1rem;
 }
+            
+            .tableLivre{
+	font-size : 1rem;
+}
+
+.tableLivre .titre{
+	font-size : 1rem;
+}
+
+.tableLivre .acteurs{
+	font-size : 1rem;
+}
+
 	
 
 	#produit header{
@@ -637,6 +749,11 @@ margin-bottom: .5rem;
 	.tableFilm .colLeft{
 		text-align: right;
 	}
+            
+            	.tableLivre .colLeft{
+		text-align: right;
+	}
+	
 	
 	
 		#produit .content{
@@ -644,10 +761,7 @@ margin-bottom: .5rem;
 		padding: 0;
 		
 	}
-	.prix2{
-		text-align: center;
-	}
-	
+
 	#produit .infoscontent{
 		margin: 0rem; /*1*/
 		

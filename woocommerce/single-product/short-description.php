@@ -239,7 +239,7 @@ endif;
 						<tbody>
                             
                             
-                            <?php if( have_rows('acteurs') ): ?>
+                            <?php if( have_rows('technique') ): ?>
 	
                            		<?php while( have_rows('technique') ): the_row(); 
 
@@ -265,73 +265,44 @@ endif;
 <?php } else { //Livres ?>
 
 
-
-					<div class="col-12 hidewhenmobile">
-
-					<h4><?php echo $annee . ' / ' . get_field('pays_dorigine') .  ' / ' . get_field('duree'); ?> </h4> 
-					<h4 class="visa">VISA <?php echo get_field('visa'); ?></h4>
-					</div>
 					<div class="col-12 order-sm-12 hidewhenmobile">
 					<!--<div class="centerTab">-->
-						<table class="tableFilm">
-						<tbody>
-                            <?php $titre = get_field('titre_original');	
-                                    if ($titre){?>
-							<tr class="titre">
-								<td class="colLeft"><b>Titre original </b></td>
-								<td class="colRight"><?php echo $titre; ?></td>
-							</tr>
-                            <?php } ?>
-                            
-                            <?php if( have_rows('acteurs') ): ?>
-		
-	                            <?php while( have_rows('acteurs') ): the_row(); 
-
-			                          // vars
-	                                        $role = get_sub_field('role');
-	                                        $acteur = get_sub_field('acteur');
-
-	                                    ?>
-	                            
-										<tr class="acteurs">
-											<td class="colLeft"><b><?php echo $role; ?></b></td>
-											<td class="colRight"><?php echo $acteur; ?></td>
-										</tr>
-								<?php endwhile; ?>
-
-							<?php endif; ?>
-                            
-						</tbody>
-						</table>
-
-						<table class="tableFilm">
+						<table class="tableLivre">
 						<tbody>
                             
-                            
-                            <?php if( have_rows('acteurs') ): ?>
+                            <?php if( have_rows('technique') ): ?>
 	
                            		<?php while( have_rows('technique') ): the_row(); 
 
 		                          // vars
-                                        $poste = get_sub_field('poste');
-                                        $personne = get_sub_field('personne');
+                                        $titre = get_sub_field('titre');
+                                        $valeur = get_sub_field('valeur');
 
                                     ?>
                             
 									<tr>
-										<td class="colLeft"><b><?php echo $poste; ?></b></td>
-										<td class="colRight"><?php echo $personne; ?></td>
+										<td valign="top" class="colLeft"><b><?php echo $titre; ?></b></td>
+										<td class="colRight"><?php echo $valeur; ?></td>
 									</tr>
 								<?php endwhile; ?>
 
 							<?php endif; ?>
 
+							<?php if ( $price_html = $product->get_price_html() ) : ?>
+
+								<tr class="acteurs">
+									<td valign="top" class="colLeft"><b>Prix</b></td>
+									<td class="colRight"><?php echo $price_html; ?></td>
+								</tr>
+
+							<?php endif; ?>
+
+                            
 						</tbody>
 						</table>
+
 					<!--</div>-->
 					</div>
-
-
 
 
 <?php } //Livres ?>
@@ -398,6 +369,13 @@ endif;
 
 							</div>
                                  
+<?php
+$video = get_field('video_page_produit');
+$images = get_field('galerie');
+if (( $video ) || ( $images )) {
+
+?>
+
 							<div class="col-lg-12 cadreblanc">
                                  <?php 
                                     $video = get_field('video_page_produit');
@@ -453,12 +431,21 @@ endif;
 
 									</div>
 								</div>
-							</div>
+							</div> <!-- cadreblanc -->
+
+<?php } ?>
 							
 						</div>
 						
 					</div>
 					
+						<?php 
+							if ((in_array("DVD", $category_array)) || (in_array("Films", $category_array))){ 
+						?>
+
+
+
+
 					<div class="col-lg-3 order-lg-2 order-md-1 order-sm-2 colbuttons "> <!-- col-xl-2 -->
 						
 						<div class="row">
@@ -496,6 +483,46 @@ endif;
 						</div>
 
 					</div>
+
+
+<?php } else { //Livres ?>
+
+
+					<div class="col-lg-3 order-lg-2 order-md-1 order-sm-2 colbuttons "> <!-- col-xl-2 -->
+						
+						<div class="row">
+                            <?php if( get_field('couverture_hd') ){?>
+							<div class="col-6 col-md-4 col-lg-12">
+                                <a href="<?php the_field('couverture_hd'); ?>" alt="<?php the_title(); ?>" download><button class="download">COUVERTURE HD</button></a>
+							</div>
+                            <?php } ?>
+                             <?php if( get_field('sommaire') ){?>
+							<div class="col-6 col-md-4 col-lg-12">
+								 <a href="<?php the_field('sommaire'); ?>" alt="<?php the_title(); ?>" download><button class="download">SOMMAIRE</button></a>
+							</div>
+                            <?php } ?>
+                             <?php if( get_field('extraits') ){?>
+							<div class="col-6 col-md-4 col-lg-12">
+								 <a href="<?php the_field('extraits'); ?>" alt="<?php the_title(); ?>" download><button class="download">EXTRAIT</button></a>
+							</div>
+                            <?php } ?>
+                             <?php if( get_field('revue_de_presse') ){?>
+							<div class="col-6 col-md-4 col-lg-12">
+								 <a href="<?php the_field('revue_de_presse'); ?>" alt="<?php the_title(); ?>" download><button class="download">REVUE DE PRESSE</button></a>
+							</div>
+                            <?php } ?>
+
+                            <?php if( get_field('tous_les_documents') ){?>
+							<div class="col-6 col-md-4 col-lg-12">
+								 <a href="<?php the_field('tous_les_documents'); ?>" alt="<?php the_title(); ?>" download><button class="downloadall">TOUS LES DOCUMENTS</button></a>
+							</div>
+                            <?php } ?>
+
+						</div>
+
+					</div>
+
+ <?php } //livres ?>
 					
 				</div>
 				
@@ -509,7 +536,16 @@ endif;
 	
 	</div>
 
+
+
+
+
 <div class="container-fluid showwhenmobile">
+
+			<?php 
+							if ((in_array("DVD", $category_array)) || (in_array("Films", $category_array))){ 
+						?>
+
 			<div class="row ">
 					<div class="col-12 ">
 					<h4><?php echo $annee . ' / ' . get_field('pays_dorigine') .  ' / ' . get_field('duree'); ?> </h4> 
@@ -529,22 +565,20 @@ endif;
                             
                             <?php if( have_rows('acteurs') ): ?>
 	
-                            <?php while( have_rows('acteurs') ): the_row(); 
+                          	  <?php while( have_rows('acteurs') ): the_row(); 
 
-		                          // vars
-                                        $role = get_sub_field('role');
-                                        $acteur = get_sub_field('acteur');
+				                          // vars
+		                                        $role = get_sub_field('role');
+		                                        $acteur = get_sub_field('acteur');
 
-                                    ?>
-                            
-							<tr class="acteurs">
-							<td class="colLeft"><b><?php echo $role; ?></b></td>
-							<td class="colRight"><?php echo $acteur; ?></td>
-							</tr>
-	<?php endwhile; ?>
-
-
-<?php endif; ?>
+		                                    ?>
+		                            
+									<tr class="acteurs">
+									<td class="colLeft"><b><?php echo $role; ?></b></td>
+									<td class="colRight"><?php echo $acteur; ?></td>
+									</tr>
+								<?php endwhile; ?>
+							<?php endif; ?>
                             
 						</tbody>
 					</table>
@@ -552,24 +586,24 @@ endif;
 						<tbody>
                             
                             
-                                                        <?php if( have_rows('acteurs') ): ?>
+                            <?php if( have_rows('acteurs') ): ?>
 	
-                            <?php while( have_rows('technique') ): the_row(); 
+                         	   <?php while( have_rows('technique') ): the_row(); 
 
-		                          // vars
-                                        $poste = get_sub_field('poste');
-                                        $personne = get_sub_field('personne');
+				                          // vars
+		                                        $poste = get_sub_field('poste');
+		                                        $personne = get_sub_field('personne');
 
-                                    ?>
-                            
-							<tr>
-							<td class="colLeft"><b><?php echo $poste; ?></b></td>
-							<td class="colRight"><?php echo $personne; ?></td>
-							</tr>
-	<?php endwhile; ?>
+		                                    ?>
+		                            
+									<tr>
+									<td class="colLeft"><b><?php echo $poste; ?></b></td>
+									<td class="colRight"><?php echo $personne; ?></td>
+									</tr>
+								<?php endwhile; ?>
 
 
-<?php endif; ?>
+							<?php endif; ?>
                             
 
 							
@@ -578,8 +612,61 @@ endif;
 					<!--</div>-->
 					</div>
 	</div>
+
+<?php } else { //Livres ?>
+
+
+<div class="row infoscontent">
+
+					<div class="col-12 order-sm-12">
+					<!--<div class="centerTab">-->
+						<table class="tableLivre">
+						<tbody>
+                            
+                            <?php if( have_rows('technique') ): ?>
+	
+                           		<?php while( have_rows('technique') ): the_row(); 
+
+		                          // vars
+                                        $titre = get_sub_field('titre');
+                                        $valeur = get_sub_field('valeur');
+
+                                    ?>
+                            
+									<tr>
+										<td valign="top" class="colLeft"><b><?php echo $titre; ?></b></td>
+										<td class="colRight"><?php echo $valeur; ?></td>
+									</tr>
+								<?php endwhile; ?>
+
+							<?php endif; ?>
+
+							<?php if ( $price_html = $product->get_price_html() ) : ?>
+
+								<tr class="acteurs">
+									<td valign="top" class="colLeft"><b>Prix</b></td>
+									<td class="colRight"><?php echo $price_html; ?></td>
+								</tr>
+
+							<?php endif; ?>
+
+                            
+						</tbody>
+						</table>
+					<!--</div>-->
+					</div>
+	</div>
+
+
+
+
+
+	 <?php } //livres ?>
 	
 </div>
+
+
+
 	
 	
 	
