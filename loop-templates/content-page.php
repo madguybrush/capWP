@@ -10,19 +10,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<?php if ( is_front_page()  ) : ?>
-
-
-
-
-
-<?php else : //not homepage  ?>
-
 <header style="height: 35%; background-image: url('<?php echo get_the_post_thumbnail_url();  ?>'); "> 
 
 
 <div class="jumbotron text-center">
-<h1><?php the_title();  ?></h1> 
+<h1><?php the_title();  ?> loooooooooo</h1> 
 </div>
 
 </header>
@@ -34,4 +26,3 @@ if ( ! defined( 'ABSPATH' ) ) {
 </div>
 </section>
     
-<?php endif ?>

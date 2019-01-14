@@ -32,6 +32,7 @@ if ( ! function_exists( 'understrap_scripts' ) ) {
         if (is_product()) {    wp_enqueue_style( 'capricci-produitCss', get_template_directory_uri() . '/css/produit.css',false,null,'all'); }
         if (is_product_tag()) { wp_enqueue_style( 'capricci-categorieCss', get_template_directory_uri() . '/css/categorie.css',false,null,'all'); }
         if (is_product_category()) { wp_enqueue_style( 'capricci-boutiqueCss', get_template_directory_uri() . '/css/boutique.css',false,null,'all'); }
+        if (is_page()) { wp_enqueue_style( 'capricci-agendaCss', get_template_directory_uri() . '/css/agenda.css',false,null,'all'); }
 	wp_enqueue_style( 'capricci-style', get_stylesheet_uri() );
         
 

@@ -23,6 +23,16 @@ get_header( 'shop' );
 
 $categorie = get_queried_object(); 
 $cat = $categorie->name; 
+
+
+if (isset($_GET["id"])) {
+
+	$id = htmlspecialchars($_GET["id"]); 
+$product = wc_get_product($id);
+//print_r($product);
+}
+
+
 //echo $cat;
 
 /**
@@ -50,8 +60,34 @@ $cat = $categorie->name;
                                 //'product_tag' => $tax      
                                 );
                     
+
+// passer id produit ajouter en parametre
+// récup id produit
+// + variation...
+// afficher infos
+
+
+
 ?>
 
+
+<div class="popup">
+    <div class="popupcontent  animated fadeInDown">
+	    <div class="row">
+	        <div class="col-12">
+	        <h2>CET ARTICLE A ETE AJOUTE AU PANIER</h2>
+	         </div>   
+	             <div class="col-xl-6 text-center margintop">
+                 <a href="#" title="Continuer mes achats"><button class=" cta ctapopup continuermesachats">Continuer mes achats</button></a>
+            </div>
+
+			<div class="col-xl-6 text-center margintop marginbottom">
+	    	   <?php /*global $woocommerce;*/ $cart_url = wc_get_cart_url(); // added_to_cart wc-forward ?>
+	    	   <a href="<?php echo $cart_url; ?>" class="" title="Voir le panier"><button class=" cta ctapopup">Voir mon panier</button></a>
+			</div>	
+	    </div>
+	</div>
+</div>
 
 
 		
@@ -309,7 +345,7 @@ $cat = $categorie->name;
 							<div class="col-lg-4 col-md-2 col-5">
 								<!--<a href="produit.html" alt=""><img src="img/livre1.png" alt="after my death"></a>-->
 										<a href="<?php echo get_permalink(); ?>" alt="<?php the_title(); ?>">
-											<?php if( get_field('affiche_du_film') ): ?>
+											<?php if( get_field('affiche_du_film') ) : ?>
                                   				<img src="<?php the_field('affiche_du_film'); ?>" alt="<?php the_title(); ?>">
                                 			<?php else : // image par défaut ?>
                                     			<img src="<?php bloginfo('stylesheet_directory');?>/img/film4.png" alt="<?php the_title(); ?>">
@@ -378,6 +414,14 @@ $cat = $categorie->name;
 								
 								<div class="row">
 									<div class="col-4 col-md-12 col-lg-12">
+										<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
+										<?php woocommerce_template_loop_add_to_cart();  ?>
+										<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
+									</div>
+
+									<?php // if ( $price_html = $product->get_price_html() ) { echo $price_html; } ?>
+
+									<!--<div class="col-4 col-md-12 col-lg-12">
 										<button class="cta">
 											<div class="row">
 												<div class="col-6">LIVRE</div>
@@ -400,15 +444,15 @@ $cat = $categorie->name;
 												<div class="col-6 lora">12€</div>
 											</div>
 										</button>
-									</div>
+									</div>-->
 								</div>
 								
 							</div>
-							<div class="col-lg-8 col-md-3 order-lg-4 order-md-3 order-sm-4">
-								<p class="sommaire">
+							<div class="col-lg-8 col-md-3 order-lg-4 order-md-3 order-sm-4 sommaire">
+							
 									<?php echo get_field('bonus'); ?>
 									<?php echo get_field('preface'); ?>
-								</p>
+							
 							</div>
 						</div>
 					</div>
@@ -451,120 +495,44 @@ $cat = $categorie->name;
 	<div class="coldroiteboutique">
 				<div class="row panier">
 					<div class="col-lg-12"> <h2 class="panier">PANIER</h2> </div>
-					<div class="col-lg-12"> 0 items </div>
+					<div class="col-lg-12"> <?php echo sprintf ( _n( '%d produit', '%d produits', WC()->cart->get_cart_contents_count() ), WC()->cart->get_cart_contents_count() ); ?> </div>
 					<div class="col-lg-12"> 
 						<div class="row total">
 							<div class="col-lg-6">TOTAL </div> 
-							<div class="col-lg-6"><span class="noir">108€</span> </div> 
+							<div class="col-lg-6"><span class="noir"><?php echo WC()->cart->get_cart_total(); ?></span> </div> 
 						</div>
 					</div>
 					<div class="col-lg-10 offset-lg-1">
-						<button class="cta ctapanier text-center">VOIR PANIER</button> 
+						<a class="cart-customlocation" href="<?php echo wc_get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>"><button class="cta ctapanier text-center">VOIR PANIER</button> </a>
 					</div>
 					
 				</div>
-				<p class="crosssells">VOUS AIMEREZ AUSSI</p>
-				<?php do_action( 'woocommerce_after_single_product_summary' ); ?>
+				<div class="crosssells">
+
+				<!--<p>VOUS AIMEREZ AUSSI</p>-->
+				<?php 
+				// do_action( 'woocommerce_after_single_product_summary' ); 
+				//do_action( 'woocommerce_upsell_display' ); 
+				/*        woocommerce_product_loop_start();
+        		    foreach ( $cross_sells as $cross_sell ) :
+                $post_object = get_post( $cross_sell->get_id() );
+                setup_postdata( $GLOBALS['post'] =& $post_object );
+                wc_get_template_part( 'content', 'product' ); 
+            endforeach;
+        woocommerce_product_loop_end();*/
+
+        //get_sidebar('shop');
+        //get_template_part( 'global-templates/right-sidebar-check' );
+        dynamic_sidebar( 'right-sidebar' );
+
+        ?>
+				</div>
+				
 	</div>
 	
 	
 	
-	
 
-
-
-
-
-
-<div class="container-fluid content">
-
-
-<header class="woocommerce-products-header looooo">
-	<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-		<h1 class="woocommerce-products-header__title page-title"><?php //woocommerce_page_title(); ?></h1>
-	<?php endif; ?>
-
-	<?php
-	/**
-	 * Hook: woocommerce_archive_description.
-	 *
-	 * @hooked woocommerce_taxonomy_archive_description - 10
-	 * @hooked woocommerce_product_archive_description - 10
-	 */
-	//do_action( 'woocommerce_archive_description' );
-	?>
-</header>
-
-
-
-
-
-
-
-<?php
-if ( woocommerce_product_loop() ) {
-
-	/**
-	 * Hook: woocommerce_before_shop_loop.
-	 *
-	 * @hooked woocommerce_output_all_notices - 10
-	 * @hooked woocommerce_result_count - 20
-	 * @hooked woocommerce_catalog_ordering - 30
-	 */
-	do_action( 'woocommerce_before_shop_loop' );
-
-	woocommerce_product_loop_start();
-
-	if ( wc_get_loop_prop( 'total' ) ) {
-		while ( have_posts() ) {
-			the_post();
-
-			/**
-			 * Hook: woocommerce_shop_loop.
-			 *
-			 * @hooked WC_Structured_Data::generate_product_data() - 10
-			 */
-			do_action( 'woocommerce_shop_loop' );
-
-			wc_get_template_part( 'content', 'product' );
-		}
-	}
-
-	woocommerce_product_loop_end();
-
-	/**
-	 * Hook: woocommerce_after_shop_loop.
-	 *
-	 * @hooked woocommerce_pagination - 10
-	 */
-	do_action( 'woocommerce_after_shop_loop' );
-} else {
-	/**
-	 * Hook: woocommerce_no_products_found.
-	 *
-	 * @hooked wc_no_products_found - 10
-	 */
-	do_action( 'woocommerce_no_products_found' );
-}
-
-/**
- * Hook: woocommerce_after_main_content.
- *
- * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
- */
-//do_action( 'woocommerce_after_main_content' );
-
-/**
- * Hook: woocommerce_sidebar.
- *
- * @hooked woocommerce_get_sidebar - 10
- */
-
-do_action( 'woocommerce_sidebar' );
-
-?>
-
-</div>
 
 
 

@@ -435,9 +435,9 @@ if (( $video ) || ( $images )) {
 
 <?php } ?>
 							
-						</div>
+						</div> <!-- row --> 
 						
-					</div>
+					</div> <!-- col lg 9 -->
 					
 						<?php 
 							if ((in_array("DVD", $category_array)) || (in_array("Films", $category_array))){ 
@@ -479,8 +479,32 @@ if (( $video ) || ( $images )) {
 								 <a href="<?php the_field('tous_les_documents'); ?>" alt="<?php the_title(); ?>" download><button class="downloadall">TOUS LES DOCUMENTS</button></a>
 							</div>
                             <?php } ?>
+							<div class="col-6 col-md-4 col-lg-12">
+						   		<div class="crosssells">
+								
+									<?php
+										//dynamic_sidebar( 'right-sidebar' );
+
+											$args = array(
+			'posts_per_page' => 6,
+			'columns'        => 2,
+			'orderby'        => 'rand', // @codingStandardsIgnoreLine.
+			'order'          => 'desc',
+		);
+										woocommerce_output_related_products($args);
+									//$product->get_id()
+
+// appeler woocommerce_output_related_products(); et modifier template single-product/related.php
+
+	
+
+
+										?>
+								</div>
+							</div>
 
 						</div>
+
 
 					</div>
 
@@ -517,6 +541,30 @@ if (( $video ) || ( $images )) {
 								 <a href="<?php the_field('tous_les_documents'); ?>" alt="<?php the_title(); ?>" download><button class="downloadall">TOUS LES DOCUMENTS</button></a>
 							</div>
                             <?php } ?>
+
+                            							<div class="col-6 col-md-4 col-lg-12">
+						   		<div class="crosssells">
+								
+									<?php
+										//dynamic_sidebar( 'right-sidebar' );
+
+											$args = array(
+			'posts_per_page' => 6,
+			'columns'        => 2,
+			'orderby'        => 'rand', // @codingStandardsIgnoreLine.
+			'order'          => 'desc',
+		);
+										woocommerce_output_related_products($args);
+									//$product->get_id()
+
+// appeler woocommerce_output_related_products(); et modifier template single-product/related.php
+
+	
+
+
+										?>
+								</div>
+							</div>
 
 						</div>
 

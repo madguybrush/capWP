@@ -23,6 +23,7 @@
 	padding-bottom: .5rem;
 	font-weight: bold;
 	letter-spacing: .08rem;
+     text-transform: uppercase;
 	
 }
 #agenda h2{
@@ -32,6 +33,7 @@
 	font-family: Montserrat, verdana;
 	padding-top: 2rem;
 	letter-spacing: .2rem;
+    text-transform: uppercase;
 }
 
 #agenda h3{
@@ -50,8 +52,42 @@
 	color: #030310;
 	font-family: 'Lora', serif;
 }
+
+#agenda .qui p{
+	font-size: .8rem;
+	letter-spacing: .05rem;
+	color: #030310;
+	font-family: 'Montserrat', serif;
+    margin-bottom: .5rem;
+}
+
+#agenda .qui h3{
+	padding-bottom: 0;
+}
+
+#agenda .qui .resume{
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 2rem;
+    padding-bottom: 0;
+}
+
 #agenda strong{
 font-family: 'Lora', serif;
+}
+
+#agenda .qui a{
+color: #030310;
+    text-decoration: underline;
+}
+
+#agenda .qui a:hover{
+color: #919191;
+    text-decoration: none;
+}
+
+#agenda .qui strong{
+font-family: 'Montserrat', serif;
 }
 
 

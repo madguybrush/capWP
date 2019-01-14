@@ -152,6 +152,95 @@ height : 3px;
 height : 3px;
 }
 
+.traitcrosssells{
+		width : 100%;
+height : 1px;
+}
+
+
+
+.popup{
+
+    position: fixed;
+    width: 100%;
+    height:100%;
+    background-color: rgba(4, 4, 21, .3);
+    /*margin:-100px 0 0 -200px; */
+   
+    /* [-(height/2)px 0 0 -(width/2)px] */
+    padding-left: 30%;
+    padding-right: 30%;
+     padding-top: 20%;
+    /*padding-bottom: 20%;*/
+
+    display: none;
+    z-index: 50000;
+    	transition: all .3s ease-out;
+    -webkit-transition:all .3s ease-out;
+    -o-transition:all .3s ease-out;
+    -moz-transition:all .3s ease-out;
+    -ms-transition:all .3s ease-out;
+   /* padding-top: 100%; */
+    /* 1:1 Aspect Ratio */
+ 
+    
+}
+
+.popupcontent{
+    /* position: relative; */
+	background-color: #F5F5F5;
+     margin : 0 auto;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    color: #030310;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5); 
+}
+
+.popupcontent h2{
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-family: Montserrat, regular;
+    color: rgba(3, 3, 16, 1);
+    text-align: center;
+    font-weight: bold;
+}
+
+.popupcontent h3{
+    font-size: 1rem;
+    font-family: Piek, regular;
+    color: rgba(167, 138, 60, 1);
+}
+
+.popupcontent p{
+    font-size: 1.1rem;
+    font-family: Lora, regular;
+    color: rgba(145, 145, 145, 1)
+}
+
+.popupimg{
+
+    max-width: 100%;
+    
+}
+
+
+
+.resume{
+	font-family: 'Lora', serif;
+	font-size: .8rem;
+	font-weight: 300;
+	/*margin-top: 1rem;*/
+	letter-spacing: .08rem;
+	line-height: 1.5rem;
+	padding-left: 6rem;
+	padding-right: 6rem;
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+	background-color: white;
+}
+
 	.padding10{
 				padding-left: 10%;
 		padding-right: 10%;
@@ -478,7 +567,84 @@ padding: 0;
 }
 
 
+  .variations_form{
+                text-align: center;
+      margin-top: 1rem;
+      font-family: Montserrat;
+font-size: 11px;
+            }
 
+.variations{
+   width: 100%;
+            }
+
+
+  .variations_form select{
+      
+
+      opacity: .5;
+      
+      
+}
+
+
+ h3.widget-title{
+    		color: #A78A3C;
+		/*background-color: rgba(167, 138, 60, 0.15);*/
+		font-family: Montserrat, sans-serif;
+    text-transform: uppercase;
+		font-weight: bold;		
+		font-size : .6rem;
+		text-align: center;
+		letter-spacing: .2rem;
+}
+
+
+
+
+
+ .crosssells{
+		color: #A78A3C;
+        border-top: 1px solid #A78A3C;
+		background-color: rgba(167, 138, 60, 0.15);
+		font-family: Montserrat, sans-serif;
+		font-weight: bold;		
+		font-size : .6rem;
+		padding: .1rem;
+		text-align: center;
+		padding-bottom: 1rem;
+		padding-top: 1rem;
+		letter-spacing: .2rem;
+     margin-left: -15px;
+     margin-right: -15px;
+     margin-top: 1rem;
+	}
+
+.crosssells img{
+    max-width: 100%;
+}
+
+ .crosssells h4{
+    color: #A78A3C;
+    font-size: .5rem;
+    font-weight: bold;
+    margin-bottom: .1rem;
+      margin-top: .3rem;
+     line-height: inherit;
+}
+ .crosssells h5{
+    color: #000;
+    font-size: .4rem;
+     font-weight: 200;
+      margin-bottom: .1rem;
+}
+
+ .crosssells h6{
+    color: #919191;
+    font-size: .4rem;
+      margin-bottom: .1rem;
+    letter-spacing: .05rem;
+}
 
 
 .intro{ /* , .layer*/
@@ -955,7 +1121,9 @@ color: #030310;
 	}
 	
 
-	
+        .crosssells{
+            display: none;
+        }
 
 
 
