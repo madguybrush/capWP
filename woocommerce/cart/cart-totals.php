@@ -118,6 +118,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<span style="font-family: Lora; font-weight:bold; font-size: 1.2rem;"><?php wc_cart_totals_order_total_html(); ?></span>
 		</div>
 				<!--</td>-->
+				
 		<!--</tr>-->
 
 		<?php do_action( 'woocommerce_cart_totals_after_order_total' ); ?>
