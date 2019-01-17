@@ -16,13 +16,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header();
 
-//$container   = get_theme_mod( 'understrap_container_type' );
+$container   = get_theme_mod( 'understrap_container_type' );
 
 ?>
 
-			<!-- Do the left sidebar check -->
-			<?php //get_template_part( 'global-templates/left-sidebar-check' ); ?>
+<div class="wrapper teste" id="page-wrapper">
 
+	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
+
+		<div class="row">
+
+			<!-- Do the left sidebar check -->
+			<?php get_template_part( 'global-templates/left-sidebar-check' ); ?>
+
+			<main class="site-main" id="main">
 
 				<?php while ( have_posts() ) : the_post(); ?>
 
@@ -37,12 +44,17 @@ get_header();
 
 				<?php endwhile; // end of the loop. ?>
 
+			</main><!-- #main -->
 
 		<!-- Do the right sidebar check -->
 		<?php if ( !is_cart() && !is_front_page()) : ?>
             <?php //get_template_part( 'global-templates/right-sidebar-check' ); ?>
 <?php endif; ?>
             
+	</div><!-- .row -->
 
+</div><!-- Container end -->
+
+</div><!-- Wrapper end -->
 
 <?php get_footer(); ?>
