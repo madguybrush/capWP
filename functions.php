@@ -106,7 +106,18 @@ function get_post_gallery_images_with_info($postvar = NULL) {
     
 }
 
+/**************gestion class active du menu*****************/
+/*add_filter('nav_menu_css_class' , 'special_nav_class' , 10 , 2);
 
+function special_nav_class ($classes, $item) {
+    if (in_array('current-menu-item', $classes) ){
+        $classes[] = 'active ';
+    }
+    return $classes;
+}*/
+
+
+/***************************************************************/
 
 //remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
 //add_action( 'woocommerce_single_product_summary', 'woocommerce_template_loop_add_to_cart', 30 );
