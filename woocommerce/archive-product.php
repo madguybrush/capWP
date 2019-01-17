@@ -15,8 +15,6 @@
  * @version 3.4.0
  */
 
-/**************** PAGE BOUTIQUE ************************************/
-
 defined( 'ABSPATH' ) || exit;
 
 get_header( 'shop' );
@@ -47,13 +45,10 @@ $product = wc_get_product($id);
 //do_action( 'woocommerce_before_main_content' );
 
 
-         // AFFICHER PRODUITS EN STOCK && avec prix défini
-		// même si normalement si c'est dans DVD c'est que c'est un DVD et pas un film
-
+         
     						 $nouveautes = array(
                                 'post_type' => 'product',
                                 'posts_per_page' => 5,
-                                //'stock_status' => 'instock'
                                 //'product_cat' => $cat,
                                 //'product_tag' => $tax      
                                 );
@@ -62,7 +57,6 @@ $product = wc_get_product($id);
                                 'post_type' => 'product',
                                 //'posts_per_page' => 8,
                                 'product_cat' => $cat,
-                                //'stock_status' => 'instock'
                                 //'product_tag' => $tax      
                                 );
                     

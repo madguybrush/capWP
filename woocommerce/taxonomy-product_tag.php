@@ -15,11 +15,6 @@
  * @version     1.6.4
  */
 
-
-
-/*****************PAGES FILMS ET LIVRES*******************/
-
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
@@ -54,7 +49,7 @@ $tax = $taxonomie->name;
                             $args = array(
                                 'post_type' => 'product',
                                 'posts_per_page' => 8,
-                               // 'product_cat' => 'films, dvd',
+                                'product_cat' => 'films, dvd',
                                 'product_tag' => $tax      
                                 );
                     
@@ -79,7 +74,7 @@ $tax = $taxonomie->name;
                             $args = array(
                                 'post_type' => 'product',
                                 'posts_per_page' => 8,
-                                //'product_cat' => 'films, dvd',
+                                'product_cat' => 'films, dvd',
                                 'product_tag' => $tax      
                                 );
                     
@@ -177,7 +172,7 @@ $tax = $taxonomie->name;
                   $args = array(
             'post_type' => 'product',
             'posts_per_page' => 8,
-            //'product_cat' => 'films, dvd',
+             'product_cat' => 'films, dvd',
             'product_tag' => $tax      
 
             );
@@ -244,7 +239,7 @@ $tax = $taxonomie->name;
                   $args = array(
             'post_type' => 'product',
             'posts_per_page' => 8,
-          //   'product_cat' => 'films, dvd',
+             'product_cat' => 'films, dvd',
             'product_tag' => $tax      
 
             );
