@@ -28,4 +28,33 @@ do_action( 'woocommerce_cart_is_empty' );
 			<?php //esc_html_e( 'Return to shop', 'understrap' ); ?>
 		<!--</a>
 	</p>-->
+
+
+
+<?php 
+$cat_name = 'DVD';
+//echo $category_id = get_cat_ID( $cat_name );
+
+$categorie =  get_terms('product_cat'); 
+	if ( ! empty( $categorie ) && ! is_wp_error( $categorie ) ){
+		foreach ($categorie  as $term  ) {
+			$category_id = $term->term_id;
+		}
+	}
+//$categories = get_terms('product_cat');
+//$category_id = $categories[0];
+//echo $category_id;
+
+//print_r($categories);
+
+//get_category_link( $category_id ); 
+//wc_get_checkout_url() );
+?> 
+
+<form action="<?php echo esc_url( get_category_link( $category_id )); ?>">
+	<button type="submit" class=" cta checkout-button button alt wc-forward">
+	 	<?php esc_html_e( 'Return to shop', 'understrap' );?>
+	</button>
+</form>
+
 <?php //endif; ?>

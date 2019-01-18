@@ -188,6 +188,9 @@ defined( 'ABSPATH' ) || exit;
 								<div class="col-md-12 col-sm-6">
 
 											<?php
+
+
+											
 											// @codingStandardsIgnoreLine
 											echo apply_filters( 'woocommerce_cart_item_remove_link', sprintf(
 												//'<a class="" href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s"><button class="ctapanierenlever">SUPPRIMER</button></a>',
@@ -197,6 +200,9 @@ defined( 'ABSPATH' ) || exit;
 												esc_attr( $product_id ),
 												esc_attr( $_product->get_sku() )
 											), $cart_item_key );
+
+
+
 										?>
 								</div>	
 <!--<button class="cta">ENLEVER</button>-->
