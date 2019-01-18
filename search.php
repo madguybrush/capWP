@@ -39,19 +39,36 @@ get_header();
 
 
 	<div class="container-fluid padding10 content">
-		<!--<div class="row films">
-			<div class="col-md-12">
-				<h2>FILMS</h2>
-			</div>
+	
 
-		</div>-->
+			<div class="row films">
+				<div class="col-md-12">
+					<?php
+
+						$categorie =  get_the_terms(get_post(), 'product_cat'); 
+						if ( ! empty( $categorie ) && ! is_wp_error( $categorie ) ){
+							foreach ($categorie  as $term  ) {
+								$product_cat_name = $term->name;
+								if ($product_cat_name != 'DVD'){ echo "<h2>" . $product_cat_name . ' ' . "</h2>"; }
+							}
+						}
+
+					?>
+
+				</div>
+			</div>
+			
 		<div class=" grid gridcatalogue">
 		<div class="gutter-sizer"></div>
 
 		<?php /* Start the Loop */ ?>
 		<?php while ( have_posts() ) : the_post(); ?>
 
+
+
+
 			<?php
+
 			/**
 			 * Run the loop for the search to output the results.
 			 * If you want to overload this in a child theme then include a file
@@ -86,7 +103,7 @@ get_header();
                                 
                        ?>
 				<h5>sortie le <?php echo (float)$jour. ' ' . $mois; ?></h5>
-						<?php
+					<?php
 
 						$categorie =  get_the_terms(get_post(), 'product_cat'); 
 						if ( ! empty( $categorie ) && ! is_wp_error( $categorie ) ){
@@ -95,15 +112,8 @@ get_header();
 								echo "<h5>" . $product_cat_name . ' ' . "</h5>";
 							}
 						}
-										/*$categorie =  get_the_terms($product_id, 'product_cat'); 
-										if ( ! empty( $categorie ) && ! is_wp_error( $categorie ) ){
-										        foreach ($categorie  as $term  ) {
-											           $product_cat_name = $term->name;
-												            echo "<h5>" . $product_cat_name . ' ' . "</h5>";
-												 }
-											}*/
 
-						?>
+					?>
 			</div>
 
 

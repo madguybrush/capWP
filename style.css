@@ -528,7 +528,8 @@ padding: 0;
 	/*text-decoration: underline;*/
 	font-weight: 100;
 	background-color: transparent;
-	 background-size: 100px 9px;
+	/*background-size: 100px 9px;*//*100%*/
+	background-size: 70px 9px;/*100%*/
 	 color: white;
 }
 
@@ -560,8 +561,8 @@ padding: 0;
 .navbar-dark .navbar-nav .active>.nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show>.nav-link{
     	background-color: transparent;
 	color: #fff;
-	background-size: 100px 9px;/*100%*/
-	
+	/*background-size: 100px 9px;*//*100%*/
+	background-size: 70px 9px;/*100%*/
 }
 
 
@@ -570,7 +571,8 @@ padding: 0;
 	/*font-weight: 200;*/
 	background-color: transparent;
 	color: #fff;
-	background-size: 100px 9px;/*100%*/
+	/*background-size: 100px 9px;*//*100%*/
+	background-size: 70px 9px;/*100%*/
 	
 }
 
@@ -619,7 +621,7 @@ font-size: 11px;
  .crosssells{
 		color: #A78A3C;
         border-top: 1px solid #A78A3C;
-		background-color: rgba(167, 138, 60, 0.15);
+		/*background-color: rgba(167, 138, 60, 0.15);*/
 		font-family: Montserrat, sans-serif;
 		font-weight: bold;		
 		font-size : .6rem;
@@ -639,16 +641,18 @@ font-size: 11px;
 
  .crosssells h4{
     color: #A78A3C;
-    font-size: .5rem;
+    font-size: .7rem;
     font-weight: bold;
     margin-bottom: .1rem;
       margin-top: .3rem;
-     line-height: inherit;
+     line-height: .9rem;
+     letter-spacing: 0;
 }
  .crosssells h5{
     color: #000;
-    font-size: .4rem;
-     font-weight: 200;
+    font-size: .6rem;
+     font-weight: 400;
+     letter-spacing: 0;
       margin-bottom: .1rem;
 }
 

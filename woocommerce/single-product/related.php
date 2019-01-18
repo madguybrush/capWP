@@ -57,14 +57,14 @@ if ( $related_products ) : ?>
                 $date = get_field('date_de_sortie'); 
                             $timestamp = strtotime($date);
                             
-                            $dateformatannee = "Y";
+               /*             $dateformatannee = "Y";
                             $dateformatmois = "F";
                             $dateformatjour = "d";
                             $annee = date_i18n($dateformatannee, $timestamp);
                             $jour =  date_i18n($dateformatjour, $timestamp);
-                            $mois =  date_i18n($dateformatmois, $timestamp);
-                  echo "<h6> sortie le ";
-                 echo (float)$jour. ' ' . $mois; echo ' ' . $annee . '</h6>';
+                            $mois =  date_i18n($dateformatmois, $timestamp);*/
+                //echo "<h6> sortie le ";
+                // echo (float)$jour. ' ' . $mois; echo ' ' . $annee . '</h6>';
                 echo '</div></div></div>';
 
 
