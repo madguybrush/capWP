@@ -43,13 +43,13 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 		<!-- <a class="skip-link sr-only sr-only-focusable" href="#content">--> <?php //esc_html_e( 'Skip to content', 'understrap' ); ?> <!-- </a> -->
 
-        
+           <?php /*global $woocommerce;*/ $cart_url = wc_get_cart_url(); // added_to_cart wc-forward ?>
 
  <!-- menu mobile -->
 
 <nav class="navbar fixed-top menumobile navbar-dark <?php if (  !is_front_page() ) { echo "fondnoir"; } ?>">
 
-<div class="container">
+	<div class="container">
 
 
 				<a id="brandmobile" class="navbar-brand" rel="home" href="http://testcapricci.fr/" title="Capricci" alt="Capricci" itemprop="url">
@@ -60,7 +60,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 				
 				<div class="flexbuttons">
                     <button id="btnmenupanier" class="btn btnpaniermobile" >
-				        <img src="<?php bloginfo('stylesheet_directory');?>/img/panier-vide.svg" alt="panier" />	
+				      <a href="<?php echo $cart_url; ?>" alt="voir mon panier">
+				      	<img src="<?php bloginfo('stylesheet_directory');?>/img/panier-vide.svg" alt="panier" />
+				      </a>
 				    </button>
 				    <button id="btnmenusearch" class="btn btnsearch " > 
 				        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" class="searchbutton">
@@ -90,9 +92,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 		
 
 
-</div>
-
-
+	</div>
 </nav>
 
 <!-- modal mobile -->				
@@ -135,7 +135,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 				</div>				
             
 					
-<!--
+					<!--
 					<div class="animated menuBasmobile">
 						<div class="international">
 							<a href="https://capricci-international.com" alt=""  >INTERNATIONAL SALES</a>
@@ -159,7 +159,6 @@ $container = get_theme_mod( 'understrap_container_type' );
 				</div>
         
 	</div>
-
 </nav>
 
 <!-- modal search -->
@@ -169,7 +168,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 					<div class="searchform animated fadeInDown">
 					RECHERCHER
-					    <form class="flex-container" role="search" method="get" action="">  
+					    <form class="flex-container" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">  
 							<input class="form-control" type="search" placeholder="film, livre, auteur" name="s" aria-label="Search">  
 							<button class="btn btnsearch" type="submit" id="searchsubmit">  
 							</button>
@@ -234,10 +233,21 @@ $container = get_theme_mod( 'understrap_container_type' );
                 
 				<div id="menuBas" class="animated fadeInLeft" >
 				
+<!--<form method="get" id="searchform" action="http://testcapricci.fr/" role="search">
+	<label class="sr-only" for="s">Rechercher</label>
+	<div class="input-group">
+		<input class="field form-control" id="s" name="s" type="text" placeholder="Recherche …" value="">
+		<span class="input-group-append">
+			<input class="submit btn btn-primary" id="searchsubmit" name="submit" type="submit" value="Rechercher">
+	</span>
+	</div>
+</form>-->
+
+
 
 					
 					<div class="searchform">
-					    <form class="flex-container" role="search" method="get" action="">  <!--  my-lg-0 margin-left --> <!-- < ?php echo esc_url( home_url( '/' ) ); ?> -->
+					    <form class="flex-container" class="searchform" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">  <!--  my-lg-0 margin-left --> <!-- < ?php echo esc_url( home_url( '/' ) ); ?> -->
 							<input class="form-control" type="search" placeholder="film, livre, auteur" name="s" aria-label="Search">  
 							<button class="btn btnsearch" type="submit" id="searchsubmit">  <!-- btn-outline-success  --><!-- my-2 my-sm-0 -->
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="searchbutton">
@@ -262,7 +272,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 			
 		</nav>
 	
-     <?php /*global $woocommerce;*/ $cart_url = wc_get_cart_url(); // added_to_cart wc-forward ?>
+  
     <?php
 
     if(!is_cart()) {

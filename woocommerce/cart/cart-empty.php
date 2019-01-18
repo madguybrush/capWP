@@ -32,7 +32,7 @@ do_action( 'woocommerce_cart_is_empty' );
 
 
 <?php 
-$cat_name = 'DVD';
+//$cat_name = 'DVD';
 //echo $category_id = get_cat_ID( $cat_name );
 
 $categorie =  get_terms('product_cat'); 
@@ -53,7 +53,7 @@ $categorie =  get_terms('product_cat');
 
 <form action="<?php echo esc_url( get_category_link( $category_id )); ?>">
 	<button type="submit" class=" cta checkout-button button alt wc-forward">
-	 	<?php esc_html_e( 'Return to shop', 'understrap' );?>
+	 	RETOUR A LA BOUTIQUE <?php //esc_html_e( 'Return to shop', 'understrap' );?>
 	</button>
 </form>
 

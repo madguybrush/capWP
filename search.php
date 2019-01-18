@@ -11,64 +11,136 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header();
 
-$container   = get_theme_mod( 'understrap_container_type' );
+//$container   = get_theme_mod( 'understrap_container_type' );
 
 ?>
 
-<div class="wrapper" id="search-wrapper">
 
-	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
+
+<div id="recherche">
+
+<?php if ( have_posts() ) : ?>
+
+	<header class="container-fluid padding10">
 
 		<div class="row">
+			<div class="col">
+				<h1 class="recherche">RESULTATS DE LA RECHERCHE POUR 
+					<strong>
+						« <?php printf(esc_html__( '%s', 'understrap' ),'<span>' . get_search_query() . '</span>' ); ?> »
+					</strong>
+				</h1>
+			</div>
+		</div>
+	
+	</header>
 
-			<!-- Do the left sidebar check and opens the primary div -->
-			<?php get_template_part( 'global-templates/left-sidebar-check' ); ?>
 
-			<main class="site-main" id="main">
 
-				<?php if ( have_posts() ) : ?>
 
-					<header class="page-header">
-						
-							<h1 class="page-title"><?php printf(
-							/* translators:*/
-							 esc_html__( 'Search Results for: %s', 'understrap' ),
-								'<span>' . get_search_query() . '</span>' ); ?></h1>
+	<div class="container-fluid padding10 content">
+		<!--<div class="row films">
+			<div class="col-md-12">
+				<h2>FILMS</h2>
+			</div>
 
-					</header><!-- .page-header -->
+		</div>-->
+		<div class=" grid gridcatalogue">
+		<div class="gutter-sizer"></div>
 
-					<?php /* Start the Loop */ ?>
-					<?php while ( have_posts() ) : the_post(); ?>
+		<?php /* Start the Loop */ ?>
+		<?php while ( have_posts() ) : the_post(); ?>
 
+			<?php
+			/**
+			 * Run the loop for the search to output the results.
+			 * If you want to overload this in a child theme then include a file
+			 * called content-search.php and that will be used instead.
+			 */
+			//get_template_part( 'loop-templates/content', 'search' );
+			?>
+
+			<div class="grid-item">
+				<!--<a href="" alt=""><img src="img/film1.png" alt="after my death"></a>-->
+
+				<a href="<?php echo get_permalink(); ?>" alt="<?php the_title(); ?>">
+					<?php if( get_field('affiche_du_film') ): ?>
+                            <img src="<?php the_field('affiche_du_film'); ?>" alt="<?php the_title(); ?>">
+                    <?php else : // image par défaut ?>
+                            <img src="<?php bloginfo('stylesheet_directory');?>/img/film4.png" alt="<?php the_title(); ?>">
+                    <?php endif; ?>
+				</a>
+
+				<h3 class="titre"><?php the_title(); ?></h3>
+				<h4>de <span class="auteur"><?php echo get_field('auteur'); ?></span></h4>
+				    <?php 
+                            $date = get_field('date_de_sortie'); 
+                            $timestamp = strtotime($date);
+                            
+                            $dateformatannee = "Y";
+                            $dateformatmois = "F";
+                            $dateformatjour = "d";
+                            $annee = date_i18n($dateformatannee, $timestamp);
+                            $jour =  date_i18n($dateformatjour, $timestamp);
+                            $mois =  date_i18n($dateformatmois, $timestamp);
+                                
+                       ?>
+				<h5>sortie le <?php echo (float)$jour. ' ' . $mois; ?></h5>
 						<?php
-						/**
-						 * Run the loop for the search to output the results.
-						 * If you want to overload this in a child theme then include a file
-						 * called content-search.php and that will be used instead.
-						 */
-						get_template_part( 'loop-templates/content', 'search' );
+
+						$categorie =  get_the_terms(get_post(), 'product_cat'); 
+						if ( ! empty( $categorie ) && ! is_wp_error( $categorie ) ){
+							foreach ($categorie  as $term  ) {
+								$product_cat_name = $term->name;
+								echo "<h5>" . $product_cat_name . ' ' . "</h5>";
+							}
+						}
+										/*$categorie =  get_the_terms($product_id, 'product_cat'); 
+										if ( ! empty( $categorie ) && ! is_wp_error( $categorie ) ){
+										        foreach ($categorie  as $term  ) {
+											           $product_cat_name = $term->name;
+												            echo "<h5>" . $product_cat_name . ' ' . "</h5>";
+												 }
+											}*/
+
 						?>
+			</div>
 
-					<?php endwhile; ?>
 
-				<?php else : ?>
+			
+		<?php endwhile; ?>
+		
 
-					<?php get_template_part( 'loop-templates/content', 'none' ); ?>
+			<!--<div class="grid-item">
+				<a href="produit.html" alt=""><img src="img/film4.png" alt="grandeur"></a>
+				<h3 class="titre">Grandeur et décadence d’un petit commerce de cinéma</h3>
+				<h4>de <span class="auteur">Jean-Luc Godard</span> </h4>
+				<h5>sortie le 12 septembre</h5>
+				<h5><span class="categorie">Court-Métrage</span></h5>
+			</div>-->
+		
+		</div>
 
-				<?php endif; ?>
+	</div>
 
-			</main><!-- #main -->
 
-			<!-- The pagination component -->
-			<?php understrap_pagination(); ?>
 
-		<!-- Do the right sidebar check -->
-		<?php get_template_part( 'global-templates/right-sidebar-check' ); ?>
 
-	</div><!-- .row -->
 
-</div><!-- Container end -->
 
-</div><!-- Wrapper end -->
+<?php else : ?>
+
+	<?php get_template_part( 'loop-templates/content', 'none' ); ?>
+
+<?php endif; ?>
+
+
+</div>
+
+
+
+
+
+
 
 <?php get_footer(); ?>

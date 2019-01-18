@@ -1111,6 +1111,16 @@ color: #030310;
 
 	}
 	
+
+
+#error-404-wrapper{
+		margin-left: 17%;
+		background-color: #F5F5F5;
+		/*width: 83%;*/
+		color: #030310;
+		
+	}
+
 /*******************************PANIER*****************************/
 
 		#panier{

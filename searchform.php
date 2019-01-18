@@ -8,6 +8,12 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
+
+// appelé par get_search_form();
+// l'idéal est remplacer les forms dans header.php par get_search_form(); et de modifier le code ici
+// mais pour le moment je prends ce code et je le met dans header en l'adaptant
+
+
 ?>
 
 <form method="get" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">

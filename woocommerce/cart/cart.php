@@ -180,21 +180,18 @@ defined( 'ABSPATH' ) || exit;
 							
 							<div class="row">
 								<div class="col-md-12 col-sm-6">
-
-										<button type="submit" class="ctapanierrafraichir" name="update_cart" value="--><?php //esc_attr_e( 'Update cart', 'understrap' ); ?><!--">
-											RAFRAICHIR
-										</button>
+									<button type="submit" class="ctapanierrafraichir" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'understrap' ); ?>">RAFRAICHIR</button>
 								</div>
 								<div class="col-md-12 col-sm-6">
 
+									
 											<?php
 
 
-											
 											// @codingStandardsIgnoreLine
 											echo apply_filters( 'woocommerce_cart_item_remove_link', sprintf(
 												//'<a class="" href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s"><button class="ctapanierenlever">SUPPRIMER</button></a>',
-												'<a class="ctapanierenlever" href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s">SUPPRIMER</a>',
+												'<a class="ctapanierenlever" href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s">SUPPRIMER    </a>',
 												esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
 												__( 'Remove this item', 'understrap' ),
 												esc_attr( $product_id ),
