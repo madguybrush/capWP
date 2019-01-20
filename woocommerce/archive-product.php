@@ -54,7 +54,7 @@ $product = wc_get_product($id);
                                 'post_type' => 'product',
                                 'posts_per_page' => 5,
                                 //'stock_status' => 'instock'
-                                //'product_cat' => $cat,
+                                'product_cat' => 'dvd, livres',
                                 //'product_tag' => $tax      
                                 );
 
@@ -225,7 +225,12 @@ $product = wc_get_product($id);
                                     			<img src="<?php bloginfo('stylesheet_directory');?>/img/film4.png" alt="<?php the_title(); ?>">
                                 			<?php endif; ?>
 										</a>
-										<div class="row">
+									<div class="col-4 col-md-12 col-lg-12">
+										<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
+										<?php woocommerce_template_loop_add_to_cart();  ?>
+										<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
+									</div>
+										<!--<div class="row">
 											<div class="col-4 col-md-12 col-lg-12">
 												<button class="cta">
 													<div class="row">
@@ -250,7 +255,7 @@ $product = wc_get_product($id);
 													</div>
 												</button>
 											</div>
-										</div>
+										</div>-->
 							</div>
 									<div class="col-lg-8">
 										<h5>

@@ -52,7 +52,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 	<div class="container">
 
 
-				<a id="brandmobile" class="navbar-brand" rel="home" href="http://testcapricci.fr/" title="Capricci" alt="Capricci" itemprop="url">
+				<a id="brandmobile" class="navbar-brand" rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="Capricci" alt="Capricci" itemprop="url">
 					<img alt="logo Capricci" src="<?php bloginfo('stylesheet_directory');?>/img/logomobile.png" class="logomobile">
                     <img alt="logo Capricci" src="<?php bloginfo('stylesheet_directory');?>/img/logotablette.png"  class="logotablette">
 				</a>
@@ -186,7 +186,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 		
 					<!-- Your site title as branding in the menu -->
 				<div id="menuHaut" >
-                    <a class="navbar-brand animated fadeInLeft" rel="home" href="http://testcapricci.fr/" title="Capricci" alt="Capricci" itemprop="url">
+                    <a class="navbar-brand animated fadeInLeft" rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="Capricci" alt="Capricci" itemprop="url">
                         <img alt="logo Capricci" src="<?php bloginfo('stylesheet_directory');?>/img/logo.png">
                     </a>
 
@@ -233,19 +233,7 @@ $container = get_theme_mod( 'understrap_container_type' );
                 
 				<div id="menuBas" class="animated fadeInLeft" >
 				
-<!--<form method="get" id="searchform" action="http://testcapricci.fr/" role="search">
-	<label class="sr-only" for="s">Rechercher</label>
-	<div class="input-group">
-		<input class="field form-control" id="s" name="s" type="text" placeholder="Recherche …" value="">
-		<span class="input-group-append">
-			<input class="submit btn btn-primary" id="searchsubmit" name="submit" type="submit" value="Rechercher">
-	</span>
-	</div>
-</form>-->
-
-
-
-					
+				
 					<div class="searchform">
 					    <form class="flex-container" class="searchform" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">  <!--  my-lg-0 margin-left --> <!-- < ?php echo esc_url( home_url( '/' ) ); ?> -->
 							<input class="form-control" type="search" placeholder="film, livre, auteur" name="s" aria-label="Search">  
