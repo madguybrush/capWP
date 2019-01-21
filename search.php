@@ -140,7 +140,22 @@ get_header();
 
 <?php else : ?>
 
-	<?php get_template_part( 'loop-templates/content', 'none' ); ?>
+	<header class="container-fluid padding10">
+
+		<div class="row">
+			<div class="col">
+				<h1 class="recherche">PAS DE RESULTATS POUR LA RECHERCHE  
+					<strong>
+						« <?php printf(esc_html__( '%s', 'understrap' ),'<span>' . get_search_query() . '</span>' ); ?> »
+					</strong>
+				</h1>
+			</div>
+		</div>
+	
+	</header>
+
+
+	<?php //get_template_part( 'loop-templates/content', 'none' ); ?>
 
 <?php endif; ?>
 

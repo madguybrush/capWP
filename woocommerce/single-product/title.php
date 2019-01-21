@@ -40,7 +40,29 @@ global $product;
             </div>
             <div class="col-md-8 col-lg-9 padding0">
                 <h1 class="animated fadeInUp"><?php the_title(); ?></h1>
-                <h2 class="animated fadeInUp">un film de <?php echo get_field('auteur'); ?></h2>
+
+                                <?php 
+                               $product_categories = get_the_terms($product->get_id(), 'product_cat');
+                                if ( ! empty( $product_categories ) && ! is_wp_error( $product_categories ) ) {
+                                        $categories = wp_list_pluck( $product_categories, 'name' );
+                                   
+                         /* $category = get_the_terms( $product->get_id(), 'product_cat' );
+                                   $category_array = array();
+                                  if ( ! empty( $category ) && ! is_wp_error( $category ) ){
+                                        foreach ($category  as $term  ) {
+
+                                            $category_array[] = $term->name;
+
+
+                                        }*/
+                                
+                                ?>
+
+                <h2 class="animated fadeInUp"><?php if (($categories[0] === "DVD" ) || ($categories[0] === "Films" )) { echo "un film de ";}
+                                else { echo "un livre de "; } ?> <?php echo get_field('auteur'); ?></h2>
+
+<?php  } ?>
+
             </div>
             
         </div>

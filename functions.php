@@ -107,14 +107,27 @@ function get_post_gallery_images_with_info($postvar = NULL) {
 }
 
 /**************gestion class active du menu*****************/
-/*add_filter('nav_menu_css_class' , 'special_nav_class' , 10 , 2);
+add_filter('nav_menu_css_class' , 'special_nav_class' , 10 , 2);
 
 function special_nav_class ($classes, $item) {
-    if (in_array('current-menu-item', $classes) ){
-        $classes[] = 'active ';
+    if (in_array('dropdown-menu.current-menu-item', $classes) ){
+        $classes[] = 'show';
+    }
+    return $classes;
+}
+
+/*
+add_filter('nav_menu_css_class_show' , 'special_nav_class_show' , 10 , 2);
+
+function special_nav_class_show ($classes, $item) {
+    if (in_array('dropdown-menu', $classes) ){
+        $classes[] = 'show ';
     }
     return $classes;
 }*/
+
+
+
 
 
 /***************************************************************/

@@ -494,11 +494,13 @@ padding: 0;
 
 
 
-.navbar-dark .navbar-nav .nav-link .active{
+.navbar-dark .navbar-nav .nav-link .active {
 	font-weight: bold;
 	/*text-decoration: underline;*/
-	    background-size: 100px 9px;/*100%*/
+    background-size: 100px 9px; /*100%*/
 }
+
+
 
 .dropdown-item{
 	text-align: center;
@@ -524,15 +526,9 @@ padding: 0;
     transition:background-size .2s ease-out
 }
 
-.dropdown-item:hover, .dropdown-item.active {
-	/*text-decoration: underline;*/
-	font-weight: 100;
-	background-color: transparent;
-	/*background-size: 100px 9px;*//*100%*/
-	background-size: 70px 9px;/*100%*/
-	 color: white;
-}
 
+
+/*#menu2 ul.sub-menu li.active > a*/
 
 
 
@@ -558,7 +554,10 @@ padding: 0;
 }
 
 
-.navbar-dark .navbar-nav .active>.nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show>.nav-link{
+.navbar-dark .navbar-nav .active>.nav-link, 
+.navbar-dark .navbar-nav .nav-link.active, 
+.navbar-dark .navbar-nav .nav-link.show, 
+.navbar-dark .navbar-nav .show>.nav-link{
     	background-color: transparent;
 	color: #fff;
 	/*background-size: 100px 9px;*//*100%*/
@@ -566,7 +565,8 @@ padding: 0;
 }
 
 
-.navbar-dark .navbar-nav .nav-link:focus, .navbar-dark .navbar-nav .nav-link:hover {
+.navbar-dark .navbar-nav .nav-link:focus, 
+.navbar-dark .navbar-nav .nav-link:hover {
 	/*text-decoration: underline;*/
 	/*font-weight: 200;*/
 	background-color: transparent;
@@ -575,6 +575,42 @@ padding: 0;
 	background-size: 70px 9px;/*100%*/
 	
 }
+
+
+.dropdown-item:hover {
+	/*text-decoration: underline;*/
+	font-weight: 100;
+	background-color: transparent;
+	/*background-size: 100px 9px;*//*100%*/
+	background-size: 70px 9px;/*100%*/
+	 color: white;
+}
+
+
+
+.dropdown-item.active, .dropdown-item:active {
+    	font-weight: 100;
+	background-color: transparent;
+	/*background-size: 100px 9px;*//*100%*/
+	background-size: 70px 9px;/*100%*/
+	 color: white;
+}
+
+.nav-item.active>.dropdown-item, .dropdown-item.active, .dropdown-item:active {
+    	font-weight: 100;
+	background-color: transparent;
+	/*background-size: 100px 9px;*//*100%*/
+	background-size: 70px 9px;/*100%*/
+	 color: white;
+}
+
+.nav-item.active>.dropdown-menu{
+    visibility: visible;
+    opacity: 1;
+    max-height: 300px;
+    transition: max-height 0.5s, opacity 0.2s, visibility 0s;
+}
+
 
 
 .sousmenu a.active {
@@ -595,11 +631,8 @@ font-size: 11px;
 
 
   .variations_form select{
-      
-
       opacity: .5;
-      
-      
+     width: 100%;
 }
 
 
