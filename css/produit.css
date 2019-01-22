@@ -421,19 +421,17 @@ margin: 0 auto;
 	font-size: 0.6rem;
 	/*margin: 0px auto;*/
 
-	
 }
-
+/*
 .tableFilm .titre{
 	font-family: 'Lora', serif;
 	font-size: 0.8rem;
-	
-}
-
+}*/
+/*
 .tableFilm .acteurs{
 	font-family: 'Lora', serif;
 	font-size: 0.7rem;
-}
+}*/
 
 
 .tableFilm .colLeft {
@@ -492,13 +490,10 @@ text-align: left;
 }
 
 
-
-
 .resume{
 	font-family: 'Lora', serif;
 	font-size: .8rem;
 	font-weight: 300;
-	/*margin-top: 1rem;*/
 	letter-spacing: .08rem;
 	line-height: 1.5rem;
 	padding-left: 6rem;
@@ -507,16 +502,38 @@ text-align: left;
 	padding-bottom: 3rem;
 	background-color: white;
 }
+
+.carousel-item{
+    background-color: black;
+    text-align: center;
+}
+
+.resume p{
+	font-family: 'Lora', serif;
+	font-size: .8rem;
+	font-weight: 300;
+	letter-spacing: .08rem;
+	line-height: 1.5rem;
+	background-color: white;
+}
+
 .lauteur{
 	font-family: 'Lora', serif;
 	font-size: .8rem;
 	font-weight: 300;
-	font-style: italic;
-	/*margin-top: 1rem;*/
 	padding-left: 6rem;
 	padding-right: 6rem;
 		padding-top: 3rem;
 	padding-bottom: 3rem;
+		letter-spacing: .08rem;
+	line-height: 1.7rem;
+
+}
+
+.lauteur p{
+	font-family: 'Lora', serif;
+	font-size: .8rem;
+	font-weight: 300;
 		letter-spacing: .08rem;
 	line-height: 1.7rem;
 

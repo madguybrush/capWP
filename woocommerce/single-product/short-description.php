@@ -54,13 +54,54 @@ global $post;
 										 }
 
 							/*if (category == 'Livres')*/
-							if (in_array("Livres", $category_array)){ echo "EN LIBRAIRIE LE "; }
-							else {
+							//if (in_array("Livres", $category_array)){ echo "EN LIBRAIRIE LE "; }
+							//else {
 							?>
-							DATE DE SORTIE <br />
+							SORTIE 
                             <?php
-                        	}
-                            $date = get_field('date_de_sortie'); 
+                            $sortie = get_field('date_de_sortie');
+                            $vod = get_field('date_de_sortie_vod');
+                            $dvd = get_field('date_de_sortie_dvd');
+                            $mea = get_field('date_de_sortie_mea');
+                            //echo $mea;
+                            if ($mea == "salle") {
+                          		$date = get_field('date_de_sortie'); 
+	                            $timestamp = strtotime($date);
+	                           
+	                            $dateformatannee = "Y";
+	                            $dateformatmois = "F";
+	                            $dateformatjour = "d";
+	                            $annee = date_i18n($dateformatannee, $timestamp);
+	                            $jour =  date_i18n($dateformatjour, $timestamp);
+	                            $mois =  date_i18n($dateformatmois, $timestamp);
+                            	echo "EN SALLE <br> LE " . (float)$jour. ' ' . $mois; echo ' ' . $annee;
+                            }
+                            if ($mea == "vod") {
+                            	$date = get_field('date_de_sortie_vod'); 
+	                            $timestamp = strtotime($date);
+	                           
+	                            $dateformatannee = "Y";
+	                            $dateformatmois = "F";
+	                            $dateformatjour = "d";
+	                            $annee = date_i18n($dateformatannee, $timestamp);
+	                            $jour =  date_i18n($dateformatjour, $timestamp);
+	                            $mois =  date_i18n($dateformatmois, $timestamp);
+                            	echo "EN VOD <br> LE " . (float)$jour. ' ' . $mois; echo ' ' . $annee;
+                            }
+                            if ($mea == "dvd") {
+                          		$date = get_field('date_de_sortie_dvd'); 
+	                            $timestamp = strtotime($date);
+	                           
+	                            $dateformatannee = "Y";
+	                            $dateformatmois = "F";
+	                            $dateformatjour = "d";
+	                            $annee = date_i18n($dateformatannee, $timestamp);
+	                            $jour =  date_i18n($dateformatjour, $timestamp);
+	                            $mois =  date_i18n($dateformatmois, $timestamp);                            	
+                            	echo "EN DVD <br> LE " . (float)$jour. ' ' . $mois; echo ' ' . $annee;
+                        }
+                        	//}
+                           /* $date = get_field('date_de_sortie'); 
                             $timestamp = strtotime($date);
                             
                             $dateformatannee = "Y";
@@ -68,9 +109,9 @@ global $post;
                             $dateformatjour = "d";
                             $annee = date_i18n($dateformatannee, $timestamp);
                             $jour =  date_i18n($dateformatjour, $timestamp);
-                            $mois =  date_i18n($dateformatmois, $timestamp);
+                            $mois =  date_i18n($dateformatmois, $timestamp);*/
                             
-                            echo (float)$jour. ' ' . $mois; echo ' ' . $annee;
+                            //echo (float)$jour. ' ' . $mois; echo ' ' . $annee;
                             //28 SEPTEMBRE 2018
                             ?>
                             
@@ -199,13 +240,102 @@ endif;
 
 					<div class="col-12 hidewhenmobile">
 
-					<h4><?php echo $annee . ' / ' . get_field('pays_dorigine') .  ' / ' . get_field('duree'); ?> </h4> 
-					<h4 class="visa">VISA <?php echo get_field('visa'); ?></h4>
+					<!--<h4>--><?php //echo $annee . ' / ' . get_field('pays_dorigine') .  ' / ' . get_field('duree'); ?> <!--</h4>--
+					<!--<h4 class="visa">VISA--> <?php //echo get_field('visa'); ?><!--</h4>-->
 					</div>
 					<div class="col-12 order-sm-12 hidewhenmobile">
 					<!--<div class="centerTab">-->
+
+
 						<table class="tableFilm">
 						<tbody>
+							
+                            <?php
+
+                          /*  $date = get_field('date_de_sortie'); 
+                            $timestamp = strtotime($date);
+                            
+                            $dateformatannee = "Y";
+                            $dateformatmois = "F";
+                            $dateformatjour = "d";
+                            $annee = date_i18n($dateformatannee, $timestamp);
+                            $jour =  date_i18n($dateformatjour, $timestamp);
+                            $mois =  date_i18n($dateformatmois, $timestamp);
+                            
+                            echo (float)$jour. ' ' . $mois; echo ' ' . $annee;*/
+
+                            ?>
+
+                            <?php //$pays_dorigine = get_field('pays_dorigine');
+							$date_de_sortie = get_field('date_de_sortie');	
+                                    if (($date_de_sortie) && ($mea != "salle")){?>
+							<tr > <!-- class="titre" -->
+								<td class="colLeft"><b>Sortie en salle</b></td>
+								<td class="colRight"><?php echo $date_de_sortie; ?></td>
+							</tr>
+                            <?php } ?>
+
+                           <?php //$pays_dorigine = get_field('pays_dorigine');
+							$date_de_sortie_vod = get_field('date_de_sortie_vod');
+                                    if (($date_de_sortie_vod) && ($mea != "vod")){?>
+							<tr > <!-- class="titre" -->
+								<td class="colLeft"><b>Sortie VOD</b></td>
+								<td class="colRight"><?php echo $date_de_sortie_vod; ?></td>
+							</tr>
+                            <?php } ?>
+
+                               <?php //$pays_dorigine = get_field('pays_dorigine');
+							$date_de_sortie_dvd = get_field('date_de_sortie_dvd');	
+                                    if (($date_de_sortie_dvd) && ($mea != "dvd")){?>
+							<tr > <!-- class="titre" -->
+								<td class="colLeft"><b>Sortie DVD</b></td>
+								<td class="colRight"><?php echo $date_de_sortie_dvd; ?></td>
+							</tr>
+                            <?php } ?>
+
+
+						</tbody>
+						</table>
+
+
+						<table class="tableFilm">
+						<tbody>
+
+						<?php //$pays_dorigine = get_field('pays_dorigine');
+						$annee_de_production = get_field('annee_de_production');
+                                    if ($annee_de_production){?>
+							<tr > <!-- class="titre" -->
+								<td class="colLeft"><b>Année de production</b></td>
+								<td class="colRight"><?php echo $annee_de_production; ?></td>
+							</tr>
+                            <?php } ?>
+
+						<?php $pays_dorigine = get_field('pays_dorigine');	
+                                    if ($pays_dorigine){?>
+							<tr > <!-- class="titre" -->
+								<td class="colLeft"><b>Pays</b></td>
+								<td class="colRight"><?php echo get_field('pays_dorigine'); ?></td>
+							</tr>
+                            <?php } ?>
+
+						<?php $duree = get_field('duree');	
+                                    if ($duree){?>
+							<tr > <!-- class="titre" -->
+								<td class="colLeft"><b>Durée</b></td>
+								<td class="colRight"><?php echo get_field('duree'); ?></td>
+							</tr>
+                            <?php } ?>
+
+						<?php $visa = get_field('visa');	
+                                    if ($visa){?>
+							<tr > <!-- class="titre" -->
+								<td class="colLeft"><b>VISA</b></td>
+								<td class="colRight"><?php echo get_field('visa'); ?></td>
+							</tr>
+                            <?php } ?>
+
+
+
                             <?php $titre = get_field('titre_original');	
                                     if ($titre){?>
 							<tr class="titre">
@@ -213,6 +343,17 @@ endif;
 								<td class="colRight"><?php echo $titre; ?></td>
 							</tr>
                             <?php } ?>
+                            
+
+                            
+						</tbody>
+						</table>
+
+
+
+
+						<table class="tableFilm">
+						<tbody>
                             
                             <?php if( have_rows('acteurs') ): ?>
 		
@@ -234,6 +375,9 @@ endif;
                             
 						</tbody>
 						</table>
+
+
+
 
 						<table class="tableFilm">
 						<tbody>
@@ -628,11 +772,11 @@ endif;
 						<?php if (get_field('synopsis')){ ?>
 							<div class="col-lg-12 resume ">
 								<img src="<?php bloginfo('stylesheet_directory');?>/img/trait-debut-paragraphe.svg" alt="" class="trait">
-								<?php echo get_field('synopsis');  ?>
+								<?php echo get_field('synopsis', false, false);  ?>
 							</div>
 						<?php } ?>
 						<?php if (get_field('preface')){ ?>
-							<div class="col-lg-12 resume" <?php if (get_field('synopsis')){ echo 'style="padding-top:0;"'; } ?> >
+							<div class="col-lg-12 resume" <?php if (get_field('preface')){ echo 'style="padding-top:0;"'; } ?> >
                                 <?php echo get_field('preface');  ?>
 
 							</div>
@@ -643,7 +787,7 @@ endif;
 							<div class="col-lg-12 lauteur">
 								<h3>L’AUTEUR </h3>
 								<img src="<?php bloginfo('stylesheet_directory');?>/img/trait-debut-paragraphe.svg" alt="" class="trait">
-                                <?php echo get_field('lauteur');  ?>
+                                <?php echo get_field('lauteur', false, false);  ?>
 
 							</div>
 							<?php } ?>
@@ -891,15 +1035,26 @@ if (( $video ) || ( $images )) {
 			<div class="row ">
 					<div class="col-12 ">
 					<h4><?php echo $annee . ' / ' . get_field('pays_dorigine') .  ' / ' . get_field('duree'); ?> </h4> 
-					<h4 class="visa">VISA <?php echo get_field('visa'); ?></h4>
+					<!--<h4 class="visa">VISA --><?php //echo get_field('visa'); ?><!--</h4>-->
 					</div>
 					<div class="col-12 order-sm-12">
 					<!--<div class="centerTab">-->
 						<table class="tableFilm">
 						<tbody>
+
+
+							 <?php $visa = get_field('visa');	
+                                    if ($visa){?>
+							<tr > <!-- class="titre" -->
+								<td class="colLeft"><b>VISA</b></td>
+								<td class="colRight"><?php echo get_field('visa'); ?></td>
+							</tr>
+                            <?php } ?>
+
+
                             <?php $titre = get_field('titre_original');	
                                     if ($titre){?>
-							<tr class="titre">
+							<tr > <!-- class="titre" -->
 								<td class="colLeft"><b>Titre original </b></td>
 								<td class="colRight"><?php echo $titre; ?></td>
 							</tr>
@@ -915,7 +1070,7 @@ if (( $video ) || ( $images )) {
 
 		                                    ?>
 		                            
-									<tr class="acteurs">
+									<tr > <!-- class="acteurs" -->
 									<td class="colLeft"><b><?php echo $role; ?></b></td>
 									<td class="colRight"><?php echo $acteur; ?></td>
 									</tr>

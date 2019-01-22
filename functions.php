@@ -106,6 +106,12 @@ function get_post_gallery_images_with_info($postvar = NULL) {
     
 }
 
+/**********https://stackoverflow.com/questions/11248628/disable-wordpress-from-adding-p-tags**********/
+//remove_filter( 'the_content', 'wpautop' );
+//remove_filter( 'acf_the_content', 'wpautop' );
+//remove_filter( 'the_excerpt', 'wpautop' );
+
+
 /**************gestion class active du menu*****************/
 add_filter('nav_menu_css_class' , 'special_nav_class' , 10 , 2);
 
