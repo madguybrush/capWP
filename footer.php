@@ -22,7 +22,7 @@ if (!is_front_page()){
 
 <footer>
     
-<a href="/mentions-legales/" alt="mentions légales">mentions légales / conditions de ventes</a>
+<a href="<?php echo esc_url( home_url( '/' ) ); ?>/mentions-legales/" alt="mentions légales">mentions légales / conditions de ventes</a>
     
   <!--  
 <div class="container-fluid">

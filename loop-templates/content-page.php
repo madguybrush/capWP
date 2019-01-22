@@ -31,11 +31,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<div class="col-lg-10 offset-lg-1 fondblanc"> <!-- col-md-10 offset-md-1-->
 
 				<div class="container-fluid">
+					
+					<?php if (is_cart()){ ?>
 					<div class="row">
 						<div class="col-12 nbproduits">
 							<?php echo sprintf ( _n( '%d produit', '%d produits', WC()->cart->get_cart_contents_count() ), WC()->cart->get_cart_contents_count() ); ?> 
 						</div>
 					</div>
+					<?php } ?>
+
 
 					<div class="row">
 						<div class="col-12">
