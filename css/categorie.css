@@ -31,20 +31,29 @@ opacity: .5;
 	
 		#category .content{
 	padding-top: 1rem;
-	background-color: #F5F5F5;
+	background-color: #F0F0EF;
 	/*padding: 1rem;*/
 }
 	
 
 	
-	
 	#category h2{
+		font-family: Montserrat, sans-serif;
+		font-weight: bold;
+		font-size: 1.1rem;
+		color: #A78A3C;
+		padding-left: 2rem;
+		letter-spacing: .2rem;
+		margin-top: .5rem;
+	}
+
+	/*#category h2{
 		color: #A78A3C;
 		font-size: 1.8rem;
 	font-family: Piek, verdana;
 	font-weight: bold;
 	letter-spacing: .08rem;
-	}
+	}*/
 	
 		#category .films{
 		padding-top: 1rem;

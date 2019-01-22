@@ -42,7 +42,7 @@
 	
 #boutique .content{
 	/*padding-top: 1rem;*/
-	background-color: #F5F5F5;
+	background-color: #F0F0EF;
 			margin-left: 17%;
 		width: 68%;
 		margin-right: 15%;
@@ -51,7 +51,7 @@
 #boutique .contentnouveautes{
 	/*padding-top: 1rem;*/
 	background-color: #A78A3C;
-	/*background-color: #F5F5F5;*/
+	/*background-color: #F0F0EF;*/
 			margin-left: 17%;
 		width: 166%;  /*83%*/
 		padding-bottom: 1.5rem;
@@ -92,6 +92,7 @@
 		padding-left: 2rem;
 		letter-spacing: .2rem;
 		margin-top: .5rem;
+    text-transform: uppercase;
 	}
 	
 	#boutique h2.panier{
@@ -332,11 +333,14 @@
 	padding-left: .5rem;
 	letter-spacing: .025rem;
 	}
+#boutique .quatrieme a{
+color : #A78A3C;
+}
 	
 	#boutique .sommaire{
 	font-family: Montserrat;
 	font-weight: bold;
-	font-size: .5rem;
+	font-size: .6rem;
 	color: #030310;
 	letter-spacing: .05rem;
 

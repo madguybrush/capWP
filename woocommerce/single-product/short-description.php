@@ -288,6 +288,31 @@ endif;
 
 							<?php endif; ?>
 
+								                            <?php 
+		                                    $technique = get_field('technique');	
+		                                    //print_r($technique);
+		                                   if ($technique){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Format</b></td>
+										<td class="colRight"><?php echo $technique['format']; ?></td>
+									</tr>
+
+									<tr>
+										<td class="colLeft"><b>Diffusion</b></td>
+										<td class="colRight"><?php echo $technique['diffusion']; ?></td>
+									</tr>
+
+									<tr>
+										<td class="colLeft"><b>ISBN</b></td>
+										<td class="colRight"><?php echo $technique['isbn']; ?></td>
+									</tr>
+		                            
+		                            <?php } ?>
+
+
+
 							<?php if ( $price_html = $product->get_price_html() ) : ?>
 
 								<tr class="acteurs">
@@ -357,17 +382,28 @@ endif;
 
 		                <?php } //livres ?>
 						
+						<?php if (get_field('synopsis')){ ?>
 							<div class="col-lg-12 resume ">
 								<img src="<?php bloginfo('stylesheet_directory');?>/img/trait-debut-paragraphe.svg" alt="" class="trait">
 								<?php echo get_field('synopsis');  ?>
 							</div>
-						
+						<?php } ?>
+						<?php if (get_field('preface')){ ?>
+							<div class="col-lg-12 resume" <?php if (get_field('synopsis')){ echo 'style="padding-top:0;"'; } ?> >
+                                <?php echo get_field('preface');  ?>
+
+							</div>
+							<?php } ?>
+
+
+						<?php if (get_field('lauteur')){ ?>
 							<div class="col-lg-12 lauteur">
 								<h3>L’AUTEUR </h3>
 								<img src="<?php bloginfo('stylesheet_directory');?>/img/trait-debut-paragraphe.svg" alt="" class="trait">
                                 <?php echo get_field('lauteur');  ?>
 
 							</div>
+							<?php } ?>
                                  
 <?php
 $video = get_field('video_page_produit');
@@ -385,7 +421,14 @@ if (( $video ) || ( $images )) {
 									<iframe width="640" height="564" src="<?php echo $video; ?>" frameborder="0" controls allowFullScreen mozallowfullscreen webkitAllowFullScreen></iframe>									
 								</div>
                                 
-                                <?php } ?>
+                                <?php } 
+
+
+ 							$images = get_field('galerie');
+
+                                  if( $images ): 
+
+                                ?>
 						
 								<div class="gallery">
 									<div id="demo" class="carousel slide" data-ride="carousel">
@@ -407,9 +450,9 @@ if (( $video ) || ( $images )) {
                                           if (!empty($gallery)){
                                             foreach( $gallery as $image_url ){*/
                                           $i =1;
-                                          $images = get_field('galerie');
+                                         // $images = get_field('galerie');
 
-                                            if( $images ): 
+                                        //    if( $images ): 
                                           foreach( $images as $image ): ?>
 
 										<div class="carousel-item <?php if ($i ==1) { echo "active"; $i++; } ?>">
@@ -417,10 +460,12 @@ if (( $video ) || ( $images )) {
 										</div>
                                           
                                         <?php endforeach;  ?>
-                                        <?php endif; ?> 
+
+                                        <?php //endif; ?> 
 									  
                                         </div>
 
+								
 									  <!-- Left and right controls -->
 									  <a class="carousel-control-prev" href="#demo" data-slide="prev">
 										<span class="carousel-control-prev-icon"></span>
@@ -428,9 +473,15 @@ if (( $video ) || ( $images )) {
 									  <a class="carousel-control-next" href="#demo" data-slide="next">
 										<span class="carousel-control-next-icon"></span>
 									  </a>
+ 							
+
 
 									</div>
 								</div>
+
+
+ 						<?php endif; ?> 
+
 							</div> <!-- cadreblanc -->
 
 <?php } ?>
@@ -451,7 +502,7 @@ if (( $video ) || ( $images )) {
 						<div class="row">
                             <?php if( get_field('bande-annonce') ){?>
 							<div class="col-6 col-md-4 col-lg-12">
-                                <a href="<?php the_field('bande-annonce'); ?>" alt="<?php the_title(); ?>" download><button class="download">BANDE-ANNONCE</button></a>
+                                <a href="<?php the_field('bande-annonce'); ?>" target="_blank" alt="<?php the_title(); ?>"><button class="download">BANDE-ANNONCE</button></a>
 							</div>
                             <?php } ?>
                              <?php if( get_field('affiche_hd') ){?>
@@ -471,7 +522,7 @@ if (( $video ) || ( $images )) {
                             <?php } ?>
                              <?php if( get_field('extraits') ){?>
 							<div class="col-6 col-md-4 col-lg-12">
-								 <a href="<?php the_field('extraits'); ?>" alt="<?php the_title(); ?>" download><button class="download">EXTRAITS</button></a>
+								 <a href="<?php the_field('extraits'); ?>" target="_blank" alt="<?php the_title(); ?>" ><button class="download">EXTRAITS</button></a>
 							</div>
                             <?php } ?>
                             <?php if( get_field('tous_les_documents') ){?>
@@ -634,26 +685,41 @@ if (( $video ) || ( $images )) {
 						<tbody>
                             
                             
-                            <?php if( have_rows('acteurs') ): ?>
-	
-                         	   <?php while( have_rows('technique') ): the_row(); 
 
-				                          // vars
-		                                        $poste = get_sub_field('poste');
-		                                        $personne = get_sub_field('personne');
-
-		                                    ?>
-		                            
-									<tr>
-									<td class="colLeft"><b><?php echo $poste; ?></b></td>
-									<td class="colRight"><?php echo $personne; ?></td>
-									</tr>
-								<?php endwhile; ?>
+						<?php 
+							//if ((in_array("DVD", $category_array)) || (in_array("Films", $category_array))){ 
+						?>
 
 
-							<?php endif; ?>
+
+	                            <?php if( have_rows('acteurs') ): ?>
+		
+	                         	   <?php while( have_rows('technique') ): the_row(); 
+
+					                          // vars
+			                                        $poste = get_sub_field('poste');
+			                                        $personne = get_sub_field('personne');
+
+			                                    ?>
+			                            
+										<tr>
+										<td class="colLeft"><b><?php echo $poste; ?></b></td>
+										<td class="colRight"><?php echo $personne; ?></td>
+										</tr>
+									<?php endwhile; ?>
+
+
+								<?php endif; ?>
                             
 
+							<?php// } else { //Livres ?>
+
+
+
+	
+		                        
+
+							<?php// } ?>
 							
 						</tbody>
 					</table>
@@ -671,6 +737,7 @@ if (( $video ) || ( $images )) {
 						<table class="tableLivre">
 						<tbody>
                             
+
                             <?php if( have_rows('technique') ): ?>
 	
                            		<?php while( have_rows('technique') ): the_row(); 
@@ -688,6 +755,32 @@ if (( $video ) || ( $images )) {
 								<?php endwhile; ?>
 
 							<?php endif; ?>
+
+	                            <?php 
+		                                    $technique = get_field('technique');	
+		                                    //print_r($technique);
+		                                 //   if ($technique){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Format</b></td>
+										<td class="colRight"><?php echo $technique['format']; ?></td>
+									</tr>
+
+									<tr>
+										<td class="colLeft"><b>Diffusion</b></td>
+										<td class="colRight"><?php echo $technique['diffusion']; ?></td>
+									</tr>
+
+									<tr>
+										<td class="colLeft"><b>ISBN</b></td>
+										<td class="colRight"><?php echo $technique['isbn']; ?></td>
+									</tr>
+		                            
+		                            <?php //} ?>
+
+
+
 
 							<?php if ( $price_html = $product->get_price_html() ) : ?>
 

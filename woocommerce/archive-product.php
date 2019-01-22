@@ -225,7 +225,7 @@ $product = wc_get_product($id);
                                     			<img src="<?php bloginfo('stylesheet_directory');?>/img/film4.png" alt="<?php the_title(); ?>">
                                 			<?php endif; ?>
 										</a>
-									<div class="col-4 col-md-12 col-lg-12">
+									<div class="col-4 col-md-12 col-lg-12" style="padding:0;">
 										<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 										<?php woocommerce_template_loop_add_to_cart();  ?>
 										<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
