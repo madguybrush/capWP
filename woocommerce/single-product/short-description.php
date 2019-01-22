@@ -237,25 +237,268 @@ endif;
 
 						<table class="tableFilm">
 						<tbody>
-                            
-                            
-                            <?php if( have_rows('technique') ): ?>
-	
-                           		<?php while( have_rows('technique') ): the_row(); 
 
-		                          // vars
-                                        $poste = get_sub_field('poste');
-                                        $personne = get_sub_field('personne');
+				                        <?php 
+		                                 $technique = get_field('technique');	
+		                                   if ($technique['realisation']){
+		                            ?>
 
-                                    ?>
-                            
-									<tr>
-										<td class="colLeft"><b><?php echo $poste; ?></b></td>
-										<td class="colRight"><?php echo $personne; ?></td>
+		                            <tr>
+										<td class="colLeft"><b>Réalisation</b></td>
+										<td class="colRight"><?php echo $technique['realisation']; ?></td>
 									</tr>
-								<?php endwhile; ?>
 
-							<?php endif; ?>
+									<?php }   ?>
+
+									<?php
+        							if ($technique['scenario']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Scénario</b></td>
+										<td class="colRight"><?php echo $technique['scenario']; ?></td>
+									</tr>
+
+									<?php }   ?>
+									<?php
+        							if ($technique['photographie']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Photographie</b></td>
+										<td class="colRight"><?php echo $technique['photographie']; ?></td>
+									</tr>
+
+									<?php }   ?>
+									<?php
+        							if ($technique['prise_de_son']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Prise de son</b></td>
+										<td class="colRight"><?php echo $technique['prise_de_son']; ?></td>
+									</tr>
+
+									<?php }   ?>
+										<?php
+        							if ($technique['costumes']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Costumes</b></td>
+										<td class="colRight"><?php echo $technique['costumes']; ?></td>
+									</tr>
+
+									<?php }   ?>
+									<?php
+        							if ($technique['maquillage']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Maquillage</b></td>
+										<td class="colRight"><?php echo $technique['maquillage']; ?></td>
+									</tr>
+
+									<?php }   ?>
+									<?php
+        							if ($technique['decors']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Décors</b></td>
+										<td class="colRight"><?php echo $technique['decors']; ?></td>
+									</tr>
+
+									<?php }   ?>
+									<?php
+        							if ($technique['direction_artistique']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Direction artistique</b></td>
+										<td class="colRight"><?php echo $technique['direction_artistique']; ?></td>
+									</tr>
+
+									<?php }   ?>
+								<?php
+        							if ($technique['montage_image']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Montage image</b></td>
+										<td class="colRight"><?php echo $technique['montage_image']; ?></td>
+									</tr>
+
+									<?php }   ?>
+								<?php
+        							if ($technique['montage_son']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Montage son</b></td>
+										<td class="colRight"><?php echo $technique['montage_son']; ?></td>
+									</tr>
+
+									<?php }   ?>
+						
+								<?php
+        							if ($technique['musique']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Musique</b></td>
+										<td class="colRight"><?php echo $technique['musique']; ?></td>
+									</tr>
+
+									<?php }   ?>
+															<?php
+        							if ($technique['mixage']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Mixage</b></td>
+										<td class="colRight"><?php echo $technique['mixage']; ?></td>
+									</tr>
+
+									<?php }   ?>
+
+									<?php
+        							if ($technique['effets_speciaux']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Effets spéciaux</b></td>
+										<td class="colRight"><?php echo $technique['effets_speciaux']; ?></td>
+									</tr>
+
+									<?php }   ?>
+
+
+									<?php
+        							if ($technique['producteur']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Producteur</b></td>
+										<td class="colRight"><?php echo $technique['producteur']; ?></td>
+									</tr>
+
+									<?php }   ?>
+
+									<?php
+        							if ($technique['production']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Production</b></td>
+										<td class="colRight"><?php echo $technique['production']; ?></td>
+									</tr>
+
+									<?php }   ?>
+
+									<?php
+        							if ($technique['coproduction']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Coproduction</b></td>
+										<td class="colRight"><?php echo $technique['coproduction']; ?></td>
+									</tr>
+
+									<?php }   ?>
+									
+									<?php
+        							if ($technique['direction_de__la_production']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Direction de la Production</b></td>
+										<td class="colRight"><?php echo $technique['direction_de__la_production']; ?></td>
+									</tr>
+
+									<?php }   ?>
+
+									
+									<?php
+        							if ($technique['avec_la_participation_de']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Avec la participation de</b></td>
+										<td class="colRight"><?php echo $technique['avec_la_participation_de']; ?></td>
+									</tr>
+
+									<?php }   ?>
+
+
+									<?php
+        							if ($technique['avec_le_soutien_de']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Avec le soutien de</b></td>
+										<td class="colRight"><?php echo $technique['avec_le_soutien_de']; ?></td>
+									</tr>
+
+									<?php }   ?>
+
+
+									<?php
+        							if ($technique['en_partenariat_avec']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>En partenariat avec</b></td>
+										<td class="colRight"><?php echo $technique['en_partenariat_avec']; ?></td>
+									</tr>
+
+									<?php }   ?>
+
+																		<?php
+        							if ($technique['en_association_avec']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>En association avec</b></td>
+										<td class="colRight"><?php echo $technique['en_association_avec']; ?></td>
+									</tr>
+
+									<?php }   ?>
+
+
+																											<?php
+        							if ($technique['attachee_de_presse']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Attaché(e) de presse</b></td>
+										<td class="colRight"><?php echo $technique['attachee_de_presse']; ?></td>
+									</tr>
+
+									<?php }   ?>
+
+																<?php
+        							if ($technique['distribution']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Distribution</b></td>
+										<td class="colRight"><?php echo $technique['distribution']; ?></td>
+									</tr>
+
+									<?php }   ?>
+
+																									<?php
+        							if ($technique['programmation']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Programmation</b></td>
+										<td class="colRight"><?php echo $technique['programmation']; ?></td>
+									</tr>
+
+									<?php }   ?>
+
 
 						</tbody>
 						</table>
