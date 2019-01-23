@@ -264,8 +264,18 @@ font-size: 11px;
    font-family: Piek, Montserrat, Arial;
     line-height: 2rem;
     padding-bottom: .8rem;
-     /*font-weight: bold;*/
 }
+
+.citation p{
+	font-size: 1.5rem;
+	background-color: white;
+	letter-spacing: 0rem; /*.15rem;*/
+    color: #A78A3C;
+   font-family: Piek, Montserrat, Arial;
+    line-height: 2rem;
+
+}
+
 .auteurcitation{
 	font-size: 0.7rem;
 	background-color: white;
@@ -312,6 +322,22 @@ font-size: 11px;
 }
 		
 		
+
+.submenuba, .submenuphotos, .submenuextraits{
+ display: none;
+    text-decoration: underline;
+      text-align: center;
+    
+  	/*transition: all .3s ease-out;
+    -webkit-transition:all .3s ease-out;
+    -o-transition:all .3s ease-out;
+    -moz-transition:all .3s ease-out;
+    -ms-transition:all .3s ease-out;*/
+   
+}
+.submenuba a, .submenuphotos a, .submenuextraits a{
+     color: #000946;
+}
 
 .download{
 	background-color:#000946;
@@ -660,6 +686,7 @@ text-align: left;
 	.showwhenmobile{
 		display: flex;
 		text-align: center;
+        justify-content: center;
 		margin-top: -5rem;
 	}
 

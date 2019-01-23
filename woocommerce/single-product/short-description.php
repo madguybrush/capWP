@@ -57,7 +57,7 @@ global $post;
 							//if (in_array("Livres", $category_array)){ echo "EN LIBRAIRIE LE "; }
 							//else {
 							?>
-							SORTIE 
+							
                             <?php
                             $sortie = get_field('date_de_sortie');
                             $vod = get_field('date_de_sortie_vod');
@@ -74,7 +74,7 @@ global $post;
 	                            $annee = date_i18n($dateformatannee, $timestamp);
 	                            $jour =  date_i18n($dateformatjour, $timestamp);
 	                            $mois =  date_i18n($dateformatmois, $timestamp);
-                            	echo "EN SALLE <br> LE " . (float)$jour. ' ' . $mois; echo ' ' . $annee;
+                            	echo "SORTIE EN SALLE <br> LE " . (float)$jour. ' ' . $mois; echo ' ' . $annee;
                             }
                             if ($mea == "vod") {
                             	$date = get_field('date_de_sortie_vod'); 
@@ -86,7 +86,7 @@ global $post;
 	                            $annee = date_i18n($dateformatannee, $timestamp);
 	                            $jour =  date_i18n($dateformatjour, $timestamp);
 	                            $mois =  date_i18n($dateformatmois, $timestamp);
-                            	echo "EN VOD <br> LE " . (float)$jour. ' ' . $mois; echo ' ' . $annee;
+                            	echo "SORTIE EN VOD <br> LE " . (float)$jour. ' ' . $mois; echo ' ' . $annee;
                             }
                             if ($mea == "dvd") {
                           		$date = get_field('date_de_sortie_dvd'); 
@@ -98,7 +98,7 @@ global $post;
 	                            $annee = date_i18n($dateformatannee, $timestamp);
 	                            $jour =  date_i18n($dateformatjour, $timestamp);
 	                            $mois =  date_i18n($dateformatmois, $timestamp);                            	
-                            	echo "EN DVD <br> LE " . (float)$jour. ' ' . $mois; echo ' ' . $annee;
+                            	echo "SORTIE EN DVD <br> LE " . (float)$jour. ' ' . $mois; echo ' ' . $annee;
                         }
                         	//}
                            /* $date = get_field('date_de_sortie'); 
@@ -238,16 +238,21 @@ endif;
 					?>
 
 
-					<div class="col-12 hidewhenmobile">
+					<!--<div class="col-12 hidewhenmobile">-->
 
 					<!--<h4>--><?php //echo $annee . ' / ' . get_field('pays_dorigine') .  ' / ' . get_field('duree'); ?> <!--</h4>--
 					<!--<h4 class="visa">VISA--> <?php //echo get_field('visa'); ?><!--</h4>-->
-					</div>
+					<!--</div>-->
+
 					<div class="col-12 order-sm-12 hidewhenmobile">
 					<!--<div class="centerTab">-->
 
-
-						<table class="tableFilm">
+					<?php 
+					$date_de_sortie = get_field('date_de_sortie');
+					$date_de_sortie_vod = get_field('date_de_sortie_vod');
+					$date_de_sortie_dvd = get_field('date_de_sortie_dvd');
+					if((($date_de_sortie) && ($mea != "salle")) || (($date_de_sortie_vod) && ($mea != "vod")) || (($date_de_sortie_dvd) && ($mea != "dvd"))){ ?>
+						<table class="tableFilm margintop">
 						<tbody>
 							
                             <?php
@@ -296,6 +301,8 @@ endif;
 
 						</tbody>
 						</table>
+
+						<?php } ?>
 
 
 						<table class="tableFilm">
@@ -886,35 +893,139 @@ if (( $video ) || ( $images )) {
 
 					<div class="col-lg-3 order-lg-2 order-md-1 order-sm-2 colbuttons "> <!-- col-xl-2 -->
 						
+
+
+								      <?php 
+		                                    $telechargements = get_field('telechargements');	
+		                                   // print_r($telechargements);
+		                                   if ($telechargements){
+		                            ?>
+
+									<?php //echo $technique['format']; ?>
+
 						<div class="row">
-                            <?php if( get_field('bande-annonce') ){?>
+
+							<?php 
+
+
+							$ba = $telechargements['bande-annonce']; 
+							$affiche = $telechargements['affiche_hd']; 
+							$dp = $telechargements['dossier_de_presse']; 
+							$photos = $telechargements['photos_hd']; 
+							$extraits = $telechargements['extraits']; 
+							$touslesdocuments = $telechargements['tous_les_documents']; 
+							//print_r($ba);
+							//$ba 
+							$hd = $ba['hd']; 
+							//print_r($hd);
+							$dcp = $ba['dcp'];
+							
+
+
+							?>
+                            <?php if( $hd || $dcp /*get_field('bande-annonce')*/ ){?>
+								<div class="col-6 col-md-4 col-lg-12">
+	                                <?php //the_field('bande-annonce'); ?>
+	                               <!-- <a href="#" alt="">-->
+	                                	<button class="download opensubmenuba">BANDE-ANNONCE</button>
+	                              <!--  </a>-->
+	                                <div class="submenuba animated fadeIn">
+	                                	<?php //print_r($hd);
+	                                		if ($hd){
+	                                	?>
+	                                	<a href="<?php echo $hd; //echo $srchd; ?>" download>HD</a><br />
+	                                	<?php 		} // endif $hd
+	                                	 
+	                                	if ($dcp){
+	                                	?>
+	                                		<a href="<?php echo $dcp; ?>" download>DCP</a>
+	                                	<?php }// endif  $dcp ?>
+	                                </div>
+								</div>
+                            <?php } // endif $hd ou $dcp ?>
+
+
+                             <?php if( $affiche /*get_field('affiche_hd')*/ ){?>
 							<div class="col-6 col-md-4 col-lg-12">
-                                <a href="<?php the_field('bande-annonce'); ?>" target="_blank" alt="<?php the_title(); ?>"><button class="download">BANDE-ANNONCE</button></a>
+								 <a href="<?php echo $affiche; //the_field('affiche_hd'); ?>" alt="" download><button class="download">AFFICHE HD</button></a>
 							</div>
                             <?php } ?>
-                             <?php if( get_field('affiche_hd') ){?>
+
+                             <?php if( $dp ){?>
 							<div class="col-6 col-md-4 col-lg-12">
-								 <a href="<?php the_field('affiche_hd'); ?>" alt="<?php the_title(); ?>" download><button class="download">AFFICHE HD</button></a>
+								 <a href="<?php echo $dp; ?>" alt="" download><button class="download">DOSSIER DE PRESSE</button></a>
 							</div>
-                            <?php } ?>
-                             <?php if( get_field('dossier_de_presse') ){?>
+                            <?php } ?>  
+                            
+
+                             <?php if( $photos ){?>
+                             <?php //if( have_rows('photos_hd') ): ?>
 							<div class="col-6 col-md-4 col-lg-12">
-								 <a href="<?php the_field('dossier_de_presse'); ?>" alt="<?php the_title(); ?>" download><button class="download">DOSSIER DE PRESSE</button></a>
-							</div>
+								<!-- <a href="#" alt="">-->
+								 	<button class="download opensubmenuphotos">PHOTOS HD</button>
+								<!-- </a>-->
+							
+									<div class="submenuphotos animated fadeIn">
+
+		  									 <?php 
+		  									 //print_r($photos);
+		  									foreach ($photos as $photo) {
+		  									 	$nom = $photo['nom_de_la_photo'];
+		                                        $url = $photo['fichier'];
+		  									
+		  									// while( have_rows('photos_hd') ): the_row();
+
+		                                   //     $nom= get_sub_field('nom_de_la_photo');
+		                                    //    $url= get_sub_field('fichier');
+		                                        ?>
+		                                        <a href="<?php echo $url; ?>" download><?php echo $nom; ?></a><br />
+
+		                                    
+		                                <?php //endwhile; 
+			                                	 }
+										?>
+			                        </div>
+			                </div>
                             <?php } ?>
-                             <?php if( get_field('photos_hd') ){?>
+                            <?php //endif; ?>
+
+                             <?php if( $extraits ){?>
+                             <?php //if( have_rows('photos_hd') ): ?>
 							<div class="col-6 col-md-4 col-lg-12">
-								 <a href="<?php the_field('photos_hd'); ?>" alt="<?php the_title(); ?>" download><button class="download">PHOTOS HD</button></a>
-							</div>
+								<!-- <a href="#" alt="">-->
+								 	<button class="download opensubmenuextraits">EXTRAITS</button>
+								<!-- </a>-->
+							
+									<div class="submenuextraits animated fadeIn">
+
+		  									 <?php 
+		  									 //print_r($photos);
+		  									foreach ($extraits as $extrait) {
+		  									 	$nom = $extrait['nom_de_lextrait'];
+		                                        $url = $extrait['fichier'];
+		  									
+		  									// while( have_rows('photos_hd') ): the_row();
+
+		                                   //     $nom= get_sub_field('nom_de_la_photo');
+		                                    //    $url= get_sub_field('fichier');
+		                                        ?>
+		                                        <a href="<?php echo $url; ?>" download><?php echo $nom; ?></a><br />
+
+		                                    
+		                                <?php //endwhile; 
+			                                	 }
+										?>
+			                        </div>
+			                </div>
                             <?php } ?>
-                             <?php if( get_field('extraits') ){?>
+
+
+
+
+
+                            <?php if( $touslesdocuments ){?>
 							<div class="col-6 col-md-4 col-lg-12">
-								 <a href="<?php the_field('extraits'); ?>" target="_blank" alt="<?php the_title(); ?>" ><button class="download">EXTRAITS</button></a>
-							</div>
-                            <?php } ?>
-                            <?php if( get_field('tous_les_documents') ){?>
-							<div class="col-6 col-md-4 col-lg-12">
-								 <a href="<?php the_field('tous_les_documents'); ?>" alt="<?php the_title(); ?>" download><button class="downloadall">TOUS LES DOCUMENTS</button></a>
+								 <a href="<?php echo $touslesdocuments; ?>" alt="" download><button class="downloadall">TOUS LES DOCUMENTS</button></a>
 							</div>
                             <?php } ?>
 							<div class="col-6 col-md-4 col-lg-12">
@@ -943,6 +1054,8 @@ if (( $video ) || ( $images )) {
 
 						</div>
 
+						<?php } // endif $telechargements ?>
+
 
 					</div>
 
@@ -952,33 +1065,118 @@ if (( $video ) || ( $images )) {
 
 					<div class="col-lg-3 order-lg-2 order-md-1 order-sm-2 colbuttons "> <!-- col-xl-2 -->
 						
+      <?php 
+		                                    $telechargements = get_field('telechargements');	
+		                                   // print_r($telechargements);
+		                                   if ($telechargements){
+		                            ?>
+
+
 						<div class="row">
-                            <?php if( get_field('couverture_hd') ){?>
+
+							<?php 
+
+
+							$couverture = $telechargements['couverture_hd']; 
+							$sommaire = $telechargements['sommaire']; 
+							$extraits = $telechargements['extraits']; 
+							$revues = $telechargements['revue_de_presse']; 
+							$touslesdocuments = $telechargements['tous_les_documents']; 
+							//print_r($ba);
+							//$ba 
+							//$hd = $ba['hd']; 
+							//print_r($hd);
+							//$dcp = $ba['dcp'];
+							
+
+
+							?>
+
+
+
+                            <?php if( $couverture ){?>
 							<div class="col-6 col-md-4 col-lg-12">
-                                <a href="<?php the_field('couverture_hd'); ?>" alt="<?php the_title(); ?>" download><button class="download">COUVERTURE HD</button></a>
-							</div>
-                            <?php } ?>
-                             <?php if( get_field('sommaire') ){?>
-							<div class="col-6 col-md-4 col-lg-12">
-								 <a href="<?php the_field('sommaire'); ?>" alt="<?php the_title(); ?>" download><button class="download">SOMMAIRE</button></a>
-							</div>
-                            <?php } ?>
-                             <?php if( get_field('extraits') ){?>
-							<div class="col-6 col-md-4 col-lg-12">
-								 <a href="<?php the_field('extraits'); ?>" alt="<?php the_title(); ?>" download><button class="download">EXTRAIT</button></a>
-							</div>
-                            <?php } ?>
-                             <?php if( get_field('revue_de_presse') ){?>
-							<div class="col-6 col-md-4 col-lg-12">
-								 <a href="<?php the_field('revue_de_presse'); ?>" alt="<?php the_title(); ?>" download><button class="download">REVUE DE PRESSE</button></a>
+                                <a href="<?php echo $couverture ?>" alt="" download><button class="download">COUVERTURE HD</button></a>
 							</div>
                             <?php } ?>
 
-                            <?php if( get_field('tous_les_documents') ){?>
+
+                             <?php if( $sommaire /*get_field('sommaire')*/ ){?>
 							<div class="col-6 col-md-4 col-lg-12">
-								 <a href="<?php the_field('tous_les_documents'); ?>" alt="<?php the_title(); ?>" download><button class="downloadall">TOUS LES DOCUMENTS</button></a>
+								 <a href="<?php echo $sommaire; /*the_field('sommaire');*/ ?>" alt="" download><button class="download">SOMMAIRE</button></a>
 							</div>
                             <?php } ?>
+
+
+                             <?php if( $extraits ){?>
+                             <?php //if( have_rows('photos_hd') ): ?>
+							<div class="col-6 col-md-4 col-lg-12">
+								<!-- <a href="#" alt="">-->
+								 	<button class="download opensubmenuextraits">EXTRAITS</button>
+								<!-- </a>-->
+							
+									<div class="submenuextraits animated fadeIn">
+
+		  									 <?php 
+		  									 //print_r($photos);
+		  									foreach ($extraits as $extrait) {
+		  									 	$nom = $extrait['nom_de_lextrait'];
+		                                        $url = $extrait['fichier'];
+		  									
+		  									// while( have_rows('photos_hd') ): the_row();
+
+		                                   //     $nom= get_sub_field('nom_de_la_photo');
+		                                    //    $url= get_sub_field('fichier');
+		                                        ?>
+		                                        <a href="<?php echo $url; ?>" download><?php echo $nom; ?></a><br />
+
+		                                    
+		                                <?php //endwhile; 
+			                                	 }
+										?>
+			                        </div>
+			                </div>
+                            <?php } ?>
+
+                             <?php if( $revues ){?>
+                             <?php //if( have_rows('photos_hd') ): ?>
+							<div class="col-6 col-md-4 col-lg-12">
+								<!-- <a href="#" alt="">-->
+								 	<button class="download opensubmenuphotos">REVUE DE PRESSE</button>
+								<!-- </a>-->
+							
+									<div class="submenuphotos animated fadeIn">
+
+		  									 <?php 
+		  									 //print_r($photos);
+		  									foreach ($revues as $revue) {
+		  									 	$nom = $revue['nom_de_la_photo'];
+		                                        $url = $revue['fichier'];
+		  									
+		  									// while( have_rows('photos_hd') ): the_row();
+
+		                                   //     $nom= get_sub_field('nom_de_la_photo');
+		                                    //    $url= get_sub_field('fichier');
+		                                        ?>
+		                                        <a href="<?php echo $url; ?>" download><?php echo $nom; ?></a><br />
+
+		                                    
+		                                <?php //endwhile; 
+			                                	 }
+										?>
+			                        </div>
+			                </div>
+                            <?php } ?>
+
+
+                            <?php if( $touslesdocuments ){?>
+							<div class="col-6 col-md-4 col-lg-12">
+								 <a href="<?php echo $touslesdocuments; ?>" alt="" download><button class="downloadall">TOUS LES DOCUMENTS</button></a>
+							</div>
+                            <?php } ?>
+
+
+
 
                             							<div class="col-6 col-md-4 col-lg-12">
 						   		<div class="crosssells">
@@ -1005,6 +1203,9 @@ if (( $video ) || ( $images )) {
 							</div>
 
 						</div>
+
+
+	<?php } // endif $telechargements ?>
 
 					</div>
 
@@ -1034,16 +1235,93 @@ if (( $video ) || ( $images )) {
 
 			<div class="row ">
 					<div class="col-12 ">
-					<h4><?php echo $annee . ' / ' . get_field('pays_dorigine') .  ' / ' . get_field('duree'); ?> </h4> 
+					<!--<h4>--><?php //echo $annee . ' / ' . get_field('pays_dorigine') .  ' / ' . get_field('duree'); ?><!-- </h4> -->
 					<!--<h4 class="visa">VISA --><?php //echo get_field('visa'); ?><!--</h4>-->
 					</div>
 					<div class="col-12 order-sm-12">
 					<!--<div class="centerTab">-->
+
+
+				<table class="tableFilm">
+						<tbody>
+							
+                            <?php
+
+                          /*  $date = get_field('date_de_sortie'); 
+                            $timestamp = strtotime($date);
+                            
+                            $dateformatannee = "Y";
+                            $dateformatmois = "F";
+                            $dateformatjour = "d";
+                            $annee = date_i18n($dateformatannee, $timestamp);
+                            $jour =  date_i18n($dateformatjour, $timestamp);
+                            $mois =  date_i18n($dateformatmois, $timestamp);
+                            
+                            echo (float)$jour. ' ' . $mois; echo ' ' . $annee;*/
+
+                            ?>
+
+                            <?php //$pays_dorigine = get_field('pays_dorigine');
+							$date_de_sortie = get_field('date_de_sortie');	
+                                    if (($date_de_sortie) && ($mea != "salle")){?>
+							<tr > <!-- class="titre" -->
+								<td class="colLeft"><b>Sortie en salle</b></td>
+								<td class="colRight"><?php echo $date_de_sortie; ?></td>
+							</tr>
+                            <?php } ?>
+
+                           <?php //$pays_dorigine = get_field('pays_dorigine');
+							$date_de_sortie_vod = get_field('date_de_sortie_vod');
+                                    if (($date_de_sortie_vod) && ($mea != "vod")){?>
+							<tr > <!-- class="titre" -->
+								<td class="colLeft"><b>Sortie VOD</b></td>
+								<td class="colRight"><?php echo $date_de_sortie_vod; ?></td>
+							</tr>
+                            <?php } ?>
+
+                               <?php //$pays_dorigine = get_field('pays_dorigine');
+							$date_de_sortie_dvd = get_field('date_de_sortie_dvd');	
+                                    if (($date_de_sortie_dvd) && ($mea != "dvd")){?>
+							<tr > <!-- class="titre" -->
+								<td class="colLeft"><b>Sortie DVD</b></td>
+								<td class="colRight"><?php echo $date_de_sortie_dvd; ?></td>
+							</tr>
+                            <?php } ?>
+
+
+						</tbody>
+						</table>
+
+
 						<table class="tableFilm">
 						<tbody>
 
+						<?php //$pays_dorigine = get_field('pays_dorigine');
+						$annee_de_production = get_field('annee_de_production');
+                                    if ($annee_de_production){?>
+							<tr > <!-- class="titre" -->
+								<td class="colLeft"><b>Année de production</b></td>
+								<td class="colRight"><?php echo $annee_de_production; ?></td>
+							</tr>
+                            <?php } ?>
 
-							 <?php $visa = get_field('visa');	
+						<?php $pays_dorigine = get_field('pays_dorigine');	
+                                    if ($pays_dorigine){?>
+							<tr > <!-- class="titre" -->
+								<td class="colLeft"><b>Pays</b></td>
+								<td class="colRight"><?php echo get_field('pays_dorigine'); ?></td>
+							</tr>
+                            <?php } ?>
+
+						<?php $duree = get_field('duree');	
+                                    if ($duree){?>
+							<tr > <!-- class="titre" -->
+								<td class="colLeft"><b>Durée</b></td>
+								<td class="colRight"><?php echo get_field('duree'); ?></td>
+							</tr>
+                            <?php } ?>
+
+						<?php $visa = get_field('visa');	
                                     if ($visa){?>
 							<tr > <!-- class="titre" -->
 								<td class="colLeft"><b>VISA</b></td>
@@ -1052,75 +1330,321 @@ if (( $video ) || ( $images )) {
                             <?php } ?>
 
 
+
                             <?php $titre = get_field('titre_original');	
                                     if ($titre){?>
-							<tr > <!-- class="titre" -->
+							<tr class="titre">
 								<td class="colLeft"><b>Titre original </b></td>
 								<td class="colRight"><?php echo $titre; ?></td>
 							</tr>
                             <?php } ?>
                             
-                            <?php if( have_rows('acteurs') ): ?>
-	
-                          	  <?php while( have_rows('acteurs') ): the_row(); 
 
-				                          // vars
-		                                        $role = get_sub_field('role');
-		                                        $acteur = get_sub_field('acteur');
-
-		                                    ?>
-		                            
-									<tr > <!-- class="acteurs" -->
-									<td class="colLeft"><b><?php echo $role; ?></b></td>
-									<td class="colRight"><?php echo $acteur; ?></td>
-									</tr>
-								<?php endwhile; ?>
-							<?php endif; ?>
                             
 						</tbody>
-					</table>
+						</table>
+
+
+
+
 						<table class="tableFilm">
 						<tbody>
                             
-                            
-
-						<?php 
-							//if ((in_array("DVD", $category_array)) || (in_array("Films", $category_array))){ 
-						?>
-
-
-
-	                            <?php if( have_rows('acteurs') ): ?>
+                            <?php if( have_rows('acteurs') ): ?>
 		
-	                         	   <?php while( have_rows('technique') ): the_row(); 
+	                            <?php while( have_rows('acteurs') ): the_row(); 
 
-					                          // vars
-			                                        $poste = get_sub_field('poste');
-			                                        $personne = get_sub_field('personne');
+			                          // vars
+	                                        $role = get_sub_field('role');
+	                                        $acteur = get_sub_field('acteur');
 
-			                                    ?>
-			                            
-										<tr>
-										<td class="colLeft"><b><?php echo $poste; ?></b></td>
-										<td class="colRight"><?php echo $personne; ?></td>
+	                                    ?>
+	                            
+										<tr class="acteurs">
+											<td class="colLeft"><b><?php echo $role; ?></b></td>
+											<td class="colRight"><?php echo $acteur; ?></td>
 										</tr>
-									<?php endwhile; ?>
+								<?php endwhile; ?>
 
-
-								<?php endif; ?>
+							<?php endif; ?>
                             
-
-							<?php// } else { //Livres ?>
-
-
-
-	
-		                        
-
-							<?php// } ?>
-							
 						</tbody>
-					</table>
+						</table>
+
+
+
+
+						<table class="tableFilm">
+						<tbody>
+
+				                        <?php 
+		                                 $technique = get_field('technique');	
+		                                   if ($technique['realisation']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Réalisation</b></td>
+										<td class="colRight"><?php echo $technique['realisation']; ?></td>
+									</tr>
+
+									<?php }   ?>
+
+									<?php
+        							if ($technique['scenario']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Scénario</b></td>
+										<td class="colRight"><?php echo $technique['scenario']; ?></td>
+									</tr>
+
+									<?php }   ?>
+									<?php
+        							if ($technique['photographie']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Photographie</b></td>
+										<td class="colRight"><?php echo $technique['photographie']; ?></td>
+									</tr>
+
+									<?php }   ?>
+									<?php
+        							if ($technique['prise_de_son']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Prise de son</b></td>
+										<td class="colRight"><?php echo $technique['prise_de_son']; ?></td>
+									</tr>
+
+									<?php }   ?>
+										<?php
+        							if ($technique['costumes']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Costumes</b></td>
+										<td class="colRight"><?php echo $technique['costumes']; ?></td>
+									</tr>
+
+									<?php }   ?>
+									<?php
+        							if ($technique['maquillage']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Maquillage</b></td>
+										<td class="colRight"><?php echo $technique['maquillage']; ?></td>
+									</tr>
+
+									<?php }   ?>
+									<?php
+        							if ($technique['decors']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Décors</b></td>
+										<td class="colRight"><?php echo $technique['decors']; ?></td>
+									</tr>
+
+									<?php }   ?>
+									<?php
+        							if ($technique['direction_artistique']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Direction artistique</b></td>
+										<td class="colRight"><?php echo $technique['direction_artistique']; ?></td>
+									</tr>
+
+									<?php }   ?>
+								<?php
+        							if ($technique['montage_image']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Montage image</b></td>
+										<td class="colRight"><?php echo $technique['montage_image']; ?></td>
+									</tr>
+
+									<?php }   ?>
+								<?php
+        							if ($technique['montage_son']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Montage son</b></td>
+										<td class="colRight"><?php echo $technique['montage_son']; ?></td>
+									</tr>
+
+									<?php }   ?>
+						
+								<?php
+        							if ($technique['musique']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Musique</b></td>
+										<td class="colRight"><?php echo $technique['musique']; ?></td>
+									</tr>
+
+									<?php }   ?>
+															<?php
+        							if ($technique['mixage']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Mixage</b></td>
+										<td class="colRight"><?php echo $technique['mixage']; ?></td>
+									</tr>
+
+									<?php }   ?>
+
+									<?php
+        							if ($technique['effets_speciaux']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Effets spéciaux</b></td>
+										<td class="colRight"><?php echo $technique['effets_speciaux']; ?></td>
+									</tr>
+
+									<?php }   ?>
+
+
+									<?php
+        							if ($technique['producteur']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Producteur</b></td>
+										<td class="colRight"><?php echo $technique['producteur']; ?></td>
+									</tr>
+
+									<?php }   ?>
+
+									<?php
+        							if ($technique['production']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Production</b></td>
+										<td class="colRight"><?php echo $technique['production']; ?></td>
+									</tr>
+
+									<?php }   ?>
+
+									<?php
+        							if ($technique['coproduction']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Coproduction</b></td>
+										<td class="colRight"><?php echo $technique['coproduction']; ?></td>
+									</tr>
+
+									<?php }   ?>
+									
+									<?php
+        							if ($technique['direction_de__la_production']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Direction de la Production</b></td>
+										<td class="colRight"><?php echo $technique['direction_de__la_production']; ?></td>
+									</tr>
+
+									<?php }   ?>
+
+									
+									<?php
+        							if ($technique['avec_la_participation_de']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Avec la participation de</b></td>
+										<td class="colRight"><?php echo $technique['avec_la_participation_de']; ?></td>
+									</tr>
+
+									<?php }   ?>
+
+
+									<?php
+        							if ($technique['avec_le_soutien_de']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Avec le soutien de</b></td>
+										<td class="colRight"><?php echo $technique['avec_le_soutien_de']; ?></td>
+									</tr>
+
+									<?php }   ?>
+
+
+									<?php
+        							if ($technique['en_partenariat_avec']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>En partenariat avec</b></td>
+										<td class="colRight"><?php echo $technique['en_partenariat_avec']; ?></td>
+									</tr>
+
+									<?php }   ?>
+
+																		<?php
+        							if ($technique['en_association_avec']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>En association avec</b></td>
+										<td class="colRight"><?php echo $technique['en_association_avec']; ?></td>
+									</tr>
+
+									<?php }   ?>
+
+
+																											<?php
+        							if ($technique['attachee_de_presse']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Attaché(e) de presse</b></td>
+										<td class="colRight"><?php echo $technique['attachee_de_presse']; ?></td>
+									</tr>
+
+									<?php }   ?>
+
+																<?php
+        							if ($technique['distribution']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Distribution</b></td>
+										<td class="colRight"><?php echo $technique['distribution']; ?></td>
+									</tr>
+
+									<?php }   ?>
+
+																									<?php
+        							if ($technique['programmation']){
+		                            ?>
+
+		                            <tr>
+										<td class="colLeft"><b>Programmation</b></td>
+										<td class="colRight"><?php echo $technique['programmation']; ?></td>
+									</tr>
+
+									<?php }   ?>
+
+
+						</tbody>
+						</table>
+
+
+
+
 					<!--</div>-->
 					</div>
 	</div>

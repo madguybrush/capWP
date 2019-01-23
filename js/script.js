@@ -476,7 +476,52 @@ $('.selectcollection').on( 'change', function() {
 });
 
 	
-	
+	submenubaisopen = 0;
+    submenuphotosisopen = 0;
+     submenuextraitsisopen = 0;
+    
+    $( '.opensubmenuba' ).click( function(e){
+        
+        if (submenubaisopen == 0) {
+            $('.submenuba').css( 'display', 'block' );
+        submenubaisopen = 1;
+        }
+        else{
+                $('.submenuba').css( 'display', 'none' );
+        submenubaisopen = 0;
+        }
+        
+    } );
+    
+    
+        $( '.opensubmenuphotos' ).click( function(e){
+        
+        if (submenuphotosisopen == 0) {
+            $('.submenuphotos').css( 'display', 'block' );
+        submenuphotosisopen = 1;
+        }
+        else{
+                $('.submenuphotos').css( 'display', 'none' );
+        submenuphotosisopen = 0;
+        }
+        
+    } );
+    
+            $( '.opensubmenuextraits' ).click( function(e){
+        
+        if (submenuextraitsisopen == 0) {
+            $('.submenuextraits').css( 'display', 'block' );
+        submenuextraitsisopen = 1;
+        }
+        else{
+                $('.submenuextraits').css( 'display', 'none' );
+        submenuextraitsisopen = 0;
+        }
+        
+    } );
+    
+    
+    
 	
 		$( '#btnmenumobile' ).click( function(e){
 			if (modalState === 0){
